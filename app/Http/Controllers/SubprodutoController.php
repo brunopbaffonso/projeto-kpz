@@ -64,9 +64,9 @@ class SubprodutoController extends Controller
      * @param  \App\Subproduto  $subproduto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subproduto $subproduto)
+    public function edit($id)
     {
-        $subproduto = Subproduto::findOrFail($id);
+        $subproduto = Subproduto::where('idSubproduto', '=', $id)->first();
         return view('subprodutos.edit', compact('subproduto'));
     }
     /**
@@ -76,9 +76,9 @@ class SubprodutoController extends Controller
      * @param  \App\Subproduto  $subproduto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subproduto $subproduto)
+    public function update(Request $request, $id)
     {
-        $subproduto = Subproduto::findORFail($id);
+        $subproduto = Subproduto::where('idSubproduto', '=', $id)->first();
         $subproduto->tipo = $request->tipo;
         $subproduto->quantidade = $request->quantidade;
         $subproduto->comprimento = $request->comprimento;
@@ -94,9 +94,9 @@ class SubprodutoController extends Controller
      * @param  \App\Subproduto  $subproduto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subproduto $subproduto)
+    public function destroy($id)
     {
-        $subproduto = Subproduto::findOrFail($id);
+        $subproduto = Subproduto::where('idSubproduto', '=', $id)->first();
         $subproduto->delete();
         return redirect()->route('Subprodutos.index')->with('alert-success','Subproduto Removido com Sucesso!');
     }

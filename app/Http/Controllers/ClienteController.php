@@ -80,8 +80,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //dd($id);
-        $retorno = Cliente::find($id);
+        //dd($id)
+        $retorno = Cliente::where('idCliente', '=', $id)->first();
         if(count($retorno) == 0)
         {
             Session::flash('produto_nencontrado', 'Cliente não encontrado.');
@@ -91,7 +91,7 @@ class ClienteController extends Controller
 
         return view('clientes.edit')->with('cliente', $retorno);
 
-       /* $cliente = Cliente::findOrFail($id);
+       /* $cliente = Cliente::where('idCliente', '=', $id)->first();
         return view('clientes.edit', compact('cliente'));*/
     }
 
@@ -102,9 +102,9 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
-        $cliente = Cliente::findORFail($id);
+        $cliente = Cliente::where('idCliente', '=', $id)->first();
         $cliente->ativo = $request->ativo;
         $cliente->nome = $request->nome;
         $cliente->cnpj = $request->cnpj;
@@ -130,16 +130,17 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = Cliente::find($id);
+        /*
+        $cliente = Cliente::where('idCliente', '=', $id)->first();
         $cliente -> delete();
         Session::flash('sucesso_produto', "Produto excluído com sucesso.");
         return redirect()->route('$clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
-/*
+        */
+
         //dd($cliente)
-        $cliente = Cliente::findOrFail($id);
+        $cliente = Cliente::where('idCliente', '=', $id)->first();
         $cliente->ativo = 0;
         $cliente-> save();
         return redirect()->route('$clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
-*/
     }
 }

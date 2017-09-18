@@ -69,9 +69,9 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit($id)
     {
-        $item = Fornecedor::findOrFail($id);
+        $item = Item::where('idItem', '=', $id)->first();
         return view('items.edit', compact('item'));
     }
     /**
@@ -81,9 +81,9 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, $id)
     {
-        $item = Item::findORFail($id);
+        $item = Item::where('idItem', '=', $id)->first();
         $item->quantidade = $request->quantidade;
         $item->largura = $request->largura;
         $item->comprimento = $request->comprimento;
@@ -103,9 +103,9 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
-        $item = Item::findOrFail($id);
+        $item = Item::where('idItem', '=', $id)->first();
         $item->delete();
         return redirect()->route('items.index')->with('alert-success','Item Removido com Sucesso!');
     }

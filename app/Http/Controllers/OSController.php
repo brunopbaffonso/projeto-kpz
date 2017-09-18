@@ -63,9 +63,9 @@ class OSController extends Controller
      * @param  \App\OS  $oS
      * @return \Illuminate\Http\Response
      */
-    public function edit(OS $oS)
+    public function edit(OS $id)
     {
-        $oS = OS::findOrFail($id);
+        $oS = OS::where('idOC', '=', $id)->first();
         return view('OSs.edit', compact('os'));
     }
     /**
@@ -75,9 +75,9 @@ class OSController extends Controller
      * @param  \App\OS  $oS
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OS $oS)
+    public function update(Request $request, $id)
     {
-        $oS = OS::findORFail($id);
+        $oS = OS::where('idOC', '=', $id)->first();
         $oS->precoTotal = $request->precoTotal;
         $oS->desconto = $request->desconto;
         $oS->formaPgto = $request->formaPgto;
@@ -93,9 +93,9 @@ class OSController extends Controller
      * @param  \App\OS  $oS
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OS $oS)
+    public function destroy($id)
     {
-        $oS = OS::findOrFail($id);
+        $oS = OS::where('idOC', '=', $id)->first();
         $oS->delete();
         return redirect()->route('OSs.index')->with('alert-success','OS Removida com Sucesso!');
     }

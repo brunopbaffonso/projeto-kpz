@@ -62,9 +62,9 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $id)
+    public function edit($id)
     {
-        $usuarios = Usuario::findOrFail($id);
+        $usuarios = Usuario::where('idUsuario', '=', $id)->first();
         return view('auth.edit', compact('usuario'));
     }
     /**
@@ -74,9 +74,9 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $id)
+    public function update(Request $request, $id)
     {
-        $usuario = Usuario::findORFail($id);
+        $usuario = Usuario::where('idUsuario', '=', $id)->first();
         $usuario->cpf = $request->cpf;
         $usuario->ativo = $request->ativo;
         $usuario->tipoAcesso = $request->tipoAcesso;
@@ -97,9 +97,9 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $id)
+    public function destroy($id)
     {
-        $usuario = Usuario::findOrFail($id);
+        $usuario = Usuario::where('idUsuario', '=', $id)->first();
         $usuario->ativo = 0;
         $usuario-> save();
         return redirect()->route('welcome')->with('alert-success','Usuario Removido com Sucesso!');

@@ -57,9 +57,9 @@ class ModeloController extends Controller
      * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Modelo $modelo)
+    public function edit($id)
     {
-        $modelos = Modelo::findOrFail($id);
+        $modelo = Modelo::where('idModelo', '=', $id)->first();
         return view('modelos.edit', compact('modelo'));
     }
     /**
@@ -69,9 +69,9 @@ class ModeloController extends Controller
      * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modelo $modelo)
+    public function update(Request $request, $id)
     {
-        $modelo = Modelo::findORFail($id);
+        $modelo = Modelo::where('idModelo', '=', $id)->first();
         $modelo->nome = $request->nome;
         $modelo-> save();
         return redirect()->route('modelos.index')->with('message', 'Modelo Editado Com Sucesso');
@@ -82,8 +82,8 @@ class ModeloController extends Controller
      * @param  \App\Modelo  $modelo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Modelo $modelo)
+    public function destroy($id)
     {
-        //
+        $modelo = Modelo::where('idModelo', '=', $id)->first();
     }
 }

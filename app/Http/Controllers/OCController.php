@@ -61,9 +61,9 @@ class OCController extends Controller
      * @param  \App\OC  $oC
      * @return \Illuminate\Http\Response
      */
-    public function edit(OC $oC)
+    public function edit($id)
     {
-        $oC = OC::findOrFail($id);
+        $oC = OC::where('idOC', '=', $id)->first();
         return view('OCs.edit', compact('oc'));
     }
     /**
@@ -73,9 +73,9 @@ class OCController extends Controller
      * @param  \App\OC  $oC
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OC $oC)
+    public function update(Request $request, $id)
     {
-        $oC = OC::findORFail($id);
+        $oC = OC::where('idOC', '=', $id)->first();
         $oC->tipo = $request->tipo;
         $oC->observacoes = $request->observacoes;
         $oC->created_at = $request->created_at;
@@ -89,9 +89,9 @@ class OCController extends Controller
      * @param  \App\OC  $oC
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OC $oC)
+    public function destroy($id)
     {
-        $oC = OC::findOrFail($id);
+        $oC = OC::where('idOC', '=', $id)->first();
         $oC->delete();
         return redirect()->route('OCs.index')->with('alert-success','OC Removida com Sucesso!');
     }

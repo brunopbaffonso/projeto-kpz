@@ -75,9 +75,9 @@ class FornecedorController extends Controller
      * @param  \App\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fornecedor $fornecedor)
+    public function edit($id)
     {
-        $fornecedor = Fornecedor::findOrFail($id);
+        $fornecedor = Fornecedor::where('idFornecedor', '=', $id)->first();
         return view('fornecedores.edit', compact('fornecedor'));
     }
 
@@ -88,9 +88,9 @@ class FornecedorController extends Controller
      * @param  \App\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fornecedor $fornecedor)
+    public function update(Request $request, $id)
     {
-        $fornecedor = Fornecedor::findORFail($id);
+        $fornecedor = Fornecedor::where('idFornecedor', '=', $id)->first();
         $fornecedor->ativo = $request->ativo;
         $fornecedor->nome = $request->nome;
         $fornecedor->cnpj = $request->cnpj;
@@ -113,9 +113,9 @@ class FornecedorController extends Controller
      * @param  \App\Fornecedor  $fornecedor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fornecedor $fornecedor)
+    public function destroy($id)
     {
-        $fornecedor = Fornecedor::findOrFail($id);
+        $fornecedor = Fornecedor::where('idFornecedor', '=', $id)->first();
         $fornecedor->ativo = 0;
         $fornecedor-> save();
         return redirect()->route('fornecedor.index')->with('alert-success','Fornecedor Removido com Sucesso!');

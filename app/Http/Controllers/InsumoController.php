@@ -65,9 +65,9 @@ class InsumoController extends Controller
      * @param  \App\Insumo  $insumo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Insumo $insumo)
+    public function edit($id)
     {
-        $insumo = Insumo::findOrFail($id);
+        $insumo = Insumo::where('idInsumo', '=', $id)->first();
         return view('insumos.edit', compact('insumo'));
     }
     /**
@@ -77,9 +77,9 @@ class InsumoController extends Controller
      * @param  \App\Insumo  $insumo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Insumo $insumo)
+    public function update(Request $request, $id)
     {
-        $insumo = Insumo::findORFail($id);
+        $insumo = Insumo::where('idInsumo', '=', $id)->first();
         $insumo->quantidade = $request->quantidade;
         $insumo->comprimento = $request->comprimento;
         $insumo->largura = $request->largura;
@@ -96,9 +96,9 @@ class InsumoController extends Controller
      * @param  \App\Insumo  $insumo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Insumo $insumo)
+    public function destroy($id)
     {
-        $insumo = Insumo::findOrFail($id);
+        $insumo = Insumo::where('idInsumo', '=', $id)->first();
         $insumo->delete();
         return redirect()->route('insumos.index')->with('alert-success','Insumo Removido com Sucesso!');
     }

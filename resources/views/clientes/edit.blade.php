@@ -10,13 +10,13 @@
                     <div class="panel-body">
                         <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/cliente/'.$clientes->idCliente, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => '/cliente/'.$cliente->idCliente, 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                                 <div class="col-md-6">
-                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{ $cliente->cpf }}" required autofocus>
 
                                     @if ($errors->has('cpf'))
                                         <span class="help-block">
@@ -30,7 +30,7 @@
                                 <label for="nome" class="col-md-4 control-label">Nome</label>
 
                                 <div class="col-md-6">
-                                    <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
+                                    <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" required autofocus>
 
                                     @if ($errors->has('nome'))
                                         <span class="help-block">
@@ -44,7 +44,7 @@
                                 <label for="fone" class="col-md-4 control-label">Telefone</label>
 
                                 <div class="col-md-6">
-                                    <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" autofocus>
+                                    <input id="fone" type="text" class="form-control" name="fone" value="{{ $cliente->fone }}" autofocus>
 
                                     @if ($errors->has('fone'))
                                         <span class="help-block">
@@ -58,7 +58,7 @@
                                 <label for="celular" class="col-md-4 control-label">Celular</label>
 
                                 <div class="col-md-6">
-                                    <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" required autofocus>
+                                    <input id="celular" type="text" class="form-control" name="celular" value="{{ $cliente->celular }}" required autofocus>
 
                                     {{--@if ($errors->has('celular'))--}}
                                     {{--<span class="help-block">--}}
@@ -72,7 +72,7 @@
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ $cliente->email }}" required autofocus>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -108,7 +108,7 @@
                                 <label for="tipoAcesso" class="col-md-4 control-label">Tipo de Acesso</label>
 
                                 <div class="col-md-6">
-                                    <input id="tipoAcesso" type="number" class="form-control" name="tipoAcesso" required autofocus>
+                                    <input id="tipoAcesso" type="number" class="form-control" value="{{ $cliente->tipoAcesso }}" name="tipoAcesso" required autofocus>
 
                                     @if ($errors->has('tipoAcesso'))
                                         <span class="help-block">
