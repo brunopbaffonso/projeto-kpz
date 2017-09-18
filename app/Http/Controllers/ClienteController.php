@@ -32,7 +32,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('clientes.register');
     }
 
     /**
@@ -91,8 +91,8 @@ class ClienteController extends Controller
 
         return view('clientes.edit')->with('cliente', $retorno);
 
-        //$cliente = Cliente::findOrFail($id);
-        //return view('clientes.edit', compact('cliente'));
+       /* $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));*/
     }
 
     /**
