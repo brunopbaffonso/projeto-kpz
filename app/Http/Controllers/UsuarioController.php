@@ -12,7 +12,7 @@ class UsuarioController extends Controller
     public function index(Request $request)
     {
         $usuarios = Usuario::orderby('created_at', 'desc')->paginate(10);
-        return view('usuario.index')->with('usuarios',$usuarios);
+        return view('auth.login')->with('usuarios',$usuarios);
     }
     /**
      * Show the form for creating a new resource.
@@ -44,7 +44,7 @@ class UsuarioController extends Controller
         $usuario->update_at = $request->update_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
-        return redirect()->route('usuarios.index')->with('message', 'Usuario Criado Com Sucesso');
+        return redirect()->route('auth.register')->with('message', 'Usuario Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
@@ -65,7 +65,7 @@ class UsuarioController extends Controller
     public function edit(Usuario $id)
     {
         $usuarios = Usuario::findOrFail($id);
-        return view('usuarios.edit', compact('usuario'));
+        return view('auth.edit', compact('usuario'));
     }
     /**
      * Update the specified resource in storage.
@@ -89,7 +89,7 @@ class UsuarioController extends Controller
         $usuario->update_at =$request->update_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
-        return redirect()->route('usuarios.index')->with('message', 'Usuario Editado Com Sucesso');
+        return redirect()->route('welcome')->with('message', 'Usuario Editado Com Sucesso');
     }
     /**
      * Remove the specified resource from storage.
@@ -102,6 +102,6 @@ class UsuarioController extends Controller
         $usuario = Usuario::findOrFail($id);
         $usuario->ativo = 0;
         $usuario-> save();
-        return redirect()->route('usuario.index')->with('alert-success','Usuario Removido com Sucesso!');
+        return redirect()->route('welcome')->with('alert-success','Usuario Removido com Sucesso!');
     }
 }

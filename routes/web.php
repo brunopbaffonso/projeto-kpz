@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function() {
+//Route::group(['middleware' => 'auth'], function() {
     Route::resource('clientes', 'ClienteController');
     Route::resource('fornecedores', 'FornecedorController');
     Route::resource('insumos', 'InsumoController');
@@ -29,4 +29,4 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('OSs', 'OSController');
     Route::resource('subprodutos', 'SubprodutoController');
     Route::resource('usuarios', 'UsuarioController');
-});
+//});

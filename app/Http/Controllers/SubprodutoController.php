@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Subproduto;
-use Illuminate\Http\Request
+use Illuminate\Http\Request;
 
 class SubprodutoController extends Controller
 {

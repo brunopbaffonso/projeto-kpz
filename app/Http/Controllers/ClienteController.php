@@ -12,10 +12,17 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clientes = Cliente::orderby('created_at', 'desc')->paginate(10);
-        return view('clientes.index', ['clientes'=>$clientes]);
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
+        $retorno = Cliente::where('nome', 'like', '%'.$palavraChave.'%')
+            ->orWhere('cnpj', 'like', '%'.$palavraChave.'%')
+            ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
+            ->orderBy('nome', 'asc')->paginate(10);
+        return view('clientes.index')->with('cliente', $retorno);
+
+//        $clientes = Cliente::orderby('created_at', 'desc')->paginate(10);
+//        return view('clientes.index', ['clientes'=>$clientes]);
     }
 
     /**
@@ -51,7 +58,7 @@ class ClienteController extends Controller
         $cliente->created_at = $request->created_at;
         $cliente->update_at = $request->update_at;
         $cliente-> save();
-        return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
+        return redirect()->route('clientes.register')->with('message', 'Cliente Criado Com Sucesso');
     }
 
     /**
@@ -71,10 +78,21 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        $cliente = Cliente::findOrFail($id);
-        return view('clientes.edit', compact('cliente'));
+        dd($id);
+        $retorno = Cliente::find($id);
+        if(count($retorno) == 0)
+        {
+            Session::flash('produto_nencontrado', 'Cliente não encontrado.');
+            return redirect('/clientes');
+        }
+
+
+        return view('clientes.edit')->with('cliente', $retorno);
+
+        //$cliente = Cliente::findOrFail($id);
+        //return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -101,7 +119,7 @@ class ClienteController extends Controller
         $cliente->created_at = $request->created_at;
         $cliente->update_at = $request->update_at;
         $cliente-> save();
-        return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');
+        return redirect()->route('clientes.edit')->with('message', 'Cliente Editado Com Sucesso');
     }
 
     /**
