@@ -35,8 +35,10 @@
                     <td>{{ $cliente->celular}}</td>
                     <td>{{ $cliente->email}}</td>
                     <td>
-                        {!!Form::open(['url' => 'clientes/'.$cliente->id, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Cliente?");'])!!}
+                        {!!Form::open(['url' => 'clientes/'.$cliente->idCliente, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Cliente?");'])!!}
                         <a class="btn btn-warning btn-xs" href="clientes{{ $cliente->id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        {!! Form::close() !!}
+                        {!!Form::open(['url' => 'clientes/'.$cliente->idCliente, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Cliente?");'])!!}
                         <button type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                         {!! Form::close() !!}
                     </td>

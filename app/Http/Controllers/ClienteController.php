@@ -80,7 +80,7 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        //dd($id);
         $retorno = Cliente::find($id);
         if(count($retorno) == 0)
         {
@@ -128,11 +128,18 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
+        $cliente = Cliente::find($id);
+        $cliente -> delete();
+        Session::flash('sucesso_produto', "Produto excluído com sucesso.");
+        return redirect()->route('$clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
+/*
+        //dd($cliente)
         $cliente = Cliente::findOrFail($id);
         $cliente->ativo = 0;
         $cliente-> save();
-        return redirect()->route('$cliente.index')->with('alert-success','Cliente Removido com Sucesso!');
+        return redirect()->route('$clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
+*/
     }
 }

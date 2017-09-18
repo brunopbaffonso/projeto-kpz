@@ -8,8 +8,9 @@
                     <div class="panel-heading">Register</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
+                        <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
+
+                        {!!Form::open(['url' => '/cliente/'.$clientes->id, 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>
@@ -124,7 +125,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
