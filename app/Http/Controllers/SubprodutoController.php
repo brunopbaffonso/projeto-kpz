@@ -10,10 +10,16 @@ class SubprodutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $subprodutos = Subproduto::orderby('created_at', 'desc')->paginate(10);
-        return view('subprodutos.index', ['subprodutos'=>$subprodutos]);
+        $palavraChave = ($request->get('tipo') == null) ? '' : $request->get('tipo');
+        $retorno = Subproduto::where('tipo', 'like', '%'.$palavraChave.'%')
+            ->orWhere('quantidade', 'like', '%'.$palavraChave.'%')
+            ->orderBy('created_at', 'asc')->paginate(10);
+        return view('subprodutos.index')->with('subproduto', $retorno);
+
+        //$subprodutos = Subproduto::orderby('created_at', 'desc')->paginate(10);
+        //return view('subprodutos.index', ['subprodutos'=>$subprodutos]);
     }
     /**
      * Show the form for creating a new resource.

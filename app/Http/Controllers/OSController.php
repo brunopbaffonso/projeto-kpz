@@ -9,9 +9,16 @@ class OSController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()    {
-        $OSs = OS::orderby('created_at', 'desc')->paginate(10);
-        return view('OSs.index', ['OSs'=>$OSs]);
+    public function index(Request $request)    {
+        $palavraChave = ($request->get('precoTotal') == null) ? '' : $request->get('precoTotal');
+        $retorno = OS::where('precoTotal', 'like', '%'.$palavraChave.'%')
+            ->orWhere('formaPgto', 'like', '%'.$palavraChave.'%')
+            ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
+            ->orderBy('created_at', 'asc')->paginate(10);
+        return view('oss.index')->with('os', $retorno);
+
+        //$OSs = OS::orderby('created_at', 'desc')->paginate(10);
+        //return view('OSs.index', ['OSs'=>$OSs]);
     }
     /**
      * Show the form for creating a new resource.
@@ -38,7 +45,7 @@ class OSController extends Controller
         $oS->created_at = $request->created_at;
         $oS->updated_at = $request->updated_at;
         $oS-> save();
-        return redirect()->route('OSs.index')->with('message', 'Fornecedor Criado Com Sucesso');
+        return redirect()->route('OSs.index')->with('message', 'OS Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
@@ -78,7 +85,7 @@ class OSController extends Controller
         $oS->created_at = $request->created_at;
         $oS->updated_at = $request->updated_at;
         $oS-> save();
-        return redirect()->route('OSs.index')->with('message', 'Fornecedor Editado Com Sucesso');
+        return redirect()->route('OSs.index')->with('message', 'OS Editado Com Sucesso');
     }
     /**
      * Remove the specified resource from storage.

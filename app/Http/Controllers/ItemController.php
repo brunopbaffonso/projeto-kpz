@@ -9,10 +9,18 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::orderby('created_at', 'desc')->paginate(10);
-        return view('items.index', ['items'=>$items]);
+        $palavraChave = ($request->get('quantidade') == null) ? '' : $request->get('quantidade');
+        $retorno = Item::where('quantidade', 'like', '%'.$palavraChave.'%')
+            ->orWhere('borda', 'like', '%'.$palavraChave.'%')
+            ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
+            ->orWhere('fonte', 'like', '%'.$palavraChave.'%')
+            ->orderBy('created_at', 'asc')->paginate(10);
+        return view('items.index')->with('items', $retorno);
+
+        //$items = Item::orderby('created_at', 'desc')->paginate(10);
+        //return view('items.index', ['items'=>$items]);
     }
     /**
      * Show the form for creating a new resource.

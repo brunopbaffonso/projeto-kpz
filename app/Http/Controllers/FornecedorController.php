@@ -12,10 +12,16 @@ class FornecedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $fornecedores = Fornecedor::orderby('created_at', 'desc')->paginate(10);
-        return view('fornecedores.index', ['fornecedores'=>$fornecedores]);
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
+        $retorno = Fornecedor::where('nome', 'like', '%'.$palavraChave.'%')
+            ->orWhere('cnpj', 'like', '%'.$palavraChave.'%')
+            ->orderBy('nome', 'asc')->paginate(10);
+        return view('fornecedores.index')->with('fornecedor', $retorno);
+
+        //$fornecedores = Fornecedor::orderby('created_at', 'desc')->paginate(10);
+        //return view('fornecedores.index', ['fornecedores'=>$fornecedores]);
     }
     /**
      * Show the form for creating a new resource.

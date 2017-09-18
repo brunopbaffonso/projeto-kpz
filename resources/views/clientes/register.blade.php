@@ -8,7 +8,7 @@
                 <div class="panel-heading">Cadastrar Cliente</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="clientes/.{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">

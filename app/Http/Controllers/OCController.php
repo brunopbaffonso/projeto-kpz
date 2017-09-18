@@ -9,10 +9,16 @@ class OCController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $oCs = OC::orderby('created_at', 'desc')->paginate(10);
-        return view('OCs.index', ['OCs'=>$OCs]);
+        $palavraChave = ($request->get('tipo') == null) ? '' : $request->get('tipo');
+        $retorno = OC::where('tipo', 'like', '%'.$palavraChave.'%')
+            ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
+            ->orderBy('created_at', 'asc')->paginate(10);
+        return view('ocs.index')->with('oc', $retorno);
+
+        //$oCs = OC::orderby('created_at', 'desc')->paginate(10);
+        //return view('OCs.index', ['OCs'=>$OCs]);
     }
     /**
      * Show the form for creating a new resource.

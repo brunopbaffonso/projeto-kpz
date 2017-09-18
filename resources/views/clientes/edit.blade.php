@@ -10,7 +10,7 @@
                     <div class="panel-body">
                         <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/cliente/'.$clientes->id, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => '/cliente/'.$clientes->idCliente, 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>

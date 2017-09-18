@@ -9,10 +9,17 @@ class InsumoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $insumos = Insumo::orderby('created_at', 'desc')->paginate(10);
-        return view('insumos.index', ['insumos'=>$insumos]);
+        $palavraChave = ($request->get('quantidade') == null) ? '' : $request->get('quantidade');
+        $retorno = Insumo::where('quantidade', 'like', '%'.$palavraChave.'%')
+            ->orWhere('unidadeMedida', 'like', '%'.$palavraChave.'%')
+            ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
+            ->orderBy('created_at', 'asc')->paginate(10);
+        return view('insumos.index')->with('insumo', $retorno);
+
+        //$insumos = Insumo::orderby('created_at', 'desc')->paginate(10);
+        //return view('insumos.index', ['insumos'=>$insumos]);
     }
     /**
      * Show the form for creating a new resource.

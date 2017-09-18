@@ -9,10 +9,15 @@ class ModeloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $modelos = Modelo::orderby('idModelo', 'desc')->paginate(10);
-        return view('modelos.index', ['modelos'=>$modelos]);
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
+        $retorno = Modelo::where('nome', 'like', '%'.$palavraChave.'%')
+            ->orderBy('nome', 'asc')->paginate(10);
+        return view('modelos.index')->with('modelo', $retorno);
+
+        //$modelos = Modelo::orderby('idModelo', 'desc')->paginate(10);
+        //return view('modelos.index', ['modelos'=>$modelos]);
     }
     /**
      * Show the form for creating a new resource.
