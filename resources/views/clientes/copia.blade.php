@@ -1,28 +1,15 @@
 @extends('master.app')
 @section('content')
     {!!Form::open(['url' => 'clientes', 'method' => 'get', 'class' => 'form-inline text-center'])!!}
-    <div id="page-wrapper" >
-            <div class="header"> 
-
-                        <h1 class="page-header">Clientes</h1>
-                        <ol class="breadcrumb">
-                          <li><a href="#">Inicio</a></li>
-                          <li><a href="#">Clientes</a></li>
-                          <li class="active">Lista de Clientes</li>
-                        </ol>               
-            </div>
-        
-            <div id="page-inner"> 
-               
-            <div class="col-md-12">
-                     <!--   Basic Table  -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Lista de Produtos
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                 <table class="table table-houver table-bordered">
+    <h1>Clientes</h1>
+    <div class="form-group">
+        <label for="inputEmail3" class=" col-md-3 control-label" style="padding-top: 2%;">Pesquisa &nbsp;</label>
+        <input type="text" class="form-control" name="nome" placeholder="Ex: Nome/CNPJ/CPF">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+    {!! Form::close() !!}
+    <div class="table-responsive container">
+        <table class="table table-houver table-bordered">
             <tr>
                 <td>ID</td>
                 <td>Nome</td>
@@ -62,11 +49,5 @@
                 </tr>
             @endforeach
         </table>
-        </div>
     </div>
-<!-- End  Basic Table  -->
-    </div>
-</div>
-                <!-- /. ROW  -->           
-</div>
 @endsection
