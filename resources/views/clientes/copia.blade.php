@@ -1,4 +1,4 @@
-@extends('master.app')
+@extends('layouts.app')
 @section('content')
     {!!Form::open(['url' => 'clientes', 'method' => 'get', 'class' => 'form-inline text-center'])!!}
     <h1>Clientes</h1>
