@@ -25,25 +25,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
-                                <label for="cpf" class="col-md-4 control-label">CPF</label>
-
-                                <div class="col-md-6">
-                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" autofocus>
-
-                                    @if ($errors->has('cpf'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('cpf') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
                             <div class="form-group{{ $errors->has('cnpj') ? ' has-error' : '' }}">
                                 <label for="cnpj" class="col-md-4 control-label">CNPJ</label>
 
                                 <div class="col-md-6">
-                                    <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" autofocus>
+                                    <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" required autofocus>
 
                                     @if ($errors->has('cnpj'))
                                         <span class="help-block">
