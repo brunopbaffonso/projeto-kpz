@@ -137,10 +137,9 @@ class ClienteController extends Controller
         return redirect()->route('$clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
         */
 
-        //dd($cliente)
         $cliente = Cliente::where('idCliente', '=', $id)->first();
         $cliente->ativo = 0;
         $cliente-> save();
-        return redirect()->route('$clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
+        return redirect()->route('$clientes.destroy')->with('alert-success','Cliente Removido com Sucesso!');
     }
 }

@@ -1,14 +1,14 @@
-@extends('master.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Cadastrar Cliente</div>
+                <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="clientes/.{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
@@ -24,7 +24,6 @@
                                 @endif
                             </div>
                         </div>
-
 
                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                             <label for="cpf" class="col-md-4 control-label">CPF</label>
@@ -44,7 +43,7 @@
                             <label for="cnpj" class="col-md-4 control-label">CNPJ</label>
 
                             <div class="col-md-6">
-                                <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" required autofocus>
+                                <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" autofocus>
 
                                 @if ($errors->has('cnpj'))
                                     <span class="help-block">
@@ -69,7 +68,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('endereco') ? ' has-error' : '' }}">
-                            <label for="endereco" class="col-md-4 control-label">Endereco</label>
+                            <label for="endereco" class="col-md-4 control-label">Endereço</label>
 
                             <div class="col-md-6">
                                 <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" required autofocus>
@@ -96,11 +95,12 @@
                             </div>
                         </div>
 
+
                         <div class="form-group{{ $errors->has('cep') ? ' has-error' : '' }}">
                             <label for="cep" class="col-md-4 control-label">CEP</label>
 
                             <div class="col-md-6">
-                                <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" required autofocus>
+                                <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" autofocus>
 
                                 @if ($errors->has('cep'))
                                     <span class="help-block">
