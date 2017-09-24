@@ -8,8 +8,9 @@ class Subproduto extends Model
 {
 
     protected $table = 'subproduto';
+    protected $primaryKey = 'idSubproduto';
     public $timestamps = true;
-    protected $fillable = ['tipo', 'quantidade', 'largura', 'comprimento'];
+    protected $fillable = ['idSubproduto', 'tipo', 'quantidade', 'largura', 'comprimento'];
 
     public function item(){
         return  $this->hasMany(Item::class);

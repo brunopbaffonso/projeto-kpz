@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $table = 'item'; //relação com a tabela do banco
+    protected $primaryKey = 'idItem';
     public $timestamps = true; //toda vez que for tirado o timestamps da migrate, grava a hora que foi alterado o banco
-    protected $fillable = ['quantidade','largura','comprimento','unidadeMedida','borda','arte','precoUnit', 'fonte']; //informações inseridas no banco
+    protected $fillable = ['idItem', 'quantidade','largura','comprimento','unidadeMedida','borda','arte','precoUnit', 'fonte']; //informações inseridas no banco
 
 
     public function os(){

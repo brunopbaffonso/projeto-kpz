@@ -98,6 +98,6 @@ class SubprodutoController extends Controller
     {
         $subproduto = Subproduto::where('idSubproduto', '=', $id)->first();
         $subproduto->delete();
-        return redirect()->route('Subprodutos.index')->with('alert-success','Subproduto Removido com Sucesso!');
+        return redirect()->route('subprodutos.index')->with('alert-success','Subproduto Removido com Sucesso!');
     }
 }

@@ -8,6 +8,11 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
     {!! Form::close() !!}
+    <div class="panel-body">
+        <a href="subprodutos/create">
+            <button type="button" class="btn btn-primary">Cadastrar Subproduto</button>
+        </a>
+    </div>
     <div class="table-responsive container">
         <table class="table table-houver table-bordered">
             <tr>
@@ -27,10 +32,10 @@
                     <td>{{ $subproduto->largura}}</td>
                     <td>{{ $subproduto->created_at}}</td>
                     <td>
-                        {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubprodutos, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Subproduto?");'])!!}
-                        <a class="btn btn-warning btn-xs" href="subprodutos/{{ $subproduto->idSubproduto}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubproduto, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Subproduto?");'])!!}
+                        <a class="btn btn-warning btn-xs" href="subprodutos/{{ $subproduto->idSubproduto }}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         {!! Form::close() !!}
-                        {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubprodutos, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Subproduto?");'])!!}
+                        {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubproduto, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Subproduto?");'])!!}
                         <button type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                         {!! Form::close() !!}
                     </td>

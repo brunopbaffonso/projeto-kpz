@@ -8,8 +8,9 @@ class OC extends Model
 {
 
     protected $table = 'oc';
+    protected $primaryKey = 'idOC';
     public $timestamps = true;
-    protected $fillable = ['tipo', 'observacoes'];
+    protected $fillable = ['idOC', 'tipo', 'observacoes'];
 
     public function usuario(){
         return  $this->belongsTo(Usuario::class);

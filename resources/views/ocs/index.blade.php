@@ -8,6 +8,11 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
     {!! Form::close() !!}
+    <div class="panel-body">
+        <a href="ocs/create">
+            <button type="button" class="btn btn-primary">Cadastrar OC</button>
+        </a>
+    </div>
     <div class="table-responsive container">
         <table class="table table-houver table-bordered">
             <tr>

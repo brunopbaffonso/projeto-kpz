@@ -8,8 +8,9 @@ class TipoMaterial extends Model
 {
 
     protected $table = 'tipoMaterial';
+    protected $primaryKey = 'idTipoMaterial';
     public $timestamps = false;
-    protected $fillable = ['nome', 'precoMaterial', 'unidadeMedida'];
+    protected $fillable = ['idTipoMaterial', 'nome', 'precoMaterial', 'unidadeMedida'];
 
     public function insumo(){
         return  $this->hasMany(Insumo::class);

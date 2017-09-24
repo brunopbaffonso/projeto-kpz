@@ -59,11 +59,11 @@
                             <div class="col-md-6">
                                 <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" required autofocus>
 
-                                {{--@if ($errors->has('celular'))--}}
-                                    {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('celular') }}</strong>--}}
-                                    {{--</span>--}}
-                                {{--@endif--}}
+                                @if ($errors->has('celular'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('celular') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Cadastrar!
                                 </button>
                             </div>
                         </div>

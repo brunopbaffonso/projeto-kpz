@@ -8,8 +8,9 @@ class OS extends Model
 {
 
     protected $table = 'os';
+    protected $primaryKey = 'idOS';
     public $timestamps = true;
-    protected $fillable = ['tipo', 'observacoes'];
+    protected $fillable = ['idOS', 'tipo', 'observacoes'];
 
     public function usuario(){
         return  $this->belongsTo(Usuario::class);

@@ -8,11 +8,11 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
     {!! Form::close() !!}
-    {!! Form::open(['url' => 'clientes/create']) !!}
     <div class="panel-body">
+        <a href="clientes/create">
         <button type="button" class="btn btn-primary">Cadastrar Cliente</button>
+        </a>
     </div>
-    {!! Form::close() !!}
     <div class="table-responsive container">
         <table class="table table-houver table-bordered">
             <tr>
@@ -28,6 +28,7 @@
                 <td>Fone</td>
                 <td>Celular</td>
                 <td>E-mail</td>
+                <td>Cidade</td>
             </tr>
             @foreach ($cliente as $cliente)
                 <tr>
@@ -43,6 +44,7 @@
                     <td>{{ $cliente->fone}}</td>
                     <td>{{ $cliente->celular}}</td>
                     <td>{{ $cliente->email}}</td>
+                    <td>{{ $cliente->cidade_idCidade}}</td>
                     <td>
                         {!!Form::open(['url' => 'clientes/'.$cliente->idCliente, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Cliente?");'])!!}
                         <a class="btn btn-warning btn-xs" href="clientes/{{ $cliente->idCliente}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>

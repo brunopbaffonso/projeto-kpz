@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Cliente;
 use Illuminate\Http\Request;
 
@@ -57,8 +56,9 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
         $cliente->created_at = $request->created_at;
         $cliente->update_at = $request->update_at;
+        $cliente->cidade_idCidade = $request->cidade_idCidade;
         $cliente-> save();
-        return redirect()->route('clientes.register')->with('message', 'Cliente Criado Com Sucesso');
+        return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
     }
 
     /**
@@ -118,8 +118,9 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
         $cliente->created_at = $request->created_at;
         $cliente->update_at = $request->update_at;
+        $cliente->cidade_idCidade = $request->cidade_idCidade;
         $cliente-> save();
-        return redirect()->route('clientes.edit')->with('message', 'Cliente Editado Com Sucesso');
+        return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');
     }
 
     /**
@@ -140,6 +141,6 @@ class ClienteController extends Controller
         $cliente = Cliente::where('idCliente', '=', $id)->first();
         $cliente->ativo = 0;
         $cliente-> save();
-        return redirect()->route('$clientes.destroy')->with('alert-success','Cliente Removido com Sucesso!');
+        return redirect()->route('clientes.index')->with('alert-success','Cliente Removido com Sucesso!');
     }
 }

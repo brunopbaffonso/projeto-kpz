@@ -8,15 +8,16 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
     {!! Form::close() !!}
-    {!! Form::open(['url' => 'usuarios/create']) !!}
     <div class="panel-body">
-        <button type="button" class="btn btn-primary">Cadastrar Usuário</button>
+        <a href="usuarios/create">
+            <button type="button" class="btn btn-primary">Cadastrar Usuario</button>
+        </a>
     </div>
-    {!! Form::close() !!}
     <div class="table-responsive container">
         <table class="table table-houver table-bordered">
             <tr>
                 <td>CPF</td>
+                <td>Ativo</td>
                 <td>Tipo de Acesso</td>
                 <td>Nome</td>
                 <td>Telefone</td>
@@ -27,6 +28,7 @@
             @foreach ($usuario as $usuario)
                 <tr>
                     <td>{{ $usuario->cpf}}</td>
+                    <td>{{ $usuario->ativo}}</td>
                     <td>{{ $usuario->tipoAcesso}}</td>
                     <td>{{ $usuario->nome}}</td>
                     <td>{{ $usuario->fone}}</td>

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cidade extends Model
 {
+    protected $primaryKey = 'idCidade';
+
     protected $fillable = [
         'idCidade', 'nome', 'estado_uf',
     ];

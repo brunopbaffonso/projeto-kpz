@@ -118,6 +118,6 @@ class FornecedorController extends Controller
         $fornecedor = Fornecedor::where('idFornecedor', '=', $id)->first();
         $fornecedor->ativo = 0;
         $fornecedor-> save();
-        return redirect()->route('fornecedor.index')->with('alert-success','Fornecedor Removido com Sucesso!');
+        return redirect()->route('fornecedores.index')->with('alert-success','Fornecedor Removido com Sucesso!');
     }
 }

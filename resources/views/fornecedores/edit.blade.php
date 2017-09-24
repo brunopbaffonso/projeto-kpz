@@ -10,7 +10,7 @@
                     <div class="panel-body">
                     <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/fornecedor/'.$fornecedor->idFornecedor, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'fornecedores/'.$fornecedor->idFornecedor, 'method' => 'post'])!!}
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                             <label for="nome" class="col-md-4 control-label">Nome</label>

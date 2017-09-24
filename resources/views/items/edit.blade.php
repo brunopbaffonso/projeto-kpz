@@ -10,7 +10,7 @@
                     <div class="panel-body">
                     <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/item/'.$item->idItem, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'post'])!!}
 
                         <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                             <label for="quantidade" class="col-md-4 control-label">Nome</label>

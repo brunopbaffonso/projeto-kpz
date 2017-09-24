@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class TipoManta extends Model
 {
     protected $table = 'tipoManta';
+    protected $primaryKey = 'idTipoManta';
     public $timestamps = false;
-    protected $fillable = ['nome', 'precoManta', 'unidadeMedida'];
+    protected $fillable = ['idTipoManta', 'nome', 'precoManta', 'unidadeMedida'];
 
     public function insumo(){
         return  $this->hasMany(Insumo::class);

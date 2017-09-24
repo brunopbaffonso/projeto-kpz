@@ -8,8 +8,9 @@ class Borda extends Model
 {
 
     protected $table = 'borda';
+    protected $primaryKey = 'idBorda';
     public $timestamps = false;
-    protected $fillable = ['nome', 'precoBorda', 'unidadeMedida'];
+    protected $fillable = ['idBorda', 'nome', 'precoBorda', 'unidadeMedida'];
 
     public function item(){
         return  $this->hasMany(Item::class);

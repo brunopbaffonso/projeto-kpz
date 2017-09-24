@@ -8,8 +8,9 @@ class Cor extends Model
 {
 
     protected $table = 'cor';
+    protected $primaryKey = 'idCor';
     public $timestamps = false;
-    protected $fillable = ['nome'];
+    protected $fillable = ['idCor', 'nome'];
 
     public function insumo(){
         return  $this->hasMany(Insumo::class);

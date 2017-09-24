@@ -8,6 +8,11 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
     {!! Form::close() !!}
+    <div class="panel-body">
+        <a href="modelos/create">
+            <button type="button" class="btn btn-primary">Cadastrar Modelo</button>
+        </a>
+    </div>
     <div class="table-responsive container">
         <table class="table table-houver table-bordered">
             <tr>
@@ -22,7 +27,7 @@
                         {!!Form::open(['url' => 'modelos/'.$modelo->idModelo, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Modelo?");'])!!}
                         <a class="btn btn-warning btn-xs" href="modelos/{{ $modelo->idModelo}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         {!! Form::close() !!}
-                        {!!Form::open(['url' => '$modelos/'.$modelo->idModelo, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Modelo?");'])!!}
+                        {!!Form::open(['url' => 'modelos/'.$modelo->idModelo, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Modelo?");'])!!}
                         <button type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
                         {!! Form::close() !!}
                     </td>

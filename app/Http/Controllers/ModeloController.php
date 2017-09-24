@@ -26,7 +26,7 @@ class ModeloController extends Controller
      */
     public function create()
     {
-        return view('modelos.create');
+        return view('modelos.register');
     }
     /**
      * Store a newly created resource in storage.
@@ -85,5 +85,7 @@ class ModeloController extends Controller
     public function destroy($id)
     {
         $modelo = Modelo::where('idModelo', '=', $id)->first();
+        $modelo->delete();
+        return redirect()->route('modelos.index')->with('alert-success','Modelo Removido com Sucesso!');
     }
 }

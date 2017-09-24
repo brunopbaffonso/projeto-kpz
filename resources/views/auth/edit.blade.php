@@ -10,7 +10,7 @@
                     <div class="panel-body">
                     <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/usuario/'.$usuario->cpf, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'usuarios/'.$usuario->cpf, 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>
@@ -60,11 +60,11 @@
                                 <div class="col-md-6">
                                     <input id="celular" type="text" class="form-control" name="celular" value="{{ $usuario->celular }}" required autofocus>
 
-                                    {{--@if ($errors->has('celular'))--}}
-                                    {{--<span class="help-block">--}}
-                                    {{--<strong>{{ $errors->first('celular') }}</strong>--}}
-                                    {{--</span>--}}
-                                    {{--@endif--}}
+                                    @if ($errors->has('celular'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('celular') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@
                             </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="password" class="col-md-4 control-label">Senha</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" value="{{ $usuario->password }}" required autofocus>
@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Register
+                                        Salvar Alterações!
                                     </button>
                                 </div>
                             </div>

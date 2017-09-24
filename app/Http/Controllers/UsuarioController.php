@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Usuario;
 use Illuminate\Http\Request;
+
 class UsuarioController extends Controller
 {
     /**
@@ -48,7 +49,7 @@ class UsuarioController extends Controller
         $usuario->update_at = $request->update_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
-        return redirect()->route('auth.register')->with('message', 'Usuário Criado Com Sucesso');
+        return redirect()->route('auth.index')->with('message', 'Usuário Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
@@ -101,7 +102,7 @@ class UsuarioController extends Controller
         $usuario->update_at =$request->update_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
-        return redirect()->route('welcome')->with('message', 'Usuário Editado Com Sucesso');
+        return redirect()->route('usuarios.index')->with('message', 'Usuário Editado Com Sucesso');
     }
     /**
      * Remove the specified resource from storage.
@@ -114,6 +115,6 @@ class UsuarioController extends Controller
         $usuario = Usuario::where('cpf', '=', $id)->first();
         $usuario->ativo = 0;
         $usuario-> save();
-        return redirect()->route('welcome')->with('alert-success','Usuário Removido com Sucesso!');
+        return redirect()->route('usuarios.index')->with('alert-success','Usuário Removido com Sucesso!');
     }
 }

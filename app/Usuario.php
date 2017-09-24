@@ -18,12 +18,14 @@ class Usuario extends Model implements
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    protected $primaryKey = 'cpf';
+
     protected $fillable = [
-        'cpf', 'ativo', 'tipoAceso', 'nome', 'fone', 'celular', 'email', 'password', 'created_at', 'updated_at', 'remember_token',
+        'cpf', 'ativo', 'tipoAceso', 'nome', 'fone', 'celular', 'email', 'password',
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'created_at', 'updated_at', 'remember_token',
     ];
 
     protected $table = 'usuario';

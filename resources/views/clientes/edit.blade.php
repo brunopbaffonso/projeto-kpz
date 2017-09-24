@@ -10,7 +10,7 @@
                     <div class="panel-body">
                     <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/cliente/'.$cliente->cpf, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'clientes/'.$cliente->idCliente.'/edit', 'method' => 'post'])!!}
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                             <label for="nome" class="col-md-4 control-label">Nome</label>
@@ -147,6 +147,20 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $cliente->email }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('cidade_idCidade') ? ' has-error' : '' }}">
+                            <label for="cidade_idCidade" class="col-md-4 control-label">Cidade</label>
+
+                            <div class="col-md-6">
+                                <input id="cidade_idCidade" type="text" class="form-control" value="{{ $cliente->cidade_idCidade }}" name="cidade_idCidade" required autofocus>
+
+                                @if ($errors->has('cidade_idCidade'))
+                                    <span class="help-block">
+                                        <strong>{{ $cliente->cidade_idCidade }}</strong>
                                     </span>
                                 @endif
                             </div>

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fornecedor extends Model
 {
+    protected $primaryKey = 'idFornecedor';
+
     protected $fillable = [
         'idFornecedor', 'ativo', 'nome', 'cnpj', 'ie', 'endereco', 'bairro', 'cep', 'fone', 'celular', 'email', 'created_at', 'updated_at', 'cidade_idCidade',
     ];

@@ -8,8 +8,9 @@ class Insumo extends Model
 {
 
     protected $table = 'insumo';
+    protected $primaryKey = 'idInsumo';
     public $timestamps = true;
-    protected $fillable = ['quantidade', 'comprimento', 'largura', 'unidadeMedida', 'precoUnit'];
+    protected $fillable = ['idInsumo', 'quantidade', 'comprimento', 'largura', 'unidadeMedida', 'precoUnit'];
 
     public function usuario(){
         return  $this->belongsTo(Usuario::class);

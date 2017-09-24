@@ -139,7 +139,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
@@ -147,6 +147,20 @@
                                     @if ($errors->has('email'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('cidade_idCidade') ? ' has-error' : '' }}">
+                                <label for="cidade_idCidade" class="col-md-4 control-label">Cidade</label>
+
+                                <div class="col-md-6">
+                                    <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
+
+                                    @if ($errors->has('cidade_idCidade'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('cidade_idCidade') }}</strong>
                                     </span>
                                     @endif
                                 </div>
