@@ -14,7 +14,6 @@
                         {{--</div>--}}
                     {{--@endif--}}
                     Login Efetuado Com Sucesso!
-                    You are logged in!
                 </div>
             </div>
         </div>

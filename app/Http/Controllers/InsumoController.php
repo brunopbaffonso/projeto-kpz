@@ -11,7 +11,7 @@ class InsumoController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('quantidade') == null) ? '' : $request->get('quantidade');
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = Insumo::where('quantidade', 'like', '%'.$palavraChave.'%')
             ->orWhere('unidadeMedida', 'like', '%'.$palavraChave.'%')
             ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
@@ -28,7 +28,7 @@ class InsumoController extends Controller
      */
     public function create()
     {
-        //
+        return view('insumos.register');
     }
     /**
      * Store a newly created resource in storage.

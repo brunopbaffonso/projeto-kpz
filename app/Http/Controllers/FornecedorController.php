@@ -30,7 +30,7 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('fornecedores.register');
     }
 
     /**
@@ -55,7 +55,7 @@ class FornecedorController extends Controller
         $fornecedor->created_at = $request->created_at;
         $fornecedor->update_at = $request->update_at;
         $fornecedor-> save();
-        return redirect()->route('usuarios.index')->with('message', 'Fornecedor Criado Com Sucesso');
+        return redirect()->route('fornecedores.index')->with('message', 'Fornecedor Criado Com Sucesso');
     }
 
     /**

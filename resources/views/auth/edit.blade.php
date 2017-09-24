@@ -5,17 +5,18 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
+                    <div class="panel-heading">Editar Usuário</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
+                    <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
+
+                        {!!Form::open(['url' => '/usuario/'.$usuario->cpf, 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                                 <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                                 <div class="col-md-6">
-                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{ $usuario->cpf }}" required autofocus>
 
                                     @if ($errors->has('cpf'))
                                         <span class="help-block">
@@ -29,7 +30,7 @@
                                 <label for="nome" class="col-md-4 control-label">Nome</label>
 
                                 <div class="col-md-6">
-                                    <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
+                                    <input id="nome" type="text" class="form-control" name="nome" value="{{ $usuario->nome }}" required autofocus>
 
                                     @if ($errors->has('nome'))
                                         <span class="help-block">
@@ -43,7 +44,7 @@
                                 <label for="fone" class="col-md-4 control-label">Telefone</label>
 
                                 <div class="col-md-6">
-                                    <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" autofocus>
+                                    <input id="fone" type="text" class="form-control" name="fone" value="{{ $usuario->fone }}" autofocus>
 
                                     @if ($errors->has('fone'))
                                         <span class="help-block">
@@ -57,7 +58,7 @@
                                 <label for="celular" class="col-md-4 control-label">Celular</label>
 
                                 <div class="col-md-6">
-                                    <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" required autofocus>
+                                    <input id="celular" type="text" class="form-control" name="celular" value="{{ $usuario->celular }}" required autofocus>
 
                                     {{--@if ($errors->has('celular'))--}}
                                     {{--<span class="help-block">--}}
@@ -68,10 +69,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                                <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" required autofocus>
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">
@@ -81,41 +82,20 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">E-Mail Address</label>
 
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required autofocus>
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" value="{{ $usuario->password }}" required autofocus>
 
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
+                                @endif
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('tipoAcesso') ? ' has-error' : '' }}">
-                                <label for="tipoAcesso" class="col-md-4 control-label">Tipo de Acesso</label>
-
-                                <div class="col-md-6">
-                                    <input id="tipoAcesso" type="number" class="form-control" name="tipoAcesso" required autofocus>
-
-                                    @if ($errors->has('tipoAcesso'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('tipoAcesso') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
@@ -124,7 +104,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

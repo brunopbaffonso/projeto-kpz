@@ -11,7 +11,7 @@ class OCController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('tipo') == null) ? '' : $request->get('tipo');
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = OC::where('tipo', 'like', '%'.$palavraChave.'%')
             ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
@@ -27,7 +27,7 @@ class OCController extends Controller
      */
     public function create()
     {
-        //
+        return view('ocs.register');
     }
     /**
      * Store a newly created resource in storage.

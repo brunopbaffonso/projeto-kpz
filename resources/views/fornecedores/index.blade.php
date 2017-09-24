@@ -38,7 +38,7 @@
                     <td>{{ $fornecedor->email}}</td>
                     <td>
                         {!!Form::open(['url' => 'fornecedores/'.$fornecedor->idFornecedor, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Fornecedor?");'])!!}
-                        <a class="btn btn-warning btn-xs" href="$fornecedores/{{ $fornecedor->idFornecedor}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-warning btn-xs" href="fornecedores/{{ $fornecedor->idFornecedor}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         {!! Form::close() !!}
                         {!!Form::open(['url' => 'fornecedores/'.$fornecedor->idFornecedor, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Fornecedor?");'])!!}
                         <button type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>

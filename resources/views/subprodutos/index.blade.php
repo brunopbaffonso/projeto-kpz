@@ -28,7 +28,7 @@
                     <td>{{ $subproduto->created_at}}</td>
                     <td>
                         {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubprodutos, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Subproduto?");'])!!}
-                        <a class="btn btn-warning btn-xs" href="subprodutos/{{ $subproduto->idSubprodutos}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-warning btn-xs" href="subprodutos/{{ $subproduto->idSubproduto}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         {!! Form::close() !!}
                         {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubprodutos, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Subproduto?");'])!!}
                         <button type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>

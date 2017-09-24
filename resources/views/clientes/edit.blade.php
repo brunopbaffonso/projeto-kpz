@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Editar Cliente</div>
+                    <div class="panel-heading">Editar Usuário</div>
 
                     <div class="panel-body">
                     <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
 
-                        {!!Form::open(['url' => '/cliente/'.$cliente->idCliente, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => '/cliente/'.$cliente->cpf, 'method' => 'post'])!!}
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                             <label for="nome" class="col-md-4 control-label">Nome</label>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('ie') ? ' has-error' : '' }}">
-                            <label for="ie" class="col-md-4 control-label">IE</label>
+                            <label for="ie" class="col-md-4 control-label">I.E.</label>
 
                             <div class="col-md-6">
                                 <input id="ie" type="text" class="form-control" name="ie" value="{{ $cliente->ie }}" autofocus>
@@ -72,7 +72,7 @@
                             <label for="endereco" class="col-md-4 control-label">Endereço</label>
 
                             <div class="col-md-6">
-                                <input id="endereco" type="text" class="form-control"  value="{{ $cliente->endereco }}" name="endereco" required autofocus>
+                                <input id="endereco" type="text" class="form-control" name="endereco" value="{{ $cliente->endereco }}" required autofocus>
 
                                 @if ($errors->has('endereco'))
                                     <span class="help-block">
@@ -86,7 +86,7 @@
                             <label for="bairro" class="col-md-4 control-label">Bairro</label>
 
                             <div class="col-md-6">
-                                <input id="bairro" type="text" class="form-control" value="{{ $cliente->bairro }}" name="bairro" required autofocus>
+                                <input id="bairro" type="text" class="form-control" name="bairro" value="{{ $cliente->bairro }}" required autofocus>
 
                                 @if ($errors->has('bairro'))
                                     <span class="help-block">
@@ -100,7 +100,7 @@
                             <label for="cep" class="col-md-4 control-label">CEP</label>
 
                             <div class="col-md-6">
-                                <input id="cep" type="text" class="form-control" value="{{ $cliente->cep }}" name="cep" autofocus>
+                                <input id="cep" type="text" class="form-control"  value="{{ $cliente->cep }}" name="cep" autofocus>
 
                                 @if ($errors->has('cep'))
                                     <span class="help-block">
@@ -114,7 +114,7 @@
                             <label for="fone" class="col-md-4 control-label">Telefone</label>
 
                             <div class="col-md-6">
-                                <input id="fone" type="text" class="form-control" value="{{ $cliente->fone }}" name="fone" autofocus>
+                                <input id="fone" type="text" class="form-control"  value="{{ $cliente->fone }}" name="fone" autofocus>
 
                                 @if ($errors->has('fone'))
                                     <span class="help-block">
@@ -128,21 +128,21 @@
                             <label for="celular" class="col-md-4 control-label">Celular</label>
 
                             <div class="col-md-6">
-                                <input id="celular" type="text" class="form-control" name="celular" value="{{ $cliente->celular }}" required autofocus>
+                                <input id="celular" type="text" class="form-control" value="{{ $cliente->celular }}" name="celular" required autofocus>
 
-                                {{--@if ($errors->has('celular'))--}}
-                                {{--<span class="help-block">--}}
-                                {{--<strong>{{ $errors->first('celular') }}</strong>--}}
-                                {{--</span>--}}
-                                {{--@endif--}}
+                                @if ($errors->has('celular'))
+                                    <span class="help-block">
+                                        <strong>{{ $cliente->celular }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $cliente->email }}" required autofocus>
+                                <input id="email" type="text" class="form-control" value="{{ $cliente->email }}" name="email" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

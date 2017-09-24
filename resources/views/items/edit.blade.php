@@ -86,7 +86,7 @@
                             <label for="arte" class="col-md-4 control-label">Arte</label>
 
                             <div class="col-md-6">
-                                <input id="arte" type="file" class="form-control"  value="{{ $item->arte }}" name="arte" required autofocus>
+                                <input id="arte" type="file" class="btn btn-primary"  value="{{ $item->arte }}" name="arte" required autofocus>
 
                                 @if ($errors->has('arte'))
                                     <span class="help-block">

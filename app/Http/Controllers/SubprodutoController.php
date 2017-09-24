@@ -12,7 +12,7 @@ class SubprodutoController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('tipo') == null) ? '' : $request->get('tipo');
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = Subproduto::where('tipo', 'like', '%'.$palavraChave.'%')
             ->orWhere('quantidade', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
@@ -28,7 +28,7 @@ class SubprodutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('subprodutos.register');
     }
     /**
      * Store a newly created resource in storage.

@@ -10,7 +10,7 @@ class OSController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)    {
-        $palavraChave = ($request->get('precoTotal') == null) ? '' : $request->get('precoTotal');
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = OS::where('precoTotal', 'like', '%'.$palavraChave.'%')
             ->orWhere('formaPgto', 'like', '%'.$palavraChave.'%')
             ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
@@ -27,7 +27,7 @@ class OSController extends Controller
      */
     public function create()
     {
-        //
+        return view('oss.register');
     }
     /**
      * Store a newly created resource in storage.

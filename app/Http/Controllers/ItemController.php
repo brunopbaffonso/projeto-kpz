@@ -29,7 +29,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.register');
     }
     /**
      * Store a newly created resource in storage.

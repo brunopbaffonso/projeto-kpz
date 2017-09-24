@@ -8,6 +8,11 @@
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
     {!! Form::close() !!}
+    {!! Form::open(['url' => 'clientes/create']) !!}
+    <div class="panel-body">
+        <button type="button" class="btn btn-primary">Cadastrar Cliente</button>
+    </div>
+    {!! Form::close() !!}
     <div class="table-responsive container">
         <table class="table table-houver table-bordered">
             <tr>

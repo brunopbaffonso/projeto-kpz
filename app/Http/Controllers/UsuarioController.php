@@ -11,8 +11,12 @@ class UsuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $usuarios = Usuario::orderby('created_at', 'desc')->paginate(10);
-        return view('auth.login')->with('usuarios',$usuarios);
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
+        $retorno = Usuario::where('nome', 'like', '%'.$palavraChave.'%')
+            ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
+            ->orderBy('email', 'asc')->paginate(10);
+        return view('auth.index')->with('usuario', $retorno);
+
     }
     /**
      * Show the form for creating a new resource.
@@ -21,7 +25,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuarios.create');
+        return view('auth.register');
     }
     /**
      * Store a newly created resource in storage.
@@ -44,7 +48,7 @@ class UsuarioController extends Controller
         $usuario->update_at = $request->update_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
-        return redirect()->route('auth.register')->with('message', 'Usuario Criado Com Sucesso');
+        return redirect()->route('auth.register')->with('message', 'Usuário Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
@@ -64,8 +68,16 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $usuarios = Usuario::where('idUsuario', '=', $id)->first();
-        return view('auth.edit', compact('usuario'));
+        //dd($id)
+        $retorno = Usuario::where('cpf', '=', $id)->first();
+        if(count($retorno) == 0)
+        {
+            Session::flash('produto_nencontrado', 'Usuário não encontrado.');
+            return redirect('/usuarios');
+        }
+
+
+        return view('auth.edit')->with('usuario', $retorno);
     }
     /**
      * Update the specified resource in storage.
@@ -76,7 +88,7 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $usuario = Usuario::where('idUsuario', '=', $id)->first();
+        $usuario = Usuario::where('cpf', '=', $id)->first();
         $usuario->cpf = $request->cpf;
         $usuario->ativo = $request->ativo;
         $usuario->tipoAcesso = $request->tipoAcesso;
@@ -89,7 +101,7 @@ class UsuarioController extends Controller
         $usuario->update_at =$request->update_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
-        return redirect()->route('welcome')->with('message', 'Usuario Editado Com Sucesso');
+        return redirect()->route('welcome')->with('message', 'Usuário Editado Com Sucesso');
     }
     /**
      * Remove the specified resource from storage.
@@ -99,9 +111,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = Usuario::where('idUsuario', '=', $id)->first();
+        $usuario = Usuario::where('cpf', '=', $id)->first();
         $usuario->ativo = 0;
         $usuario-> save();
-        return redirect()->route('welcome')->with('alert-success','Usuario Removido com Sucesso!');
+        return redirect()->route('welcome')->with('alert-success','Usuário Removido com Sucesso!');
     }
 }

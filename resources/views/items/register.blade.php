@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('borda') ? ' has-error' : '' }}">
-                                <label for="borda" class="col-md-4 control-label">Unidade de Medida</label>
+                                <label for="borda" class="col-md-4 control-label">Borda</label>
 
                                 <div class="col-md-6">
                                     <input id="borda" type="number" class="form-control" name="borda" value="{{ old('borda') }}" required autofocus>
@@ -82,10 +82,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('arte') ? ' has-error' : '' }}">
-                                <label for="arte" class="col-md-4 control-label">Unidade de Medida</label>
+                                <label for="arte" class="col-md-4 control-label">Arte</label>
 
                                 <div class="col-md-6">
-                                    <input id="arte" type="file" class="form-control" name="arte" value="{{ old('arte') }}" required autofocus>
+                                    <input id="arte" type="file" class="btn btn-primary" name="arte" value="{{ old('arte') }}" required autofocus>
 
                                     @if ($errors->has('arte'))
                                         <span class="help-block">
