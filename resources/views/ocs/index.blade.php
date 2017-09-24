@@ -23,7 +23,7 @@
                     <td>{{ $oc->observacoes}}</td>
                     <td>{{ $oc->created_at}}</td>
                     <td>
-                        {!!Form::open(['url' => '$ocs/'.$oc->idOC, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse OC?");'])!!}
+                        {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse OC?");'])!!}
                         <a class="btn btn-warning btn-xs" href="ocs/{{ $oc->idOC }}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         {!! Form::close() !!}
                         {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse OC?");'])!!}

@@ -11,13 +11,13 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('quantidade') == null) ? '' : $request->get('quantidade');
+        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = Item::where('quantidade', 'like', '%'.$palavraChave.'%')
             ->orWhere('borda', 'like', '%'.$palavraChave.'%')
             ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
             ->orWhere('fonte', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
-        return view('items.index')->with('items', $retorno);
+        return view('items.index')->with('item', $retorno);
 
         //$items = Item::orderby('created_at', 'desc')->paginate(10);
         //return view('items.index', ['items'=>$items]);

@@ -24,19 +24,19 @@
             </tr>
             @foreach ($item as $item)
                 <tr>
-                    <td>{{ $item->idItem}}</td>
-                    <td>{{ $item->quantidade}}</td>
-                    <td>{{ $item->largura}}</td>
-                    <td>{{ $item->comprimento}}</td>
-                    <td>{{ $item->unidadeMedida}}</td>
-                    <td>{{ $item->borda}}</td>
-                    <td>{{ $item->arte}}</td>
-                    <td>{{ $item->precoUnit}}</td>
-                    <td>{{ $item->fonte}}</td>
-                    <td>{{ $item->created_at}}</td>
+                    <td>{{ $item->idItem }}</td>
+                    <td>{{ $item->quantidade }}</td>
+                    <td>{{ $item->largura }}</td>
+                    <td>{{ $item->comprimento }}</td>
+                    <td>{{ $item->unidadeMedida }}</td>
+                    <td>{{ $item->borda }}</td>
+                    <td>{{ $item->arte }}</td>
+                    <td>{{ $item->precoUnit }}</td>
+                    <td>{{ $item->fonte }}</td>
+                    <td>{{ $item->created_at }}</td>
                     <td>
                         {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Item?");'])!!}
-                        <a class="btn btn-warning btn-xs" href="items/{{ $item->idItem}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-warning btn-xs" href="items/{{ $item->idItem }}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
                         {!! Form::close() !!}
                         {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Item?");'])!!}
                         <button type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>

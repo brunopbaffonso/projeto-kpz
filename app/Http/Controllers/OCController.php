@@ -17,7 +17,7 @@ class OCController extends Controller
             ->orderBy('created_at', 'asc')->paginate(10);
         return view('ocs.index')->with('oc', $retorno);
 
-        //$oCs = OC::orderby('created_at', 'desc')->paginate(10);
+        //$oc = OC::orderby('created_at', 'desc')->paginate(10);
         //return view('OCs.index', ['OCs'=>$OCs]);
     }
     /**
@@ -37,62 +37,62 @@ class OCController extends Controller
      */
     public function store(Request $request)
     {
-        $oC = new OC;
-        $oC->tipo = $request->tipo;
-        $oC->observacoes = $request->observacoes;
-        $oC->created_at = $request->created_at;
-        $oC->updated_at = $request->updated_at;
-        $oC-> save();
-        return redirect()->route('OCs.index')->with('message', 'OC Criado Com Sucesso');
+        $oc = new OC;
+        $oc->tipo = $request->tipo;
+        $oc->observacoes = $request->observacoes;
+        $oc->created_at = $request->created_at;
+        $oc->updated_at = $request->updated_at;
+        $oc-> save();
+        return redirect()->route('ocs.index')->with('message', 'OC Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\OC  $oC
+     * @param  \App\OC  $oc
      * @return \Illuminate\Http\Response
      */
-    public function show(OC $oC)
+    public function show(OC $oc)
     {
         //
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\OC  $oC
+     * @param  \App\OC  $oc
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $oC = OC::where('idOC', '=', $id)->first();
-        return view('OCs.edit', compact('oc'));
+        $oc = OC::where('idOC', '=', $id)->first();
+        return view('ocs.edit', compact('oc'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OC  $oC
+     * @param  \App\OC  $oc
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $oC = OC::where('idOC', '=', $id)->first();
-        $oC->tipo = $request->tipo;
-        $oC->observacoes = $request->observacoes;
-        $oC->created_at = $request->created_at;
-        $oC->updated_at = $request->updated_at;
-        $oC-> save();
-        return redirect()->route('OCs.index')->with('message', 'OC Editado Com Sucesso');
+        $oc = OC::where('idOC', '=', $id)->first();
+        $oc->tipo = $request->tipo;
+        $oc->observacoes = $request->observacoes;
+        $oc->created_at = $request->created_at;
+        $oc->updated_at = $request->updated_at;
+        $oc-> save();
+        return redirect()->route('ocs.index')->with('message', 'OC Editado Com Sucesso');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\OC  $oC
+     * @param  \App\OC  $oc
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $oC = OC::where('idOC', '=', $id)->first();
-        $oC->delete();
-        return redirect()->route('OCs.index')->with('alert-success','OC Removida com Sucesso!');
+        $oc = OC::where('idOC', '=', $id)->first();
+        $oc->delete();
+        return redirect()->route('ocs.index')->with('alert-success','OC Removida com Sucesso!');
     }
 }

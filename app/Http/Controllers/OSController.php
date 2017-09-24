@@ -37,66 +37,66 @@ class OSController extends Controller
      */
     public function store(Request $request)
     {
-        $oS = new OS;
-        $oS->precoTotal = $request->precoTotal;
-        $oS->desconto = $request->desconto;
-        $oS->formaPgto = $request->formaPgto;
-        $oS->observacoes = $request->observacoes;
-        $oS->created_at = $request->created_at;
-        $oS->updated_at = $request->updated_at;
-        $oS-> save();
-        return redirect()->route('OSs.index')->with('message', 'OS Criado Com Sucesso');
+        $os = new OS;
+        $os->precoTotal = $request->precoTotal;
+        $os->desconto = $request->desconto;
+        $os->formaPgto = $request->formaPgto;
+        $os->observacoes = $request->observacoes;
+        $os->created_at = $request->created_at;
+        $os->updated_at = $request->updated_at;
+        $os-> save();
+        return redirect()->route('oss.index')->with('message', 'OS Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\OS  $oS
+     * @param  \App\OS  $os
      * @return \Illuminate\Http\Response
      */
-    public function show(OS $oS)
+    public function show(OS $os)
     {
         //
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\OS  $oS
+     * @param  \App\OS  $os
      * @return \Illuminate\Http\Response
      */
-    public function edit(OS $id)
+    public function edit($id)
     {
-        $oS = OS::where('idOC', '=', $id)->first();
-        return view('OSs.edit', compact('os'));
+        $os = OS::where('idOS', '=', $id)->first();
+        return view('oss.edit', compact('os'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\OS  $oS
+     * @param  \App\OS  $os
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $oS = OS::where('idOC', '=', $id)->first();
-        $oS->precoTotal = $request->precoTotal;
-        $oS->desconto = $request->desconto;
-        $oS->formaPgto = $request->formaPgto;
-        $oS->observacoes = $request->observacoes;
-        $oS->created_at = $request->created_at;
-        $oS->updated_at = $request->updated_at;
-        $oS-> save();
-        return redirect()->route('OSs.index')->with('message', 'OS Editado Com Sucesso');
+        $os = OS::where('idOS', '=', $id)->first();
+        $os->precoTotal = $request->precoTotal;
+        $os->desconto = $request->desconto;
+        $os->formaPgto = $request->formaPgto;
+        $os->observacoes = $request->observacoes;
+        $os->created_at = $request->created_at;
+        $os->updated_at = $request->updated_at;
+        $os-> save();
+        return redirect()->route('oss.index')->with('message', 'OS Editado Com Sucesso');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\OS  $oS
+     * @param  \App\OS  $os
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $oS = OS::where('idOC', '=', $id)->first();
-        $oS->delete();
-        return redirect()->route('OSs.index')->with('alert-success','OS Removida com Sucesso!');
+        $os = OS::where('idOS', '=', $id)->first();
+        $os->delete();
+        return redirect()->route('oss.index')->with('alert-success','OS Removida com Sucesso!');
     }
 }
