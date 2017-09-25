@@ -8,8 +8,9 @@
                     <div class="panel-heading">Cadastrar Fornecedor</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
+                        {!!Form::open(['url' => 'fornecedores/', 'method' => 'post'])!!}
+
+                            <input id="ativo" type="hidden" class="form-control" name="ativo" value="1">
 
                             <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                 <label for="nome" class="col-md-4 control-label">Nome</label>
@@ -145,7 +146,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

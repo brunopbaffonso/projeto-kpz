@@ -8,9 +8,7 @@
                     <div class="panel-heading">Editar OS</div>
 
                     <div class="panel-body">
-                    <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
-
-                        {!!Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'put'])!!}
 
                         <div class="form-group{{ $errors->has('precoTotal') ? ' has-error' : '' }}">
                             <label for="precoTotal" class="col-md-4 control-label">Preço Total</label>

@@ -8,9 +8,9 @@
                     <div class="panel-heading">Editar Usuário</div>
 
                     <div class="panel-body">
-                    <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
+                        {!!Form::open(['url' => 'clientes/'.$cliente->idCliente, 'method' => 'put'])!!}
 
-                        {!!Form::open(['url' => 'clientes/'.$cliente->idCliente.'/edit', 'method' => 'post'])!!}
+                        <input id="ativo" type="hidden" class="form-control" name="ativo" value="1">
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                             <label for="nome" class="col-md-4 control-label">Nome</label>

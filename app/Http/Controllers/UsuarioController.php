@@ -16,6 +16,8 @@ class UsuarioController extends Controller
         $retorno = Usuario::where('nome', 'like', '%'.$palavraChave.'%')
             ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
             ->orderBy('email', 'asc')->paginate(10);
+
+        //dd($retorno);
         return view('auth.index')->with('usuario', $retorno);
 
     }
@@ -46,7 +48,7 @@ class UsuarioController extends Controller
         $usuario->email = $request->email;
         $usuario->password = $request->password;
         $usuario->created_at = $request->created_at;
-        $usuario->update_at = $request->update_at;
+        $usuario->updated_at = $request->updated_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
         return redirect()->route('auth.index')->with('message', 'Usuário Criado Com Sucesso');
@@ -89,6 +91,7 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($id);
         $usuario = Usuario::where('cpf', '=', $id)->first();
         $usuario->cpf = $request->cpf;
         $usuario->ativo = $request->ativo;
@@ -99,7 +102,7 @@ class UsuarioController extends Controller
         $usuario->email =$request->email;
         $usuario->password =$request->password;
         $usuario->created_at =$request->created_at;
-        $usuario->update_at =$request->update_at;
+        $usuario->updated_at =$request->updated_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
         return redirect()->route('usuarios.index')->with('message', 'Usuário Editado Com Sucesso');

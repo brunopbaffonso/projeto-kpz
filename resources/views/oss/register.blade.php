@@ -8,8 +8,7 @@
                     <div class="panel-heading">Cadastrar OS</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
+                        {!!Form::open(['url' => 'oss/', 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('precoTotal') ? ' has-error' : '' }}">
                                 <label for="precoTotal" class="col-md-4 control-label">Preço Total</label>
@@ -74,7 +73,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

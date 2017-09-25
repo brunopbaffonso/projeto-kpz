@@ -42,6 +42,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $cliente = new Cliente;
         $cliente->ativo = $request->ativo;
         $cliente->nome = $request->nome;
@@ -55,7 +56,7 @@ class ClienteController extends Controller
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
         $cliente->created_at = $request->created_at;
-        $cliente->update_at = $request->update_at;
+        $cliente->updated_at = $request->updated_at;
         $cliente->cidade_idCidade = $request->cidade_idCidade;
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
@@ -117,7 +118,7 @@ class ClienteController extends Controller
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
         $cliente->created_at = $request->created_at;
-        $cliente->update_at = $request->update_at;
+        $cliente->updated_at = $request->updated_at;
         $cliente->cidade_idCidade = $request->cidade_idCidade;
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');

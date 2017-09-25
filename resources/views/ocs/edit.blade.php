@@ -8,9 +8,7 @@
                     <div class="panel-heading">Editar OC</div>
 
                     <div class="panel-body">
-                    <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
-
-                        {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'put'])!!}
 
                         <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
                             <label for="tipo" class="col-md-4 control-label">Tipo</label>

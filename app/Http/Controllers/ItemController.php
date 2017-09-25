@@ -49,7 +49,7 @@ class ItemController extends Controller
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
         $item->created_at = $request->created_at;
-        $item->update_at = $request->update_at;
+        $item->updated_at = $request->updated_at;
         $item-> save();
         return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
     }
@@ -93,7 +93,7 @@ class ItemController extends Controller
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
         $item->created_at = $request->created_at;
-        $item->update_at = $request->update_at;
+        $item->updated_at = $request->updated_at;
         $item-> save();
         return redirect()->route('items.index')->with('message', 'Item Editado Com Sucesso');
     }

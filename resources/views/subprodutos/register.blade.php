@@ -8,8 +8,7 @@
                     <div class="panel-heading">Cadastrar Subproduto</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
+                        {!!Form::open(['url' => 'subprodutos/', 'method' => 'post'])!!}
 
                             <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
                                 <label for="tipo" class="col-md-4 control-label">Tipo</label>
@@ -74,7 +73,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

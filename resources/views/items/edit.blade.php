@@ -8,9 +8,7 @@
                     <div class="panel-heading">Editar Item</div>
 
                     <div class="panel-body">
-                    <!-- <form class="form-horizontal" method="POST" action="{{ route('register') }}"> -->
-
-                        {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'post'])!!}
+                        {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'put'])!!}
 
                         <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                             <label for="quantidade" class="col-md-4 control-label">Nome</label>
