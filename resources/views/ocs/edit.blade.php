@@ -1,19 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.padrao')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Editar OC</div>
+<div id="page-wrapper">
 
+    <div class="header"> 
+        <h1 class="page-header">Adicionar Ordem de Compra</h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="{{ url('ocs') }}  ">Lista de Compra</a></li>
+                <li class="active">Adicionar Ordem de Compra</li>
+            </ol>               
+    </div>
+
+    <div id="page-inner">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Nova Ordem de Compra</div>
+                        </div>
+                    </div>
                     <div class="panel-body">
+                        <form class="form-horizontal">
                         {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'put'])!!}
 
                         <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                            <label for="tipo" class="col-md-4 control-label">Tipo</label>
+                            <label for="tipo" class="col-md-2 control-label">Tipo</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="tipo" type="text" class="form-control" name="tipo" value="{{ $oc->tipo }}" required autofocus>
 
                                 @if ($errors->has('tipo'))
@@ -25,9 +41,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('observacoes') ? ' has-error' : '' }}">
-                            <label for="observacoes" class="col-md-4 control-label">Observações</label>
+                            <label for="observacoes" class="col-md-2 control-label">Observações</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-10">
                                 <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $oc->observacoes }}" autofocus></textarea>
 
                                 @if ($errors->has('observacoes'))
@@ -39,7 +55,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-4 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">
                                     Salvar Alterações!
                                 </button>

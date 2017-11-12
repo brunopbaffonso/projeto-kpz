@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.loginMaster')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+@section('conteudo')
+<div class="login-body">
+    <article class="container-login center-block">
+        <section>
+            <div class="tab-content tabs-login col-lg-12 col-md-12 col-sm-12 cols-xs-12">
+                <div id="login-access" class="tab-pane fade active in">
+                    <h2><i class="glyphicon glyphicon-log-in"></i> Kapazi</h2>                     
+                    <form method="post" accept-charset="utf-8" autocomplete="off" role="form" class="form-horizontal">
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
@@ -57,14 +59,16 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Reset Password
+                                    Enviar
                                 </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                </form>  
             </div>
         </div>
-    </div>
+    </section>
+</article>
 </div>
 @endsection

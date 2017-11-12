@@ -1,21 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.padrao')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Editar Fornecedor</div>
+ <div id="page-wrapper">
 
+    <div class="header"> 
+        <h1 class="page-header">Adicionar Fornecedor</h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('/') }}">Inicio</a></li>
+                <li><a href="{{ url('fornecedores') }} ">Lista de Fornecedores</a></li>
+                <li class="active">Adicionar Fornecedor</li>
+            </ol>               
+    </div>
+
+    <div id="page-inner">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Novo Fornecedor</div>
+                        </div>
+                    </div>
                     <div class="panel-body">
+                        <form class="form-horizontal">
                         {!!Form::open(['url' => 'fornecedores/'.$fornecedor->idFornecedor, 'method' => 'put'])!!}
 
                         <input id="ativo" type="hidden" class="form-control" name="ativo" value="1">
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
-                            <label for="nome" class="col-md-4 control-label">Nome</label>
+                            <label for="nome" class="col-md-2 control-label">Nome</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="nome" type="text" class="form-control" name="nome" value="{{ $fornecedor->nome }}" required autofocus>
 
                                 @if ($errors->has('nome'))
@@ -27,9 +43,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('cnpj') ? ' has-error' : '' }}">
-                            <label for="cnpj" class="col-md-4 control-label">CNPJ</label>
+                            <label for="cnpj" class="col-md-2 control-label">CNPJ</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $fornecedor->cnpj }}" required autofocus>
 
                                 @if ($errors->has('cnpj'))
@@ -41,9 +57,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('ie') ? ' has-error' : '' }}">
-                            <label for="ie" class="col-md-4 control-label">IE</label>
+                            <label for="ie" class="col-md-2 control-label">IE</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="ie" type="text" class="form-control" name="ie" value="{{ $fornecedor->ie }}" autofocus>
 
                                 @if ($errors->has('ie'))
@@ -55,9 +71,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('endereco') ? ' has-error' : '' }}">
-                            <label for="endereco" class="col-md-4 control-label">Endereço</label>
+                            <label for="endereco" class="col-md-2 control-label">Endereço</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="endereco" type="text" class="form-control"  value="{{ $fornecedor->endereco }}" name="endereco" required autofocus>
 
                                 @if ($errors->has('endereco'))
@@ -69,9 +85,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('bairro') ? ' has-error' : '' }}">
-                            <label for="bairro" class="col-md-4 control-label">Bairro</label>
+                            <label for="bairro" class="col-md-2 control-label">Bairro</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="bairro" type="text" class="form-control" value="{{ $fornecedor->bairro }}" name="bairro" required autofocus>
 
                                 @if ($errors->has('bairro'))
@@ -83,9 +99,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('cep') ? ' has-error' : '' }}">
-                            <label for="cep" class="col-md-4 control-label">CEP</label>
+                            <label for="cep" class="col-md-2 control-label">CEP</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="cep" type="text" class="form-control" value="{{ $fornecedor->cep }}" name="cep" autofocus>
 
                                 @if ($errors->has('cep'))
@@ -97,9 +113,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fone') ? ' has-error' : '' }}">
-                            <label for="fone" class="col-md-4 control-label">Telefone</label>
+                            <label for="fone" class="col-md-2 control-label">Telefone</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="fone" type="text" class="form-control" value="{{ $fornecedor->fone }}" name="fone" autofocus>
 
                                 @if ($errors->has('fone'))
@@ -111,9 +127,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('celular') ? ' has-error' : '' }}">
-                            <label for="celular" class="col-md-4 control-label">Celular</label>
+                            <label for="celular" class="col-md-2 control-label">Celular</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="celular" type="text" class="form-control" name="celular" value="{{ $fornecedor->celular }}" required autofocus>
 
                                 {{--@if ($errors->has('celular'))--}}
@@ -125,9 +141,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-2 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ $fornecedor->email }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -139,7 +155,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-4 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">
                                     Salvar Alterações!
                                 </button>

@@ -1,14 +1,30 @@
-@extends('layouts.app')
+@extends('layouts.padrao')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Cadastrar Usuario</div>
+<div id="page-wrapper">
 
+    <div class="header"> 
+        <h1 class="page-header">Adicionar Usuário</h1>
+            <ol class="breadcrumb">
+                <li><a href="#">Inicio</a></li>
+                <li><a href=" ">Lista de Usuários</a></li>
+                <li class="active">Adicionar Usuário</li>
+            </ol>               
+    </div>
+
+    <div id="page-inner">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Novo Usuário</div>
+                        </div>
+                    </div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                        {!!Form::open(['url' => 'clientes/', 'method' => 'post'])!!}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
@@ -116,18 +132,17 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Cadastrar!
-                                </button>
+                            <div class="form-group">
+                                <div class="col-md-4 col-md-offset-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        Cadastrar!
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

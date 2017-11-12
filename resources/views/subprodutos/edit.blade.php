@@ -1,13 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.padrao')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Editar Subproduto</div>
+   <div id="page-wrapper">
 
+    <div class="header"> 
+        <h1 class="page-header">Adicionar Subproduto</h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('/') }}">Inicio</a></li>
+                <li><a href="{{ url('subprodutos') }}">Lista de Subprodutos</a></li>
+                <li class="active">Adicionar Subproduto</li>
+            </ol>               
+    </div>
+
+    <div id="page-inner">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="card-title">
+                            <div class="title">Novo Subproduto</div>
+                        </div>
+                    </div>
                     <div class="panel-body">
+                        <form class="form-horizontal">
                         {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubproduto, 'method' => 'put'])!!}
 
                         <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
