@@ -45,6 +45,7 @@ class SubprodutoController extends Controller
         $subproduto->largura = $request->largura;
         $subproduto->created_at = $request->created_at;
         $subproduto->updated_at = $request->updated_at;
+        $subproduto->cor_idCor = $request->cor_idCor;
         $subproduto-> save();
         return redirect()->route('subprodutos.index')->with('message', 'Subproduto Criado Com Sucesso');
     }
@@ -85,6 +86,7 @@ class SubprodutoController extends Controller
         $subproduto->largura = $request->largura;
         $subproduto->created_at = $request->created_at;
         $subproduto->updated_at = $request->updated_at;
+        $subproduto->cor_idCor = $request->cor_idCor;
         $subproduto-> save();
         return redirect()->route('subprodutos.index')->with('message', 'Subproduto Editado Com Sucesso');
     }

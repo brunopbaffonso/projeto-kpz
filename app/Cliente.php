@@ -12,4 +12,6 @@ class Cliente extends Model
     ];
 
     protected $table = 'cliente';
+
+    public $timestamps = true;
 }

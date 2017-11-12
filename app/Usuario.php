@@ -28,5 +28,7 @@ class Usuario extends Model implements
         'created_at', 'updated_at', 'remember_token',
     ];
 
+    public $timestamps = true;
+
     protected $table = 'usuario';
 }

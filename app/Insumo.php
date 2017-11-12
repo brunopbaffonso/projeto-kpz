@@ -13,4 +13,6 @@ class Insumo extends Model
 ];
 
     protected $table = 'insumo';
+
+    public $timestamps = true;
 }

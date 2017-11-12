@@ -13,4 +13,6 @@ class Fornecedor extends Model
     ];
 
     protected $table = 'fornecedor';
+
+    public $timestamps = true;
 }

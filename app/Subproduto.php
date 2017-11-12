@@ -12,5 +12,7 @@ class Subproduto extends Model
         'idSubproduto', 'tipo', 'quantidade', 'comprimento', 'largura', 'created_at', 'updated_at', 'cor_idCor',
     ];
 
+    public $timestamps = true;
+
     protected $table = 'subproduto';
 }

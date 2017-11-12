@@ -42,7 +42,6 @@ class FornecedorController extends Controller
     public function store(Request $request)
     {
         $fornecedor = new Fornecedor;
-        $fornecedor->ativo = $request->ativo;
         $fornecedor->nome = $request->nome;
         $fornecedor->cnpj = $request->cnpj;
         $fornecedor->ie = $request->ie;
@@ -91,7 +90,6 @@ class FornecedorController extends Controller
     public function update(Request $request, $id)
     {
         $fornecedor = Fornecedor::where('idFornecedor', '=', $id)->first();
-        $fornecedor->ativo = $request->ativo;
         $fornecedor->nome = $request->nome;
         $fornecedor->cnpj = $request->cnpj;
         $fornecedor->ie = $request->ie;

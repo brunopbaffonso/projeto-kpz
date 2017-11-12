@@ -13,4 +13,6 @@ class Item extends Model
     ];
 
     protected $table = 'item';
+
+    public $timestamps = true;
 }

@@ -13,4 +13,6 @@ class OC extends Model
     ];
 
     protected $table = 'oc';
+
+    public $timestamps = true;
 }

@@ -13,4 +13,6 @@ class OS extends Model
     ];
 
     protected $table = 'os';
+
+    public $timestamps = true;
 }
