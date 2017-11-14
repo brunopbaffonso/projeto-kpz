@@ -28,4 +28,11 @@ class Usuario extends Authenticatable
 
     }
 
+    public function getCpfAttribute($cpf){
+        if(strlen($cpf)<11){
+            return str_pad($cpf, 3, "0", STR_PAD_LEFT);
+        }
+        else return $cpf;
+    }
+
 }

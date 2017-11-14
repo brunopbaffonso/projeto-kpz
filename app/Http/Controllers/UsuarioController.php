@@ -47,11 +47,12 @@ class UsuarioController extends Controller
         $usuario->celular = $request->celular;
         $usuario->email = $request->email;
         $usuario->password = $request->password;
-        $usuario->created_at = $request->created_at;
-        $usuario->updated_at = $request->updated_at;
+//        $usuario->created_at = $request->created_at;
+//        $usuario->updated_at = $request->updated_at;
         $usuario->remember_token = $request->remember_token;
+//        dd($usuario);
         $usuario-> save();
-        return redirect()->route('auth.index')->with('message', 'Usuário Criado Com Sucesso');
+        return redirect()->route('usuarios.index')->with('message', 'Usuário Criado Com Sucesso');
     }
     /**
      * Display the specified resource.
@@ -101,8 +102,8 @@ class UsuarioController extends Controller
         $usuario->celular =$request->celular;
         $usuario->email =$request->email;
         $usuario->password =$request->password;
-        $usuario->created_at =$request->created_at;
-        $usuario->updated_at =$request->updated_at;
+//        $usuario->created_at =$request->created_at;
+//        $usuario->updated_at =$request->updated_at;
         $usuario->remember_token = $request->remember_token;
         $usuario-> save();
         return redirect()->route('usuarios.index')->with('message', 'Usuário Editado Com Sucesso');

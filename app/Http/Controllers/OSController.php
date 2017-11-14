@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\OS;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\OperatingSystem;
+
 class OSController extends Controller
 {
     /**
@@ -42,10 +44,13 @@ class OSController extends Controller
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-        $os->created_at = $request->created_at;
-        $os->updated_at = $request->updated_at;
+//        $os->created_at = $request->created_at;
+//        $os->updated_at = $request->updated_at;
         $os-> save();
-        return redirect()->route('oss.index')->with('message', 'OS Criado Com Sucesso');
+
+        $id = OS::orderBy('idOS', 'desc')->first();
+
+        return redirect('items/create/' . $id->idOS)->with('message', 'OS Criado Com Sucesso'); // TODO: Atributo na rota
     }
     /**
      * Display the specified resource.
@@ -82,8 +87,8 @@ class OSController extends Controller
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-        $os->created_at = $request->created_at;
-        $os->updated_at = $request->updated_at;
+//        $os->created_at = $request->created_at;
+//        $os->updated_at = $request->updated_at;
         $os-> save();
         return redirect()->route('oss.index')->with('message', 'OS Editado Com Sucesso');
     }

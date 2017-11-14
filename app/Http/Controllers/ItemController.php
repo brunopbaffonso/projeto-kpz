@@ -27,9 +27,10 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('items.register');
+        dd($id);
+        return view('items.register')->with('id', $id);
     }
     /**
      * Store a newly created resource in storage.
@@ -37,7 +38,7 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idOS)
     {
         $item = new Item;
         $item->quantidade = $request->quantidade;
@@ -48,8 +49,8 @@ class ItemController extends Controller
         $item->arte = $request->arte;
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
-        $item->created_at = $request->created_at;
-        $item->updated_at = $request->updated_at;
+//        $item->created_at = $request->created_at;
+//        $item->updated_at = $request->updated_at;
         $item-> save();
         return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
     }
@@ -92,8 +93,8 @@ class ItemController extends Controller
         $item->arte = $request->arte;
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
-        $item->created_at = $request->created_at;
-        $item->updated_at = $request->updated_at;
+//        $item->created_at = $request->created_at;
+//        $item->updated_at = $request->updated_at;
         $item-> save();
         return redirect()->route('items.index')->with('message', 'Item Editado Com Sucesso');
     }

@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('items/create/{id}', 'ItemController@create');
+    
     Route::resource('clientes', 'ClienteController');
     Route::resource('fornecedores', 'FornecedorController');
     Route::resource('insumos', 'InsumoController');

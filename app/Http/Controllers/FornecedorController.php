@@ -51,8 +51,8 @@ class FornecedorController extends Controller
         $fornecedor->fone = $request->fone;
         $fornecedor->celular = $request->celular;
         $fornecedor->email = $request->email;
-        $fornecedor->created_at = $request->created_at;
-        $fornecedor->updated_at = $request->updated_at;
+//        $fornecedor->created_at = $request->created_at;
+//        $fornecedor->updated_at = $request->updated_at;
         $fornecedor-> save();
         return redirect()->route('fornecedores.index')->with('message', 'Fornecedor Criado Com Sucesso');
     }
@@ -99,8 +99,8 @@ class FornecedorController extends Controller
         $fornecedor->fone = $request->fone;
         $fornecedor->celular = $request->celular;
         $fornecedor->email = $request->email;
-        $fornecedor->created_at = $request->created_at;
-        $fornecedor->updated_at = $request->updated_at;
+//        $fornecedor->created_at = $request->created_at;
+//        $fornecedor->updated_at = $request->updated_at;
         $fornecedor-> save();
         return redirect()->route('fornecedores.index')->with('message', 'Fornecedor Editado Com Sucesso');
     }

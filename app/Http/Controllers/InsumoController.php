@@ -44,8 +44,8 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
-        $insumo->created_at = $request->created_at;
-        $insumo->updated_at = $request->updated_at;
+//        $insumo->created_at = $request->created_at;
+//        $insumo->updated_at = $request->updated_at;
         $insumo-> save();
         return redirect()->route('insumos.index')->with('message', 'Insumo Criado Com Sucesso');
     }
@@ -85,8 +85,8 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
-        $insumo->created_at = $request->created_at;
-        $insumo->updated_at = $request->updated_at;
+//        $insumo->created_at = $request->created_at;
+//        $insumo->updated_at = $request->updated_at;
         $insumo-> save();
         return redirect()->route('insumos.index')->with('message', 'Insumo Editado Com Sucesso');
     }

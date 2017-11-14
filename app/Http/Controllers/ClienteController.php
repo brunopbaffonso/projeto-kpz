@@ -55,8 +55,8 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-        $cliente->created_at = $request->created_at;
-        $cliente->updated_at = $request->updated_at;
+//        $cliente->created_at = $request->created_at;
+//        $cliente->updated_at = $request->updated_at;
         $cliente->cidade_idCidade = $request->cidade_idCidade;
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
@@ -117,8 +117,8 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-        $cliente->created_at = $request->created_at;
-        $cliente->updated_at = $request->updated_at;
+//        $cliente->created_at = $request->created_at;
+//        $cliente->updated_at = $request->updated_at;
         $cliente->cidade_idCidade = $request->cidade_idCidade;
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');

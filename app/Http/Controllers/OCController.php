@@ -40,8 +40,8 @@ class OCController extends Controller
         $oc = new OC;
         $oc->tipo = $request->tipo;
         $oc->observacoes = $request->observacoes;
-        $oc->created_at = $request->created_at;
-        $oc->updated_at = $request->updated_at;
+//        $oc->created_at = $request->created_at;
+//        $oc->updated_at = $request->updated_at;
         $oc-> save();
         return redirect()->route('ocs.index')->with('message', 'OC Criado Com Sucesso');
     }
@@ -78,8 +78,8 @@ class OCController extends Controller
         $oc = OC::where('idOC', '=', $id)->first();
         $oc->tipo = $request->tipo;
         $oc->observacoes = $request->observacoes;
-        $oc->created_at = $request->created_at;
-        $oc->updated_at = $request->updated_at;
+//        $oc->created_at = $request->created_at;
+//        $oc->updated_at = $request->updated_at;
         $oc-> save();
         return redirect()->route('ocs.index')->with('message', 'OC Editado Com Sucesso');
     }
