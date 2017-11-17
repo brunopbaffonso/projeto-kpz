@@ -23,8 +23,10 @@
                             </div>
                         </div>
                         <div class="panel-body">
+                            {{ $OS->idOS }}
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'items/', 'method' => 'post'])!!}
+                                <input id="os_idOS" type="hidden" class="form-control" name="os_idOS" value="{{ $OS->idOS }}">
 
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade</label>
@@ -137,6 +139,7 @@
                                         @endif
                                     </div>
                                 </div>
+
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">

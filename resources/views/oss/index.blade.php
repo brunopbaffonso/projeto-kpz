@@ -42,7 +42,7 @@
                                         <td>{{ $os->desconto}}</td>
                                         <td>{{ $os->formaPgto}}</td>
                                         <td>{{ $os->observacoes}}</td>
-                                        <td>{{ $os->created_at}}</td>
+                                        <td>{{ date('d/m/Y H:i', strtotime($os->created_at)) }}</td>
                                         <td>
                                             <div role="group" class="btn-group">
                                                 <button class="btn btn-sucess btn-xs" href="oss/{{ $os->idOS}}/create"><span class="glyphicon glyphicon-plus"></span></button>

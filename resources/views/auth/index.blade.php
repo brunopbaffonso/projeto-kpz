@@ -30,7 +30,7 @@
                         <table class="table table-houver table-bordered">
                             <tr>
                                 <td>CPF</td>
-                                <td>Ativo</td>
+                                <td class="hidden">Ativo</td>
                                 <td class="hidden">Tipo de Acesso</td>
                                 <td>Nome</td>
                                 <td>Telefone</td>
@@ -38,24 +38,24 @@
                                 <td>E-mail</td>
                                 <td>Data de Criação</td>
                             </tr>
-                            @foreach ($usuario as $usuario)
+                            @foreach ($usuarios as $usuario)
                                 <tr>
-                                    <td>{{ $usuario->cpf}}</td>
-                                    <td>{{ $usuario->ativo}}</td>
-                                    <td class="hidden">{{ $usuario->tipoAcesso}}</td>
-                                    <td>{{ $usuario->nome}}</td>
-                                    <td>{{ $usuario->fone}}</td>
-                                    <td>{{ $usuario->celular}}</td>
-                                    <td>{{ $usuario->email}}</td>
-                                    <td>{{ $usuario->created_at}}</td>
+                                    <td>{{ $newcpf = (strlen($usuario->cpf) == 11) ? ($usuario->cpf) : ( "0".$usuario->cpf) }}</td>
+                                    <td class="hidden">{{ ($usuario->ativo) ? 'Sim' : 'Não' }}</td>
+                                    <td class="hidden">{{ $usuario->tipoAcesso }}</td>
+                                    <td>{{ $usuario->nome }}</td>
+                                    <td>{{ $usuario->fone }}</td>
+                                    <td>{{ $usuario->celular }}</td>
+                                    <td>{{ $usuario->email }}</td>
+                                    <td>{{ date('d/m/Y H:i', strtotime($usuario->created_at)) }}</td>
                                     <td>
                                         <div role="group" class="btn-group">
-                                            {!!Form::open(['url' => 'usuarios/'.$usuario->cpf, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Usuário?");'])!!}
-                                            <button class="btn btn-warning btn-xs" href="usuarios/{{ $usuario->cpf}}/edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                                            {!!Form::open(['url' => 'usuarios/'.$newcpf, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Usuário?");'])!!}
+                                            <button class="btn btn-warning btn-xs" href="usuarios/{{(strlen($usuario->cpf) == 11) ? ($usuario->cpf) : ( "0".$usuario->cpf) }}/edit"><span class="glyphicon glyphicon-pencil"></span></button>
                                             {!! Form::close() !!}
                                         </div>
                                         <div role="group" class="btn-group">
-                                            {!!Form::open(['url' => 'usuarios/'.$usuario->cpf, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Usuário?");'])!!}
+                                            {!!Form::open(['url' => 'usuarios/'.$newcpf, 'method' => 'delete', 'onSubmit' => 'return confirm("Você deseja realmente exluir esse Usuário?");'])!!}
                                             <a type="submit" name="nada" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                                             {!! Form::close() !!}
                                         </div>

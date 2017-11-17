@@ -18,7 +18,7 @@ class UsuarioController extends Controller
             ->orderBy('email', 'asc')->paginate(10);
 
         //dd($retorno);
-        return view('auth.index')->with('usuario', $retorno);
+        return view('auth.index')->with('usuarios', $retorno);
 
     }
     /**
@@ -46,7 +46,7 @@ class UsuarioController extends Controller
         $usuario->fone = $request->fone;
         $usuario->celular = $request->celular;
         $usuario->email = $request->email;
-        $usuario->password = $request->password;
+        $usuario->password = bcrypt($request->password);
 //        $usuario->created_at = $request->created_at;
 //        $usuario->updated_at = $request->updated_at;
         $usuario->remember_token = $request->remember_token;
@@ -101,7 +101,7 @@ class UsuarioController extends Controller
         $usuario->fone =$request->fone;
         $usuario->celular =$request->celular;
         $usuario->email =$request->email;
-        $usuario->password =$request->password;
+        $usuario->password = bcrypt($request->password);
 //        $usuario->created_at =$request->created_at;
 //        $usuario->updated_at =$request->updated_at;
         $usuario->remember_token = $request->remember_token;

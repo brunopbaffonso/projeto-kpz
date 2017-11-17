@@ -28,6 +28,7 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <td>Código</td>
+                                    <td class="hidden">Ativo</td>
                                     <td>Nome</td>
                                     <td>CNPJ</td>
                                     <td>IE</td>
@@ -41,6 +42,7 @@
                                 @foreach ($fornecedor as $fornecedor)
                                     <tr>
                                         <td>{{ $fornecedor->idFornecedor}}</td>
+                                        <td class="hidden">{{ ($fornecedor->ativo) ? 'Sim' : 'Não' }}</td>
                                         <td>{{ $fornecedor->nome}}</td>
                                         <td>{{ $fornecedor->cnpj}}</td>
                                         <td>{{ $fornecedor->ie}}</td>

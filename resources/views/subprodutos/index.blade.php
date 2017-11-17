@@ -40,7 +40,7 @@
                                     <td>{{ $subproduto->quantidade}}</td>
                                     <td>{{ $subproduto->comprimento}}</td>
                                     <td>{{ $subproduto->largura}}</td>
-                                    <td>{{ $subproduto->created_at}}</td>
+                                    <td>{{ date('d/m/Y H:i', strtotime($subproduto->created_at)) }}</td>
                                     <td>
                                         <div role="group" class="btn-group">
                                             {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubproduto, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Subproduto?");'])!!}

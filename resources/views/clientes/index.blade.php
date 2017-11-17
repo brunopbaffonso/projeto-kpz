@@ -44,9 +44,9 @@
                                 @foreach ($cliente as $cliente)
                                     <tr>
                                         <td>{{ $cliente->idCliente}}</td>
-                                        <td class="hidden">{{ $cliente->ativo}}</td>
+                                        <td class="hidden">{{ ($cliente->ativo) ? 'Sim' : 'Não' }}</td>
                                         <td>{{ $cliente->nome}}</td>
-                                        <td>{{ $cliente->cpf}}</td>
+                                        <td>{{ (strlen($cliente->cpf) == 11) ? ($cliente->cpf) : ( "0".$cliente->cpf) }}</td>
                                         <td>{{ $cliente->cnpj}}</td>
                                         <td>{{ $cliente->ie}}</td>
                                         <td>{{ $cliente->endereco}}</td>

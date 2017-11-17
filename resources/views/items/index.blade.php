@@ -46,10 +46,10 @@
                                         <td>{{ $item->comprimento }}</td>
                                         <td>{{ $item->unidadeMedida }}</td>
                                         <td>{{ $item->borda }}</td>
-                                        <td>{{ $item->arte }}</td>
+                                        <td><img src="{{ url("artes/{$item->arte}") }}" alt="{{ $item->name }}"></td>
                                         <td>{{ $item->precoUnit }}</td>
                                         <td>{{ $item->fonte }}</td>
-                                        <td>{{ $item->created_at }}</td>
+                                        <td>{{ date('d/m/Y H:i', strtotime($item->created_at)) }}</td>
                                         <td>
                                             <div role="group" class="btn-group">
                                                 {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Item?");'])!!}

@@ -37,7 +37,7 @@
                                         <td>{{ $oc->idOC}}</td>
                                         <td>{{ $oc->tipo}}</td>
                                         <td>{{ $oc->observacoes}}</td>
-                                        <td>{{ $oc->created_at}}</td>
+                                        <td>{{ date('d/m/Y H:i', strtotime($oc->created_at)) }}</td>
                                         <td>
                                             <div role="group" class="btn-group">
                                                 {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse OC?");'])!!}

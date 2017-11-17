@@ -43,7 +43,7 @@
                                         <td>{{ $insumo->largura}}</td>
                                         <td>{{ $insumo->unidadeMedida}}</td>
                                         <td>{{ $insumo->precoUnit}}</td>
-                                        <td>{{ $insumo->created_at}}</td>
+                                        <td>{{ date('d/m/Y H:i', strtotime($insumo->created_at)) }}</td>
                                         <td>
                                             <div role="group" class="btn-group">
                                                 {!!Form::open(['url' => 'insumos/'.$insumo->idInsumo, 'method' => 'edit', 'onSubmit' => 'return confirm("Você deseja realmente Editar esse Insumo?");'])!!}

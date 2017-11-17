@@ -9,19 +9,20 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index (Request $request)
     {
         $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Item::where('quantidade', 'like', '%'.$palavraChave.'%')
-            ->orWhere('borda', 'like', '%'.$palavraChave.'%')
-            ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
-            ->orWhere('fonte', 'like', '%'.$palavraChave.'%')
+        $retorno = Item::where('quantidade', 'like', '%' . $palavraChave . '%')
+            ->orWhere('borda', 'like', '%' . $palavraChave . '%')
+            ->orWhere('precoUnit', 'like', '%' . $palavraChave . '%')
+            ->orWhere('fonte', 'like', '%' . $palavraChave . '%')
             ->orderBy('created_at', 'asc')->paginate(10);
         return view('items.index')->with('item', $retorno);
 
         //$items = Item::orderby('created_at', 'desc')->paginate(10);
         //return view('items.index', ['items'=>$items]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,16 +30,16 @@ class ItemController extends Controller
      */
     public function create($id)
     {
-        dd($id);
+        //dd($id);
         return view('items.register')->with('id', $id);
     }
-    /**
+                                                                                                                                                                                                                                                                                                              /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idOS)
+    public function store(Request $request)
     {
         $item = new Item;
         $item->quantidade = $request->quantidade;
@@ -46,11 +47,39 @@ class ItemController extends Controller
         $item->comprimento = $request->comprimento;
         $item->unidadeMedida = $request->unidadeMedida;
         $item->borda = $request->borda;
-        $item->arte = $request->arte;
+        // Verifica se informou o arquivo e se é válido
+        if ($request->hasFile('arte') && $request->file('arte')->isValid()) {
+
+            // Define um aleatório para o arquivo baseado no timestamps atual
+            $name = uniqid(date('HisYmd'));
+
+            // Recupera a extensão do arquivo
+            $extension = $request->arte->extension();
+
+            // Define finalmente o nome
+            $nameFile = "{$name}.{$extension}";
+
+            // Faz o upload:
+            $upload = $request->image->storeAs('artes', $nameFile);
+            // Se tiver funcionado o arquivo foi armazenado em storage/app/public/artes/nomedinamicoarquivo.extensao
+
+            // Verifica se NÃO deu certo o upload (Redireciona de volta)
+            if ( !$upload )
+                return redirect()
+                    ->back()
+                    ->with('error', 'Falha ao fazer upload')
+                    ->withInput();
+
+        }
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
 //        $item->created_at = $request->created_at;
 //        $item->updated_at = $request->updated_at;
+
+
+       // $item->os_idOS = OS::orderBy('idOS', 'desc')->first();
+        $item->os_idOS = $request->os_idOS;
+        //dd($item);
         $item-> save();
         return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
     }
