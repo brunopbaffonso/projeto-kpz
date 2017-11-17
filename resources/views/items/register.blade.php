@@ -23,10 +23,10 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            {{ $OS->idOS }}
+                            {{$id}}
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'items/', 'method' => 'post'])!!}
-                                <input id="os_idOS" type="hidden" class="form-control" name="os_idOS" value="{{ $OS->idOS }}">
+                                <input id="os_idOS" type="hidden" class="form-control" name="os_idOS" value="{{ $id }}">
 
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade</label>

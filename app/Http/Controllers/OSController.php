@@ -50,11 +50,12 @@ class OSController extends Controller
 
         //$ordem = OS::orderBy('idOS', 'desc')->first();
         //$ordem = OS::select()->where('created_at',)->first();
-        //dd($ordem);
+//        dd($os);
         $ordem=$os;
         //dd($ordem);
         //return redirect('items/create/' . $os->idOS)->with('message', 'OS Criado Com Sucesso'); // TODO: Atributo na rota
-        return view('items.register', ['OS' => $ordem]);
+        return redirect('items/create/'.$os->idOS);
+//        return view('items.register', ['OS' => $ordem]);
     }
     /**
      * Display the specified resource.

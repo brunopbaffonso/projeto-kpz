@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="panel-body" align="left">
-                        <a href="items/create">
+                        <a href="{{url('items/create/'.$id)}}">
                             <button type="button" class="btn btn-primary">Cadastrar item</button>
                         </a>
                     </div>
