@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Cliente;
 use Illuminate\Http\Request;
-
+use Rafwell\Simplegrid\Grid;
 class ClienteController extends Controller
 {
     /**
@@ -18,7 +18,54 @@ class ClienteController extends Controller
             ->orWhere('cnpj', 'like', '%'.$palavraChave.'%')
             ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
             ->orderBy('nome', 'asc')->paginate(10);
-        return view('clientes.index')->with('cliente', $retorno);
+
+        $Grid = new Grid(Cliente::query(), 'ClientesGrid');
+
+        $Grid->fields([
+            'idCliente'=>'Código',
+            'nome'=>'Descrição',
+            'cnpj'=>'CNPJ',
+            'cpf'=>'CPF',
+            'ie'=>'IE',
+            'endereco'=>'Endereço',
+            'cep'=>'CEP',
+            'fone'=>'Telefone',
+            'email'=>'E-mail',
+            'created_at'=>'Data Cadastro'
+        ])
+
+        ->processLine(function($row){
+            $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
+            $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+            return $row;
+        })
+
+        ->actionFields([
+            'emp_no' //The fields used for process actions. those not are showed 
+        ])
+        ->advancedSearch([
+            'idCliente'=>['type'=>'integer','label'=>'Código'],
+            'nome'=>['type'=>'text', 'label'=>'Descrição'],
+            'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
+            'cpf'=>['type'=>'integer', 'label'=>'CPF'],
+            'ie'=>['type'=>'text', 'label'=>'IE'],
+            'endereco'=>['type'=>'text', 'label'=>'Endereço'],
+            'cep'=>['type'=>'text', 'label'=>'CEP'],
+            'fone'=>['type'=>'text', 'label'=>'Telefone'],
+            'email'=>['type'=>'text', 'label'=>'E-mail'],
+            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+        ]);
+
+        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
+        ->action('Deletar', '{emp_no}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
+
+        $Grid->checkbox(true, 'emp_no');
+        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+
+        return view('clientes.index', ['grid'=>$Grid])->with('insumo', $retorno);
 
 //        $clientes = Cliente::orderby('created_at', 'desc')->paginate(10);
 //        return view('clientes.index', ['clientes'=>$clientes]);

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Modelo;
 use Illuminate\Http\Request;
+use Rafwell\Simplegrid\Grid;
 class ModeloController extends Controller
 {
     /**
@@ -14,7 +15,30 @@ class ModeloController extends Controller
         $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = Modelo::where('nome', 'like', '%'.$palavraChave.'%')
             ->orderBy('nome', 'asc')->paginate(10);
-        return view('modelos.index')->with('modelo', $retorno);
+        $Grid = new Grid(Modelo::query(), 'ModelosGrid');
+        
+        $Grid->fields([
+            'idModelo'=>'Código',
+            'nome'=>'Descrição' 
+        ])
+        ->actionFields([
+            'emp_no' //The fields used for process actions. those not are showed 
+        ])
+        ->advancedSearch([
+            'idModelo'=>['type'=>'integer','label'=>'Código'],
+            'nome'=>['type'=>'text', 'label'=>'Descrição']
+        ]);
+
+        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
+        ->action('Deletar', '{emp_no}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
+
+        $Grid->checkbox(true, 'emp_no');
+        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+
+        return view('modelos.index', ['grid'=>$Grid])->with('modelo', $retorno);
 
         //$modelos = Modelo::orderby('idModelo', 'desc')->paginate(10);
         //return view('modelos.index', ['modelos'=>$modelos]);

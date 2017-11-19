@@ -10,7 +10,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.4",
-        "mpociot/laravel-test-factory-helper": "^0.4.0"
+        "mpociot/laravel-test-factory-helper": "^0.4.0",
+        "rafwell/laravel-simplegrid": "^1.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

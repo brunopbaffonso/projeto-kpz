@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use App\Subproduto;
 use Illuminate\Http\Request;
-
+use Rafwell\Simplegrid\Grid;
 class SubprodutoController extends Controller
 {
     /**
@@ -16,7 +16,39 @@ class SubprodutoController extends Controller
         $retorno = Subproduto::where('tipo', 'like', '%'.$palavraChave.'%')
             ->orWhere('quantidade', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
-        return view('subprodutos.index')->with('subproduto', $retorno);
+        
+        $Grid = new Grid(Subproduto::query(), 'SubprodutoGrid');
+
+        $Grid->fields([
+            'idSubproduto'=>'Código',
+            'tipo'=>'Descrição',
+            'quantidade'=>'Quantidade',
+            'comprimento'=>'Comprimento',
+            'largura'=>'Largura',
+            'created_at'=>'Data Cadastro'
+        ])
+        ->actionFields([
+            'emp_no' //The fields used for process actions. those not are showed 
+        ])
+        ->advancedSearch([
+            'idSubproduto'=>['type'=>'integer','label'=>'Código'],
+            'tipo'=>['type'=>'text', 'label'=>'Descrição'],
+            'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
+            'comprimento'=>['type'=>'is_float(comprimento)', 'label'=>'Comprimento'],
+            'largura'=>['type'=>'is_float(largura)', 'label'=>'Largura'],
+            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+        ]);
+
+        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
+        ->action('Deletar', '{emp_no}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
+
+        $Grid->checkbox(true, 'emp_no');
+        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+
+        return view('subprodutos.index', ['grid'=>$Grid])->with('subproduto', $retorno);
 
         //$subprodutos = Subproduto::orderby('created_at', 'desc')->paginate(10);
         //return view('subprodutos.index', ['subprodutos'=>$subprodutos]);

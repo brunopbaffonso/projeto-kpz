@@ -16,7 +16,40 @@ class InsumoController extends Controller
             ->orWhere('unidadeMedida', 'like', '%'.$palavraChave.'%')
             ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
-        return view('insumos.index')->with('insumo', $retorno);
+        $Grid = new Grid(Insumo::query(), 'InsumosGrid');
+        
+        $Grid->fields([
+            'idInsumo'=>'Código',
+            'quantidade'=>'Quantidade',
+            'comprimento'=>'Comprimento',
+            'largura'=>'Largura',
+            'unidadeMedida'=>'Medida',
+            'precoUnit'=>'Unitario',
+            'created_at'=>'Data Cadastro'
+        ])
+        ->actionFields([
+            'emp_no' //The fields used for process actions. those not are showed 
+        ])
+        ->advancedSearch([
+            'idInsumo'=>['type'=>'integer','label'=>'Código'],
+            'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
+            'comprimento'=>['type'=>'integer', 'label'=>'Comprimento'],
+            'largura'=>['type'=>'integer', 'label'=>'Largura'],
+            'unidadeMedida'=>['type'=>'text', 'label'=>'Medida'],
+            'precoUnit'=>['type'=>'money', 'label'=>'Unitario'],
+            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+        ]);
+
+        $Grid->action('Editar', 'projeto-kpz-test/edit/{emp_no}', ['method' => 'edit'])
+        ->action('Deletar', 'projeto-kpz-test/public/modelos/{emp_no}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
+
+        $Grid->checkbox(true, 'emp_no');
+        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+
+        return view('insumos.index', ['grid'=>$Grid])->with('insumo', $retorno);
 
         //$insumos = Insumo::orderby('created_at', 'desc')->paginate(10);
         //return view('insumos.index', ['insumos'=>$insumos]);

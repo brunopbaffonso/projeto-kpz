@@ -21,11 +21,11 @@ class Usuario extends Model implements
     protected $primaryKey = 'cpf';
 
     protected $fillable = [
-        'cpf', 'ativo', 'tipoAceso', 'nome', 'fone', 'celular', 'email', 'password',
+        'cpf', 'ativo', 'tipoAceso', 'nome', 'fone', 'celular', 'email', 'password','created_at', 'updated_at'
     ];
 
     protected $hidden = [
-        'created_at', 'updated_at', 'remember_token',
+     'remember_token'
     ];
 
     public $timestamps = true;

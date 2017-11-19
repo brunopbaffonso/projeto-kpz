@@ -9,7 +9,7 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index (Request $request, $id)
+    public function index (Request $request)
     {
         $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
         $retorno = Item::where('quantidade', 'like', '%' . $palavraChave . '%')
@@ -17,10 +17,7 @@ class ItemController extends Controller
             ->orWhere('precoUnit', 'like', '%' . $palavraChave . '%')
             ->orWhere('fonte', 'like', '%' . $palavraChave . '%')
             ->orderBy('created_at', 'asc')->paginate(10);
-
-//        return view('items.index', compact('item', 'id'));
-
-        return view('items.index', ['item' => $retorno, 'id' => $id]);
+        return view('items.index')->with('item', $retorno);
 
         //$items = Item::orderby('created_at', 'desc')->paginate(10);
         //return view('items.index', ['items'=>$items]);
@@ -33,7 +30,7 @@ class ItemController extends Controller
      */
     public function create($id)
     {
-//        dd($id);
+        //dd($id);
         return view('items.register')->with('id', $id);
     }
                                                                                                                                                                                                                                                                                                               /**
@@ -84,7 +81,7 @@ class ItemController extends Controller
         $item->os_idOS = $request->os_idOS;
         //dd($item);
         $item-> save();
-        return redirect('items/'.$request->os_idOS)->with('message', 'Item Criado Com Sucesso');
+        return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
     }
     /**
      * Display the specified resource.

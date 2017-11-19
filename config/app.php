@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt-BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
         Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Rafwell\Simplegrid\SimplegridServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\OC;
 use Illuminate\Http\Request;
+use Rafwell\Simplegrid\Grid;
 class OCController extends Controller
 {
     /**
@@ -15,7 +16,34 @@ class OCController extends Controller
         $retorno = OC::where('tipo', 'like', '%'.$palavraChave.'%')
             ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
-        return view('ocs.index')->with('oc', $retorno);
+        $Grid = new Grid(OC::query(), 'OsGrid');
+
+        $Grid->fields([
+            'idOC'=>'Código',
+            'tipo'=>'Tipo',
+            'observacoes'=>'Observações',
+            'created_at'=>'Data Cadastro'
+        ])
+        ->actionFields([
+            'emp_no' //The fields used for process actions. those not are showed 
+        ])
+        ->advancedSearch([
+            'idOC'=>['type'=>'integer','label'=>'Código'],
+            'tipo'=>['type'=>'text', 'label'=>'Tipo'],
+            'observacoes'=>['type'=>'text', 'label'=>'Observações'],
+            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+        ]);
+
+        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
+        ->action('Deletar', '{emp_no}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
+
+        $Grid->checkbox(true, 'emp_no');
+        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+
+        return view('ocs.index', ['grid'=>$Grid])->with('subproduto', $retorno);
 
         //$oc = OC::orderby('created_at', 'desc')->paginate(10);
         //return view('OCs.index', ['OCs'=>$OCs]);
