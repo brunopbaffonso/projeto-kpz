@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Usuario;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
+
 class UsuarioController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class UsuarioController extends Controller
         $retorno = Usuario::where('nome', 'like', '%'.$palavraChave.'%')
             ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
             ->orderBy('email', 'asc')->paginate(10);
-        
+
         $Grid = new Grid(Usuario::query(), 'UsuariosGrid');
 
         $Grid->fields([
@@ -30,32 +31,32 @@ class UsuarioController extends Controller
         ])
 
 
-        ->processLine(function($row){
-            $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
-            $row['ativo'] = $row['ativo'] == 1 ? 'Sim' : 'Não';
-            $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
-            return $row;
-        })
-        
+            ->processLine(function($row){
+                $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
+                $row['ativo'] = $row['ativo'] == 1 ? 'Sim' : 'Não';
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                return $row;
+            })
 
-        ->actionFields([
-            'emp_no' //The fields used for process actions. those not are showed 
-        ])
-        ->advancedSearch([
-            'cpf'=>['type'=>'integer','label'=>'Código'],
-            'ativo'=>['type'=>'integer', 'label'=>'Ativo'],
-            'nome'=>['type'=>'text', 'label'=>'Nome'],
-            'fone'=>['type'=>'text', 'label'=>'Telefone'],
-            'celular'=>['type'=>'text', 'label'=>'Celular'],
-            'email'=>['type'=>'text', 'label'=>'E-mail'],
-            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
-        ]);
+
+            ->actionFields([
+                'emp_no' //The fields used for process actions. those not are showed
+            ])
+            ->advancedSearch([
+                'cpf'=>['type'=>'integer','label'=>'Código'],
+                'ativo'=>['type'=>'integer', 'label'=>'Ativo'],
+                'nome'=>['type'=>'text', 'label'=>'Nome'],
+                'fone'=>['type'=>'text', 'label'=>'Telefone'],
+                'celular'=>['type'=>'text', 'label'=>'Celular'],
+                'email'=>['type'=>'text', 'label'=>'E-mail'],
+                'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+            ]);
 
         $Grid->action('Editar', 'usuarios/edit/', ['method' => 'edit'])
-        ->action('Deletar', '{emp_no}', [
-            'confirm'=>'Deseja mesmo deletar esse registro?',
-            'method'=>'DELETE',
-        ]);
+            ->action('Deletar', '{emp_no}', [
+                'confirm'=>'Deseja mesmo deletar esse registro?',
+                'method'=>'DELETE',
+            ]);
 
         $Grid->checkbox(true, 'emp_no');
         $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');;

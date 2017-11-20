@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
+
 class ClienteController extends Controller
 {
     /**
@@ -34,33 +35,33 @@ class ClienteController extends Controller
             'created_at'=>'Data Cadastro'
         ])
 
-        ->processLine(function($row){
-            $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
-            $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
-            return $row;
-        })
+            ->processLine(function($row){
+                $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                return $row;
+            })
 
-        ->actionFields([
-            'emp_no' //The fields used for process actions. those not are showed 
-        ])
-        ->advancedSearch([
-            'idCliente'=>['type'=>'integer','label'=>'Código'],
-            'nome'=>['type'=>'text', 'label'=>'Descrição'],
-            'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
-            'cpf'=>['type'=>'integer', 'label'=>'CPF'],
-            'ie'=>['type'=>'text', 'label'=>'IE'],
-            'endereco'=>['type'=>'text', 'label'=>'Endereço'],
-            'cep'=>['type'=>'text', 'label'=>'CEP'],
-            'fone'=>['type'=>'text', 'label'=>'Telefone'],
-            'email'=>['type'=>'text', 'label'=>'E-mail'],
-            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
-        ]);
+            ->actionFields([
+                'emp_no' //The fields used for process actions. those not are showed
+            ])
+            ->advancedSearch([
+                'idCliente'=>['type'=>'integer','label'=>'Código'],
+                'nome'=>['type'=>'text', 'label'=>'Descrição'],
+                'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
+                'cpf'=>['type'=>'integer', 'label'=>'CPF'],
+                'ie'=>['type'=>'text', 'label'=>'IE'],
+                'endereco'=>['type'=>'text', 'label'=>'Endereço'],
+                'cep'=>['type'=>'text', 'label'=>'CEP'],
+                'fone'=>['type'=>'text', 'label'=>'Telefone'],
+                'email'=>['type'=>'text', 'label'=>'E-mail'],
+                'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+            ]);
 
         $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-        ->action('Deletar', '{emp_no}', [
-            'confirm'=>'Deseja mesmo deletar esse registro?',
-            'method'=>'DELETE',
-        ]);
+            ->action('Deletar', '{emp_no}', [
+                'confirm'=>'Deseja mesmo deletar esse registro?',
+                'method'=>'DELETE',
+            ]);
 
         $Grid->checkbox(true, 'emp_no');
         $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
@@ -139,8 +140,8 @@ class ClienteController extends Controller
 
         return view('clientes.edit')->with('cliente', $retorno);
 
-       /* $cliente = Cliente::where('idCliente', '=', $id)->first();
-        return view('clientes.edit', compact('cliente'));*/
+        /* $cliente = Cliente::where('idCliente', '=', $id)->first();
+         return view('clientes.edit', compact('cliente'));*/
     }
 
     /**

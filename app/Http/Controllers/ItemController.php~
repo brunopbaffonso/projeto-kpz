@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Rafwell\Simplegrid\Grid;
 
 class ItemController extends Controller
 {
@@ -36,7 +35,7 @@ class ItemController extends Controller
         //dd($id);
         return view('items.register')->with('id', $id);
     }
-    /**
+                                                                                                                                                                                                                                                                                                              /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,6 +44,11 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $arte = $request->file('arte');
+
+        if(!empty($arte))
+        {
+            Storage::put($arte->getClientOriginalName('artes/', $arte));
+        }
         //dd($arte);
 
         $item = new Item;
@@ -53,10 +57,7 @@ class ItemController extends Controller
         $item->comprimento = $request->comprimento;
         $item->unidadeMedida = $request->unidadeMedida;
         $item->borda = $request->borda;
-        if(!empty($arte))
-        {
-            $item->arte = Storage::put('artes', $arte);
-        }
+        $item->arte = $arte;
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
 //        $item->created_at = $request->created_at;
@@ -65,11 +66,7 @@ class ItemController extends Controller
         $item->os_idOS = $request->os_idOS;
 //        dd($item);
         $item-> save();
-        if($request->submit == "0"){
-            return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
-        }
-        else return view('items.register', ['OS' => $item->os_idOS]);
-
+        return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
     }
     /**
      * Display the specified resource.

@@ -4,6 +4,7 @@ use App\OS;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\OperatingSystem;
 use Rafwell\Simplegrid\Grid;
+
 class OSController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class OSController extends Controller
             ->orWhere('formaPgto', 'like', '%'.$palavraChave.'%')
             ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
-         $Grid = new Grid(OS::query(), 'OsGrid');
+        $Grid = new Grid(OS::query(), 'OsGrid');
 
         $Grid->fields([
             'idOS'=>'Código',
@@ -27,23 +28,23 @@ class OSController extends Controller
             'observacoes'=>'Observações',
             'created_at'=>'Data Cadastro'
         ])
-        ->actionFields([
-            'emp_no' //The fields used for process actions. those not are showed 
-        ])
-        ->advancedSearch([
-            'idOS'=>['type'=>'integer','label'=>'Código'],
-            'precoTotal'=>['type'=>'money', 'label'=>'Preço Total'],
-            'desconto'=>['type'=>'money', 'label'=>'Desconto'],
-            'formaPgto'=>['type'=>'text', 'label'=>'Forma Pgto.'],
-            'observacoes'=>['type'=>'text', 'label'=>'Observações'],
-            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
-        ]);
+            ->actionFields([
+                'emp_no' //The fields used for process actions. those not are showed
+            ])
+            ->advancedSearch([
+                'idOS'=>['type'=>'integer','label'=>'Código'],
+                'precoTotal'=>['type'=>'money', 'label'=>'Preço Total'],
+                'desconto'=>['type'=>'money', 'label'=>'Desconto'],
+                'formaPgto'=>['type'=>'text', 'label'=>'Forma Pgto.'],
+                'observacoes'=>['type'=>'text', 'label'=>'Observações'],
+                'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+            ]);
 
         $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-        ->action('Deletar', '{emp_no}', [
-            'confirm'=>'Deseja mesmo deletar esse registro?',
-            'method'=>'DELETE',
-        ]);
+            ->action('Deletar', '{emp_no}', [
+                'confirm'=>'Deseja mesmo deletar esse registro?',
+                'method'=>'DELETE',
+            ]);
 
         $Grid->checkbox(true, 'emp_no');
         $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');

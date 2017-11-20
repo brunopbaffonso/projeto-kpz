@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use App\Insumo;
 use Illuminate\Http\Request;
+use Rafwell\Simplegrid\Grid;
+
 class InsumoController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class InsumoController extends Controller
             ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
             ->orderBy('created_at', 'asc')->paginate(10);
         $Grid = new Grid(Insumo::query(), 'InsumosGrid');
-        
+
         $Grid->fields([
             'idInsumo'=>'Código',
             'quantidade'=>'Quantidade',
@@ -27,24 +29,24 @@ class InsumoController extends Controller
             'precoUnit'=>'Unitario',
             'created_at'=>'Data Cadastro'
         ])
-        ->actionFields([
-            'emp_no' //The fields used for process actions. those not are showed 
-        ])
-        ->advancedSearch([
-            'idInsumo'=>['type'=>'integer','label'=>'Código'],
-            'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
-            'comprimento'=>['type'=>'integer', 'label'=>'Comprimento'],
-            'largura'=>['type'=>'integer', 'label'=>'Largura'],
-            'unidadeMedida'=>['type'=>'text', 'label'=>'Medida'],
-            'precoUnit'=>['type'=>'money', 'label'=>'Unitario'],
-            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
-        ]);
+            ->actionFields([
+                'emp_no' //The fields used for process actions. those not are showed
+            ])
+            ->advancedSearch([
+                'idInsumo'=>['type'=>'integer','label'=>'Código'],
+                'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
+                'comprimento'=>['type'=>'integer', 'label'=>'Comprimento'],
+                'largura'=>['type'=>'integer', 'label'=>'Largura'],
+                'unidadeMedida'=>['type'=>'text', 'label'=>'Medida'],
+                'precoUnit'=>['type'=>'money', 'label'=>'Unitario'],
+                'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+            ]);
 
         $Grid->action('Editar', 'projeto-kpz-test/edit/{emp_no}', ['method' => 'edit'])
-        ->action('Deletar', 'projeto-kpz-test/public/modelos/{emp_no}', [
-            'confirm'=>'Deseja mesmo deletar esse registro?',
-            'method'=>'DELETE',
-        ]);
+            ->action('Deletar', 'projeto-kpz-test/public/modelos/{emp_no}', [
+                'confirm'=>'Deseja mesmo deletar esse registro?',
+                'method'=>'DELETE',
+            ]);
 
         $Grid->checkbox(true, 'emp_no');
         $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
