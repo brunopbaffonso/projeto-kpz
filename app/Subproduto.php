@@ -9,7 +9,7 @@ class Subproduto extends Model
     protected $primaryKey = 'idSubproduto';
 
     protected $fillable = [
-        'idSubproduto', 'tipo', 'quantidade', 'comprimento', 'largura', 'created_at', 'updated_at', 'cor_idCor',
+        'idSubproduto','unidadeMedida', 'tipo', 'quantidade', 'comprimento', 'largura', 'created_at', 'updated_at', 'cor_idCor',
     ];
 
     public $timestamps = true;

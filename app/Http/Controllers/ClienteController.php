@@ -14,12 +14,7 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Cliente::where('nome', 'like', '%'.$palavraChave.'%')
-            ->orWhere('cnpj', 'like', '%'.$palavraChave.'%')
-            ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
-            ->orderBy('nome', 'asc')->paginate(10);
-
+       
         $Grid = new Grid(Cliente::query(), 'ClientesGrid');
 
         $Grid->fields([
@@ -37,6 +32,8 @@ class ClienteController extends Controller
 
             ->processLine(function($row){
                 $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
+                 $row['cnpj'] = substr($row['cnpj'], 0, 2) . '.' . substr($row['cnpj'], 2, 3) . '.' . substr($row['cnpj'], 5, 3) . '/' . substr($row['cnpj'], 8, 4) . '-' . substr($row['cnpj'], 12, 2);
+                $row['fone'] = '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'], 6);
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
                 return $row;
             })
@@ -47,8 +44,8 @@ class ClienteController extends Controller
             ->advancedSearch([
                 'idCliente'=>['type'=>'integer','label'=>'Código'],
                 'nome'=>['type'=>'text', 'label'=>'Descrição'],
-                'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
-                'cpf'=>['type'=>'integer', 'label'=>'CPF'],
+                'cnpj'=>['type'=>'text', 'label'=>'CNPJ'],
+                'cpf'=>['type'=>'text', 'label'=>'CPF'],
                 'ie'=>['type'=>'text', 'label'=>'IE'],
                 'endereco'=>['type'=>'text', 'label'=>'Endereço'],
                 'cep'=>['type'=>'text', 'label'=>'CEP'],
@@ -57,16 +54,19 @@ class ClienteController extends Controller
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-            ->action('Deletar', '{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
+       $Grid->action('Editar', 'clientes/{idCliente}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'clientes/{idCliente}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
 
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+        $Grid->bulkAction('Deletar itens selecionados', 'clientes/bulk-delete');
 
-        return view('clientes.index', ['grid'=>$Grid])->with('insumo', $retorno);
+        return view('clientes.index', ['grid'=>$Grid]);
 
 //        $clientes = Cliente::orderby('created_at', 'desc')->paginate(10);
 //        return view('clientes.index', ['clientes'=>$clientes]);
@@ -136,7 +136,6 @@ class ClienteController extends Controller
             Session::flash('produto_nencontrado', 'Cliente não encontrado.');
             return redirect('/clientes');
         }
-
 
         return view('clientes.edit')->with('cliente', $retorno);
 

@@ -14,13 +14,58 @@ class ItemController extends Controller
      */
     public function index (Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Item::where('quantidade', 'like', '%' . $palavraChave . '%')
-            ->orWhere('borda', 'like', '%' . $palavraChave . '%')
-            ->orWhere('precoUnit', 'like', '%' . $palavraChave . '%')
-            ->orWhere('fonte', 'like', '%' . $palavraChave . '%')
-            ->orderBy('created_at', 'asc')->paginate(10);
-        return view('items.index')->with('item', $retorno);
+         $Grid = new Grid(Item::query(), 'ItensGrid');
+
+        $Grid->fields([
+            'idItem'=>'Código',
+            'quantidade'=>'Quantidade',
+            'largura'=>'Largura',
+            'comprimento'=>'Comprimento',
+            'unidadeMedida'=>'Medida',
+            'borda'=>'Borda',
+            'arte'=>'Arte',
+            'fonte'=>'Fonte',
+            'precoUnit'=>'Unitario',
+            'created_at'=>'Data Cadastro'
+        ])
+
+        ->processLine(function($row){
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                $row['precoUnit'] =  'R$ '.number_format($row['precoUnit'], 2, ',', '.');
+                $row['comprimento'] =  number_format($row['comprimento'], 2, ',', '.');
+                $row['largura'] =  number_format($row['largura'], 2, ',', '.');
+                return $row;
+            })
+
+            ->actionFields([
+                'emp_no' //The fields used for process actions. those not are showed
+            ])
+            ->advancedSearch([
+                'idItem'=>['type'=>'integer','label'=>'Código'],
+                'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
+                'largura'=>['type'=>'doubleval(largura)', 'label'=>'Largura'],
+                'comprimento'=>['type'=>'doubleval(comprimento)', 'label'=>'Comprimento'],
+                'borda'=>['type'=>'text', 'label'=>'Borda'],
+                'arte'=>['type'=>'link', 'label'=>'Arte'],
+                'fonte'=>['type'=>'text', 'label'=>'Fonte'],
+                'unidadeMedida'=>['type'=>'text', 'label'=>'Medida'],
+                'precoUnit'=>['type'=>'money', 'label'=>'Unitario'],
+                'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+            ]);
+
+        $Grid->action('Editar', 'items/{idItem}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'items/{idItem}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
+
+        $Grid->checkbox(true, 'emp_no');
+        $Grid->bulkAction('Deletar itens selecionados', 'items/bulk-delete');
+
+        return view('items.index', ['grid'=>$Grid]);
 
         //$items = Item::orderby('created_at', 'desc')->paginate(10);
         //return view('items.index', ['items'=>$items]);

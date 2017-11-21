@@ -9,7 +9,7 @@ class Modelo extends Model
     protected $primaryKey = 'idModelo';
 
     protected $fillable = [
-        'idModelo', 'nome',
+        'idModelo', 'nome', 'created_at', 'updated_at', 
     ];
 
     protected $table = 'modelo';

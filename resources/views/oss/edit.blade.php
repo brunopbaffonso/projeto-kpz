@@ -27,7 +27,7 @@
                                 {!!Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'put'])!!}
 
                                 <div class="form-group{{ $errors->has('precoTotal') ? ' has-error' : '' }}">
-                                    <label for="precoTotal" class="col-md-2 control-label">Preço Total</label>
+                                    <label for="precoTotal" class="col-md-2 control-label">Preço Total:</label>
 
                                     <div class="col-md-8">
                                         <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="{{ $os->precoTotal }}" required autofocus>
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('desconto') ? ' has-error' : '' }}">
-                                    <label for="desconto" class="col-md-2 control-label">Desconto</label>
+                                    <label for="desconto" class="col-md-2 control-label">Desconto:</label>
 
                                     <div class="col-md-8">
                                         <input id="desconto" type="number" class="form-control" name="desconto" value="{{ $os->desconto }}" autofocus>
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('formaPgto') ? ' has-error' : '' }}">
-                                    <label for="formaPgto" class="col-md-2 control-label">Forma de Pagamento</label>
+                                    <label for="formaPgto" class="col-md-2 control-label">Forma de Pagamento:</label>
 
                                     <div class="col-md-8">
                                         <input id="formaPgto" type="text" class="form-control" name="formaPgto" value="{{ $os->formaPgto }}" required autofocus>
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('observacoes') ? ' has-error' : '' }}">
-                                    <label for="observacoes" class="col-md-2 control-label">Observações</label>
+                                    <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-8">
                                         <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $os->observacoes }}" autofocus ></textarea>

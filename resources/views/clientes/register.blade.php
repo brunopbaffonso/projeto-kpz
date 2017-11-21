@@ -83,6 +83,20 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('cep') ? ' has-error' : '' }}">
+                                    <label for="cep" class="col-md-2 control-label">CEP</label>
+
+                                    <div class="col-md-8">
+                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" autofocus>
+
+                                        @if ($errors->has('cep'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('cep') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group{{ $errors->has('endereco') ? ' has-error' : '' }}">
                                     <label for="endereco" class="col-md-2 control-label">Endereço</label>
 
@@ -111,16 +125,15 @@
                                     </div>
                                 </div>
 
-
-                                <div class="form-group{{ $errors->has('cep') ? ' has-error' : '' }}">
-                                    <label for="cep" class="col-md-2 control-label">CEP</label>
+                                <div class="form-group{{ $errors->has('cidade_idCidade') ? ' has-error' : '' }}">
+                                    <label for="cidade_idCidade" class="col-md-2 control-label">Cidade</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" autofocus>
+                                        <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
 
-                                        @if ($errors->has('cep'))
+                                        @if ($errors->has('cidade_idCidade'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('cep') }}</strong>
+                                        <strong>{{ $errors->first('cidade_idCidade') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -168,19 +181,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('cidade_idCidade') ? ' has-error' : '' }}">
-                                    <label for="cidade_idCidade" class="col-md-2 control-label">Cidade</label>
-
-                                    <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
-
-                                        @if ($errors->has('cidade_idCidade'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('cidade_idCidade') }}</strong>
-                                    </span>
-                                        @endif
-                                    </div>
-                                </div>
+                                
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">

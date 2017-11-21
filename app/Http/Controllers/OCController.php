@@ -13,10 +13,6 @@ class OCController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = OC::where('tipo', 'like', '%'.$palavraChave.'%')
-            ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
-            ->orderBy('created_at', 'asc')->paginate(10);
         $Grid = new Grid(OC::query(), 'OsGrid');
 
         $Grid->fields([
@@ -25,6 +21,12 @@ class OCController extends Controller
             'observacoes'=>'Observações',
             'created_at'=>'Data Cadastro'
         ])
+
+         ->processLine(function($row){
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                return $row;
+            })
+        
             ->actionFields([
                 'emp_no' //The fields used for process actions. those not are showed
             ])
@@ -35,16 +37,19 @@ class OCController extends Controller
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-            ->action('Deletar', '{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
+        $Grid->action('Editar', 'ocs/{idOC}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'ocs/{idOC}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
 
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+        $Grid->bulkAction('Deletar itens selecionados', 'ocs/bulk-delete');
 
-        return view('ocs.index', ['grid'=>$Grid])->with('subproduto', $retorno);
+        return view('ocs.index', ['grid'=>$Grid]);
 
         //$oc = OC::orderby('created_at', 'desc')->paginate(10);
         //return view('OCs.index', ['OCs'=>$OCs]);

@@ -12,12 +12,9 @@ class OSController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)    {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = OS::where('precoTotal', 'like', '%'.$palavraChave.'%')
-            ->orWhere('formaPgto', 'like', '%'.$palavraChave.'%')
-            ->orWhere('observacoes', 'like', '%'.$palavraChave.'%')
-            ->orderBy('created_at', 'asc')->paginate(10);
+    public function index(Request $request)    
+    {
+
         $Grid = new Grid(OS::query(), 'OsGrid');
 
         $Grid->fields([
@@ -28,28 +25,42 @@ class OSController extends Controller
             'observacoes'=>'Observações',
             'created_at'=>'Data Cadastro'
         ])
+
+          ->processLine(function($row){
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                $row['precoTotal'] =  'R$ '.number_format($row['precoTotal'], 2, ',', '.');
+                $row['desconto'] =  'R$ '.number_format($row['desconto'], 2, ',', '.');
+                return $row;
+            })
+
             ->actionFields([
                 'emp_no' //The fields used for process actions. those not are showed
             ])
+
+
+
             ->advancedSearch([
                 'idOS'=>['type'=>'integer','label'=>'Código'],
                 'precoTotal'=>['type'=>'money', 'label'=>'Preço Total'],
                 'desconto'=>['type'=>'money', 'label'=>'Desconto'],
                 'formaPgto'=>['type'=>'text', 'label'=>'Forma Pgto.'],
-                'observacoes'=>['type'=>'text', 'label'=>'Observações'],
+                'observacoes'=>['type'=>'textarea', 'label'=>'Observações'],
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-            ->action('Deletar', '{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
+        $Grid->action('Editar', 'oss/{idOS}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'oss/{idOS}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
 
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+        $Grid->bulkAction('Deletar itens selecionados', 'oss/bulk-delete');
 
-        return view('oss.index', ['grid'=>$Grid])->with('subproduto', $retorno);
+        return view('oss.index', ['grid'=>$Grid]);
 
         //$OSs = OS::orderby('created_at', 'desc')->paginate(10);
         //return view('OSs.index', ['OSs'=>$OSs]);
@@ -76,8 +87,6 @@ class OSController extends Controller
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-//        $os->created_at = $request->created_at;
-//        $os->updated_at = $request->updated_at;
         $os-> save();
 
         //$ordem = OS::orderBy('idOS', 'desc')->first();

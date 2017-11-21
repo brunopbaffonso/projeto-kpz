@@ -27,7 +27,7 @@
                                 {!!Form::open(['url' => 'subprodutos/', 'method' => 'post'])!!}
 
                                 <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                                    <label for="tipo" class="col-md-2 control-label">Tipo</label>
+                                    <label for="tipo" class="col-md-2 control-label">Tipo:</label>
 
                                     <div class="col-md-8">
                                         <input id="tipo" type="text" class="form-control" name="tipo" value="{{ old('tipo') }}" required autofocus>
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
-                                    <label for="quantidade" class="col-md-2 control-label">Quantidade</label>
+                                    <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                     <div class="col-md-8">
                                         <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ old('quantidade') }}" required autofocus>
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('comprimento') ? ' has-error' : '' }}">
-                                    <label for="comprimento" class="col-md-2 control-label">Comprimento</label>
+                                    <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                     <div class="col-md-8">
                                         <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ old('comprimento') }}" required autofocus>
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('largura') ? ' has-error' : '' }}">
-                                    <label for="largura" class="col-md-2 control-label">Largura</label>
+                                    <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                     <div class="col-md-8">
                                         <input id="largura" type="number" class="form-control" name="largura" value="{{ old('largura') }}" required autofocus>
@@ -82,8 +82,22 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
+                                    <label for="unidadeMedida" class="col-md-2 control-label">Unidade Medida:</label>
+
+                                    <div class="col-md-8">
+                                        <input id="unidadeMedida" type="text" class="form-control" name="unidadeMedida" value="{{ old('unidadeMedida') }}" required autofocus>
+
+                                        @if ($errors->has('unidadeMedida'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('unidadeMedida') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group{{ $errors->has('cor_idCor') ? ' has-error' : '' }}">
-                                    <label for="cor_idCor" class="col-md-2 control-label">Cor</label>
+                                    <label for="cor_idCor" class="col-md-2 control-label">Cor:</label>
 
                                     <div class="col-md-8">
                                         <input id="cor_idCor" type="number" class="form-control" name="cor_idCor" value="{{ old('cor_idCor') }}" required autofocus>

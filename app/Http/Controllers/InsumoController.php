@@ -13,15 +13,11 @@ class InsumoController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Insumo::where('quantidade', 'like', '%'.$palavraChave.'%')
-            ->orWhere('unidadeMedida', 'like', '%'.$palavraChave.'%')
-            ->orWhere('precoUnit', 'like', '%'.$palavraChave.'%')
-            ->orderBy('created_at', 'asc')->paginate(10);
         $Grid = new Grid(Insumo::query(), 'InsumosGrid');
 
         $Grid->fields([
             'idInsumo'=>'Código',
+            'nome'=>'Descrição',
             'quantidade'=>'Quantidade',
             'comprimento'=>'Comprimento',
             'largura'=>'Largura',
@@ -29,11 +25,21 @@ class InsumoController extends Controller
             'precoUnit'=>'Unitario',
             'created_at'=>'Data Cadastro'
         ])
+
+        ->processLine(function($row){
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                $row['precoUnit'] =  number_format($row['precoUnit'], 2, ',', '.');
+                $row['comprimento'] =  number_format($row['comprimento'], 2, ',', '.');
+                $row['largura'] =  number_format($row['largura'], 2, ',', '.');
+                return $row;
+            })
+
             ->actionFields([
                 'emp_no' //The fields used for process actions. those not are showed
             ])
             ->advancedSearch([
                 'idInsumo'=>['type'=>'integer','label'=>'Código'],
+                'nome'=>['type'=>'text', 'label'=>'Quantidade'],
                 'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
                 'comprimento'=>['type'=>'integer', 'label'=>'Comprimento'],
                 'largura'=>['type'=>'integer', 'label'=>'Largura'],
@@ -42,16 +48,19 @@ class InsumoController extends Controller
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-        $Grid->action('Editar', 'projeto-kpz-test/edit/{emp_no}', ['method' => 'edit'])
-            ->action('Deletar', 'projeto-kpz-test/public/modelos/{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
+        $Grid->action('Editar', 'insumos/{idInsumo}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'insumos/{idInsumo}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
 
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+        $Grid->bulkAction('Deletar itens selecionados', 'insumos/bulk-delete');
 
-        return view('insumos.index', ['grid'=>$Grid])->with('insumo', $retorno);
+        return view('insumos.index', ['grid'=>$Grid]);
 
         //$insumos = Insumo::orderby('created_at', 'desc')->paginate(10);
         //return view('insumos.index', ['insumos'=>$insumos]);
@@ -74,6 +83,7 @@ class InsumoController extends Controller
     public function store(Request $request)
     {
         $insumo = new Insumo;
+        $insumo->nome = $request->nome;
         $insumo->quantidade = $request->quantidade;
         $insumo->comprimento = $request->comprimento;
         $insumo->largura = $request->largura;
@@ -116,6 +126,7 @@ class InsumoController extends Controller
     {
         $insumo = Insumo::where('idInsumo', '=', $id)->first();
         $insumo->quantidade = $request->quantidade;
+        $insumo->nome=$request->nome;
         $insumo->comprimento = $request->comprimento;
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;

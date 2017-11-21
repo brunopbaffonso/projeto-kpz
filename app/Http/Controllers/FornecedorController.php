@@ -14,10 +14,6 @@ class FornecedorController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Fornecedor::where('nome', 'like', '%'.$palavraChave.'%')
-            ->orWhere('cnpj', 'like', '%'.$palavraChave.'%')
-            ->orderBy('nome', 'asc')->paginate(10);
         $Grid = new Grid(Fornecedor::query(), 'ClientesGrid');
 
         $Grid->fields([
@@ -33,38 +29,44 @@ class FornecedorController extends Controller
             'created_at'=>'Data Cadastro'
         ])
 
-            ->processLine(function($row){
-                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+        ->processLine(function($row){
+            $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+            $row['cnpj'] = substr($row['cnpj'], 0, 2) . '.' . substr($row['cnpj'], 2, 3) . '.' . substr($row['cnpj'], 5, 3) . '/' . substr($row['cnpj'], 8, 4) . '-' . substr($row['cnpj'], 12, 2);
+             $row['fone'] = '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'], 6);
+            $row['celular'] = '(' . substr($row['celular'], 0, 2) . ')' . substr($row['celular'], 2, 5) . '-' . substr($row['celular'], 7);
+            $row['cep'] = substr($row['cep'], 0, 5) . '-' . substr($row['cep'], 5);
                 return $row;
-            })
+        })
 
 
-            ->actionFields([
-                'emp_no' //The fields used for process actions. those not are showed
-            ])
-            ->advancedSearch([
-                'idFornecedor'=>['type'=>'integer','label'=>'Código'],
-                'nome'=>['type'=>'text', 'label'=>'Descrição'],
-                'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
-                'ie'=>['type'=>'text', 'label'=>'IE'],
-                'endereco'=>['type'=>'text', 'label'=>'Endereço'],
-                'cep'=>['type'=>'text', 'label'=>'CEP'],
-                'fone'=>['type'=>'text', 'label'=>'Telefone'],
-                'email'=>['type'=>'text', 'label'=>'E-mail'],
-                'celular'=>['type'=>'text', 'label'=>'Celular'],
-                'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
-            ]);
+        ->actionFields([
+            'emp_no' //The fields used for process actions. those not are showed
+        ])
+        ->advancedSearch([
+            'idFornecedor'=>['type'=>'integer','label'=>'Código'],
+            'nome'=>['type'=>'text', 'label'=>'Descrição'],
+            'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
+            'ie'=>['type'=>'text', 'label'=>'IE'],
+            'endereco'=>['type'=>'text', 'label'=>'Endereço'],
+            'cep'=>['type'=>'text', 'label'=>'CEP'],
+            'fone'=>['type'=>'text', 'label'=>'Telefone'],
+            'email'=>['type'=>'text', 'label'=>'E-mail'],
+            'celular'=>['type'=>'text', 'label'=>'Celular'],
+            'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
+        ]);
 
-        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-            ->action('Deletar', '{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
-
+        $Grid->action('Editar', 'fornecedores/{idFornecedor}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'fornecedores/{idFornecedor}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+        $Grid->bulkAction('Deletar itens selecionados', 'fornecedores/bulk-delete');
 
-        return view('fornecedores.index', ['grid'=>$Grid])->with('insumo', $retorno);
+        return view('fornecedores.index', ['grid'=>$Grid]);
 
         //$fornecedores = Fornecedor::orderby('created_at', 'desc')->paginate(10);
         //return view('fornecedores.index', ['fornecedores'=>$fornecedores]);

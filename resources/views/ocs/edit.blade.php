@@ -27,7 +27,7 @@
                                 {!!Form::open(['url' => 'ocs/'.$oc->idOC, 'method' => 'put'])!!}
 
                                 <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                                    <label for="tipo" class="col-md-2 control-label">Tipo</label>
+                                    <label for="tipo" class="col-md-2 control-label">Tipo:</label>
 
                                     <div class="col-md-8">
                                         <input id="tipo" type="text" class="form-control" name="tipo" value="{{ $oc->tipo }}" required autofocus>
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('observacoes') ? ' has-error' : '' }}">
-                                    <label for="observacoes" class="col-md-2 control-label">Observações</label>
+                                    <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-10">
                                         <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $oc->observacoes }}" autofocus></textarea>

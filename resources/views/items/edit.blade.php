@@ -24,10 +24,11 @@
                         </div>
 
                         <div class="panel-body">
+                            <div class="form-horizontal">
                             {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'put'])!!}
 
                             <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
-                                <label for="quantidade" class="col-md-2 control-label">Nome</label>
+                                <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                 <div class="col-md-8">
                                     <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ $item->quantidade }}" required autofocus>
@@ -100,7 +101,7 @@
                                 <label for="arte" class="col-md-2 control-label">Arte</label>
 
                                 <div class="col-md-8">
-                                    <input id="arte" type="file" class="btn btn-primary"  value="{{ $item->arte }}" name="arte" required autofocus>
+                                    <input id="arte" type="file"   value="{{ $item->arte }}" name="arte" required autofocus>
 
                                     @if ($errors->has('arte'))
                                         <span class="help-block">

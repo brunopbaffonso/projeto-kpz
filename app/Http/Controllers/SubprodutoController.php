@@ -13,11 +13,6 @@ class SubprodutoController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Subproduto::where('tipo', 'like', '%'.$palavraChave.'%')
-            ->orWhere('quantidade', 'like', '%'.$palavraChave.'%')
-            ->orderBy('created_at', 'asc')->paginate(10);
-
         $Grid = new Grid(Subproduto::query(), 'SubprodutoGrid');
 
         $Grid->fields([
@@ -26,10 +21,19 @@ class SubprodutoController extends Controller
             'quantidade'=>'Quantidade',
             'comprimento'=>'Comprimento',
             'largura'=>'Largura',
+            'unidadeMedida'=>'Unid. Medida',
             'created_at'=>'Data Cadastro'
         ])
+
+        ->processLine(function($row){
+                $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
+                $row['largura'] = number_format($row['comprimento'], 2, ',', '.');
+                $row['comprimento'] =  number_format( $row['comprimento'], 2, ',', '.');
+                return $row;
+            })
+        
             ->actionFields([
-                'emp_no' //The fields used for process actions. those not are showed
+                'emp_no' 
             ])
             ->advancedSearch([
                 'idSubproduto'=>['type'=>'integer','label'=>'Código'],
@@ -37,19 +41,23 @@ class SubprodutoController extends Controller
                 'quantidade'=>['type'=>'integer', 'label'=>'Quantidade'],
                 'comprimento'=>['type'=>'is_float(comprimento)', 'label'=>'Comprimento'],
                 'largura'=>['type'=>'is_float(largura)', 'label'=>'Largura'],
+                'unidadeMedida'=>['type'=>'text', 'label'=>'Unid. Medida'],
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-        $Grid->action('Editar', 'edit/{emp_no}', ['method' => 'edit'])
-            ->action('Deletar', '{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
+        $Grid->action('Editar', 'subprodutos/{idSubproduto}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'subprodutos/{idSubproduto}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
 
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');
+        $Grid->bulkAction('Deletar itens selecionados', 'subprodutos/bulk-delete');
 
-        return view('subprodutos.index', ['grid'=>$Grid])->with('subproduto', $retorno);
+        return view('subprodutos.index', ['grid'=>$Grid]);
 
         //$subprodutos = Subproduto::orderby('created_at', 'desc')->paginate(10);
         //return view('subprodutos.index', ['subprodutos'=>$subprodutos]);
@@ -76,8 +84,7 @@ class SubprodutoController extends Controller
         $subproduto->quantidade = $request->quantidade;
         $subproduto->comprimento = $request->comprimento;
         $subproduto->largura = $request->largura;
-//        $subproduto->created_at = $request->created_at;
-//        $subproduto->updated_at = $request->updated_at;
+        $subproduto->unidadeMedida = $request->unidadeMedida;
         $subproduto->cor_idCor = $request->cor_idCor;
         $subproduto-> save();
         return redirect()->route('subprodutos.index')->with('message', 'Subproduto Criado Com Sucesso');
@@ -117,8 +124,7 @@ class SubprodutoController extends Controller
         $subproduto->quantidade = $request->quantidade;
         $subproduto->comprimento = $request->comprimento;
         $subproduto->largura = $request->largura;
-//        $subproduto->created_at = $request->created_at;
-//        $subproduto->updated_at = $request->updated_at;
+        $subproduto->unidadeMedida = $request->unidadeMedida;
         $subproduto->cor_idCor = $request->cor_idCor;
         $subproduto-> save();
         return redirect()->route('subprodutos.index')->with('message', 'Subproduto Editado Com Sucesso');

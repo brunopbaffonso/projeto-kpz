@@ -13,11 +13,6 @@ class UsuarioController extends Controller
      */
     public function index(Request $request)
     {
-        $palavraChave = ($request->get('nome') == null) ? '' : $request->get('nome');
-        $retorno = Usuario::where('nome', 'like', '%'.$palavraChave.'%')
-            ->orWhere('cpf', 'like', '%'.$palavraChave.'%')
-            ->orderBy('email', 'asc')->paginate(10);
-
         $Grid = new Grid(Usuario::query(), 'UsuariosGrid');
 
         $Grid->fields([
@@ -33,6 +28,8 @@ class UsuarioController extends Controller
 
             ->processLine(function($row){
                 $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
+                $row['fone'] = $row['fone'] == 0 ? '-' : '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'], 6);
+                $row['celular'] = $row['celular'] == 0 ? '-' : '(' . substr($row['celular'], 0, 2) . ')' . substr($row['celular'], 2, 5) . '-' . substr($row['celular'], 7);
                 $row['ativo'] = $row['ativo'] == 1 ? 'Sim' : 'Não';
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
                 return $row;
@@ -52,16 +49,19 @@ class UsuarioController extends Controller
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-        $Grid->action('Editar', 'usuarios/edit/', ['method' => 'edit'])
-            ->action('Deletar', '{emp_no}', [
-                'confirm'=>'Deseja mesmo deletar esse registro?',
-                'method'=>'DELETE',
-            ]);
+        $Grid->action('Editar', 'usuarios/{cpf}/edit', [
+            'confirm'=>'Deseja editar esse registro?',
+            'method'=>'GET',
+        ])
+        ->action('Deletar', 'usuarios/{cpf}', [
+            'confirm'=>'Deseja mesmo deletar esse registro?',
+            'method'=>'DELETE',
+        ]);
 
         $Grid->checkbox(true, 'emp_no');
-        $Grid->bulkAction('Deletar itens selecionados', '/projeto-kpz-test/public/modelos/bulk-delete');;
+        $Grid->bulkAction('Deletar itens selecionados', 'usuarios/bulk-delete');
 
-        return view('auth.index', ['grid'=>$Grid])->with('usuarios', $retorno);
+        return view('auth.index', ['grid'=>$Grid]);
 
     }
 

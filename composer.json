@@ -11,7 +11,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "~5.4",
         "mpociot/laravel-test-factory-helper": "^0.4.0",
-        "rafwell/laravel-simplegrid": "^1.7"
+        "rafwell/laravel-simplegrid": "^1.7",
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

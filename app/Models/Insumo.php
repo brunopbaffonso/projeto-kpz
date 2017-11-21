@@ -10,7 +10,7 @@ class Insumo extends Model
     protected $table = 'insumo';
     protected $primaryKey = 'idInsumo';
     public $timestamps = true;
-    protected $fillable = ['idInsumo', 'quantidade', 'comprimento', 'largura', 'unidadeMedida', 'precoUnit'];
+    protected $fillable = ['idInsumo', 'nome', 'quantidade', 'comprimento', 'largura', 'unidadeMedida', 'precoUnit', 'created_at', 'updated_at', 'oc_idOC', 'usuario_cpf', 'cor_idCor', 'fornecedor_idFornecedor', 'tipoManta_idTipoManta', 'tipoMaterial_idTipoMaterial'];
 
     public function usuario(){
         return  $this->belongsTo(Usuario::class);

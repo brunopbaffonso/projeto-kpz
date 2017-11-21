@@ -15,9 +15,9 @@
                         <input id="ativo" type="hidden" class="form-control" name="ativo" value="1">
 
                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
-                            <label for="cpf" class="col-md-4 control-label">CPF</label>
+                            <label for="cpf" class="col-md-2 control-label">CPF</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="cpf" type="text" class="form-control" name="cpf" value="{{ $usuario->cpf }}" required autofocus>
 
                                 @if ($errors->has('cpf'))
@@ -29,9 +29,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
-                            <label for="nome" class="col-md-4 control-label">Nome</label>
+                            <label for="nome" class="col-md-2 control-label">Nome</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="nome" type="text" class="form-control" name="nome" value="{{ $usuario->nome }}" required autofocus>
 
                                 @if ($errors->has('nome'))
@@ -43,9 +43,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fone') ? ' has-error' : '' }}">
-                            <label for="fone" class="col-md-4 control-label">Telefone</label>
+                            <label for="fone" class="col-md-2 control-label">Telefone</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="fone" type="text" class="form-control" name="fone" value="{{ $usuario->fone }}" autofocus>
 
                                 @if ($errors->has('fone'))
@@ -57,9 +57,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('celular') ? ' has-error' : '' }}">
-                            <label for="celular" class="col-md-4 control-label">Celular</label>
+                            <label for="celular" class="col-md-2 control-label">Celular</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="celular" type="text" class="form-control" name="celular" value="{{ $usuario->celular }}" required autofocus>
 
                                 @if ($errors->has('celular'))
@@ -71,9 +71,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+                            <label for="email" class="col-md-2 control-label">E-Mail</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -85,9 +85,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Senha</label>
+                            <label for="password" class="col-md-2 control-label">Senha</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="password" type="password" class="form-control" name="password" value="{{ $usuario->password }}" required autofocus>
 
                                 @if ($errors->has('password'))
@@ -100,7 +100,7 @@
 
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-4 col-md-offset-2">
                                 <button type="submit" class="btn btn-primary">
                                     Salvar Alterações!
                                 </button>

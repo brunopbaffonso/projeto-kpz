@@ -24,6 +24,7 @@
                         </div>
 
                         <div class="panel-body">
+                            <div class="form-horizontal">
                             {!!Form::open(['url' => 'clientes/'.$cliente->idCliente, 'method' => 'put'])!!}
 
                             <input id="ativo" type="hidden" class="form-control" name="ativo" value="1">

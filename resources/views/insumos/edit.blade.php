@@ -24,27 +24,28 @@
                         </div>
 
                         <div class="panel-body">
+                             <div class="form-horizontal">
                             {!!Form::open(['url' => 'insumos/'.$insumo->idInsumo, 'method' => 'put'])!!}
 
-                            <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
-                                <label for="quantidade" class="col-md-2 control-label">Nome</label>
+                            <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
+                                <label for="nome" class="col-md-2 control-label">Descrição:</label>
 
-                                <div class="col-md-4">
-                                    <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ $insumo->quantidade }}" required autofocus>
+                                <div class="col-md-8">
+                                    <input id="nome" type="text" class="form-control" name="nome" value="{{ $insumo->nome }}" required autofocus>
 
-                                    @if ($errors->has('quantidade'))
+                                    @if ($errors->has('nome'))
                                         <span class="help-block">
-                                        <strong>{{ $insumo->quantidade }}</strong>
+                                        <strong>{{ $insumo->nome }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group{{ $errors->has('comprimento') ? ' has-error' : '' }}">
-                                <label for="comprimento" class="col-md-2 control-label">Comprimento</label>
+                                <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                 <div class="col-md-4">
-                                    <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ $insumo->comprimento }}" required autofocus>
+                                    <input id="comprimento" type="number" step="0.01" class="form-control" name="comprimento" value="{{ $insumo->comprimento }}" required autofocus>
 
                                     @if ($errors->has('comprimento'))
                                         <span class="help-block">
@@ -55,10 +56,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('largura') ? ' has-error' : '' }}">
-                                <label for="largura" class="col-md-2 control-label">Largura</label>
+                                <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                 <div class="col-md-8">
-                                    <input id="largura" type="number" class="form-control" name="largura" value="{{ $insumo->largura }}" required autofocus>
+                                    <input id="largura" type="number"  step="0.01" class="form-control" name="largura" value="{{ $insumo->largura }}" required autofocus>
 
                                     @if ($errors->has('largura'))
                                         <span class="help-block">
@@ -69,7 +70,7 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
-                                <label for="unidadeMedida" class="col-md-2 control-label">Unidade de Medida</label>
+                                <label for="unidadeMedida" class="col-md-2 control-label">Unidade de Medida:</label>
 
                                 <div class="col-md-8">
                                     <input id="unidadeMedida" type="text" class="form-control" name="unidadeMedida" value="{{ $insumo->unidadeMedida }}" required autofocus>
@@ -83,10 +84,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('precoUnit') ? ' has-error' : '' }}">
-                                <label for="precoUnit" class="col-md-2 control-label">Preço Unitário</label>
+                                <label for="precoUnit" class="col-md-2 control-label">Preço Unitário:</label>
 
                                 <div class="col-md-8">
-                                    <input id="precoUnit" type="number" class="form-control"  value="{{ $insumo->precoUnit }}" name="precoUnit" required autofocus>
+                                    <input id="precoUnit" type="number" step="0.01" class="form-control"  value="{{ $insumo->precoUnit }}" name="precoUnit" required autofocus>
 
                                     @if ($errors->has('precoUnit'))
                                         <span class="help-block">

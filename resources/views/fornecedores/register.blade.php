@@ -27,7 +27,7 @@
                                 {!!Form::open(['url' => 'fornecedores/', 'method' => 'post'])!!}
 
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
-                                    <label for="nome" class="col-md-2 control-label">Nome</label>
+                                    <label for="nome" class="col-md-2 control-label">Nome:</label>
 
                                     <div class="col-md-8">
                                         <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('cnpj') ? ' has-error' : '' }}">
-                                    <label for="cnpj" class="col-md-2 control-label">CNPJ</label>
+                                    <label for="cnpj" class="col-md-2 control-label">CNPJ:</label>
 
                                     <div class="col-md-8">
                                         <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" required autofocus>
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('ie') ? ' has-error' : '' }}">
-                                    <label for="ie" class="col-md-2 control-label">IE</label>
+                                    <label for="ie" class="col-md-2 control-label">IE:</label>
 
                                     <div class="col-md-8">
                                         <input id="ie" type="text" class="form-control" name="ie" value="{{ old('ie') }}" autofocus>
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('endereco') ? ' has-error' : '' }}">
-                                    <label for="endereco" class="col-md-2 control-label">Endereço</label>
+                                    <label for="endereco" class="col-md-2 control-label">Endereço:</label>
 
                                     <div class="col-md-8">
                                         <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" required autofocus>
@@ -83,7 +83,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('bairro') ? ' has-error' : '' }}">
-                                    <label for="bairro" class="col-md-2 control-label">Bairro</label>
+                                    <label for="bairro" class="col-md-2 control-label">Bairro:</label>
 
                                     <div class="col-md-8">
                                         <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" required autofocus>
@@ -98,7 +98,7 @@
 
 
                                 <div class="form-group{{ $errors->has('cep') ? ' has-error' : '' }}">
-                                    <label for="cep" class="col-md-2 control-label">CEP</label>
+                                    <label for="cep" class="col-md-2 control-label">CEP:</label>
 
                                     <div class="col-md-8">
                                         <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" autofocus>
@@ -126,7 +126,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('celular') ? ' has-error' : '' }}">
-                                    <label for="celular" class="col-md-2 control-label">Celular</label>
+                                    <label for="celular" class="col-md-2 control-label">Celular:</label>
 
                                     <div class="col-md-8">
                                         <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" required autofocus>
@@ -140,7 +140,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-2 control-label">E-Mail Address</label>
+                                    <label for="email" class="col-md-2 control-label">E-Mail:</label>
 
                                     <div class="col-md-8">
                                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>

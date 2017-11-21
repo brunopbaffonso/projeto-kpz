@@ -20,6 +20,77 @@
 <!--{!! Html::style('css/normalize.css') !!}-->
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <!-- Adicionando JQuery -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- Adicionando Javascript -->
+    <script type="text/javascript" >
+
+        $(document).ready(function() {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+                $("#ibge").val("");
+            }
+            
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function() {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if(validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#endereco").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade_idCidade").val("...");
+                        $("#uf").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#endereco").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade_idCidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+
+    </script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -64,49 +135,21 @@
                 </li>
 
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Insumo<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ url('insumos/create') }}">Adicionar Insumo</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('insumos') }}">Lista Insumo</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> SubProduto<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ url('subprodutos/create') }}">Adicionar Subproduto</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('subprodutos') }}">Lista de Subprodutos</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Modelos<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ url('modelos/create') }}">Adicionar Modelo</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('modelos') }}">Lista de Modelos</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Ordem de Serviço<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ url('oss') }}">Lista Ordem de Serviço</a>
+                        </li>
                         <li>
                             <a href="{{ url('oss/create') }}">Adicionar Ordem de Serviço</a>
                         </li>
                         <li>
-                            <a href="{{ url('oss') }}">Lista Ordem de Serviço</a>
+                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Itens<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('items') }}">Lista de Itens</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -115,10 +158,45 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Ordem de Compra<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('ocs/create') }}">Adicionar Ordem de Compra</a>
+                            <a href="{{ url('ocs') }}">Lista Ordem de Compra</a>
                         </li>
                         <li>
-                            <a href="{{ url('ocs') }}">Lista Ordem de Compra</a>
+                            <a href="{{ url('ocs/create') }}">Adicionar Ordem de Compra</a>
+                        </li>
+                         <li>
+                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Insumo<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('insumos') }}">Lista Insumo</a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('insumos/create') }}">Adicionar Insumo</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> SubProduto<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ url('subprodutos') }}">Lista de Subprodutos</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('subprodutos/create') }}">Adicionar Subproduto</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Modelos<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ url('modelos') }}">Lista de Modelos</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('modelos/create') }}">Adicionar Modelo</a>
                         </li>
                     </ul>
                 </li>
@@ -147,23 +225,19 @@
                     </ul>
                 </li>
 
+
                 <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Gerar Relátorios<span class="fa arrow"></span></a>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Usuarios<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="chart.html">Compra</a>
+                            <a href="{{ url('auth') }}">Lista de Usuarios</a>
                         </li>
                         <li>
-                            <a href="morris-chart.html">Venda</a>
-                        </li>
-                        <li>
-                            <a href="morris-chart.html">Entregas</a>
-                        </li>
-                        <li>
-                            <a href="morris-chart.html">Pagamento Vendedores</a>
+                            <a href="{{ url('usuarios/create') }}">Adicionar Usuario</a>
                         </li>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </nav>
@@ -179,6 +253,9 @@
 {{ Html::script('vendor/rafwell/simple-grid/moment/moment.js') }}
 {{ Html::script('vendor/rafwell/simple-grid/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}
 {{ Html::script('vendor/rafwell/simple-grid/js/simplegrid.js') }}
+{{ Html::script('//code.jquery.com/jquery-3.2.1.min.js') }}
+{{ Html::script('text/javascript') }}
+
 
 
 </body>
