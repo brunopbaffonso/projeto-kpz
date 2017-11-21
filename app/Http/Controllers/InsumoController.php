@@ -27,6 +27,7 @@ class InsumoController extends Controller
         ])
 
         ->processLine(function($row){
+                $row['precoUnit'] = 'R$'.number_format($row['precoUnit'], 2, ',', '.');
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
                 $row['precoUnit'] =  number_format($row['precoUnit'], 2, ',', '.');
                 $row['comprimento'] =  number_format($row['comprimento'], 2, ',', '.');

@@ -6,7 +6,7 @@
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
                 <li class="active">Lista de Itens</li>
-                <li><a href="{{ url('itens/create') }}">Adicionar Item</a></li>
+                <li><a href="{{ url('items/create') }}">Adicionar Item</a></li>
             </ol>
         </div>
         <div class="col-md-12">
