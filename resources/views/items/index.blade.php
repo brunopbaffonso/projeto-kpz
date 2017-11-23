@@ -5,7 +5,7 @@
             <h1 class="page-header">Itens</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Lista de Itens</li>
+                <li class="active">Listar Itens</li>
                 <li><a href="{{ url('items/create') }}">Adicionar Item</a></li>
             </ol>
         </div>

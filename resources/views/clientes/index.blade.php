@@ -5,7 +5,7 @@
             <h1 class="page-header">Clientes</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Lista de Clientes</li>
+                <li class="active">Listar Clientes</li>
                 <li><a href="{{ url('clientes/create') }}">Adicionar Cliente</a></li>
             </ol>
         </div>

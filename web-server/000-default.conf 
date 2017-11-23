@@ -1,0 +1,14 @@
+# /etc/apache2/sites-available/000-default.conf 
+
+<VirtualHost *:80>
+
+    ServerAdmin webmaster@localhost
+    DocumentRoot "/var/www/projeto-kpz/public"
+
+    <Directory /var/www/projeto-kpz/public>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+</VirtualHost>

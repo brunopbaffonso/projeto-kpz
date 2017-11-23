@@ -7,7 +7,7 @@
             <h1 class="page-header">Adicionar Insumo</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href="{{ url('insumos') }}">Lista de Insumos</a></li>
+                <li><a href="{{ url('insumos') }}">Listar Insumos</a></li>
                 <li class="active">Adicionar Insumo</li>
             </ol>
         </div>

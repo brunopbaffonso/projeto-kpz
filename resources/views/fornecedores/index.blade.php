@@ -5,7 +5,7 @@
             <h1 class="page-header">Fornecedores</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Lista de Fornecedores</li>
+                <li class="active">Listar Fornecedores</li>
                 <li><a href="{{ url('fornecedores/create') }} ">Adicionar Fornecedor</a></li>
             </ol>
         </div>

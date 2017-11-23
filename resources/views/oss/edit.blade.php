@@ -7,8 +7,8 @@
             <h1 class="page-header">Adicionar Ordem de Serviço</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href="{{ url('oss') }}  ">Lista de Serviços</a></li>
-                <li class="active">Adicionar Ordem de Serviço</li>
+                <li><a href="{{ url('oss') }}  ">Listar OS</a></li>
+                <li class="active">Adicionar OS</li>
             </ol>
         </div>
 

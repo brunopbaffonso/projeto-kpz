@@ -5,7 +5,7 @@
             <h1 class="page-header">Usuários</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Lista de Usuário</li>
+                <li class="active">Listar Usuários</li>
                 <li><a href="{{ url('usuarios/create') }}">Adicionar Usuário</a></li>
             </ol>
         </div>

@@ -7,7 +7,7 @@
             <h1 class="page-header">Adicionar Usuário</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href="{{ url('usuarios') }}">Lista de Usuários</a></li>
+                <li><a href="{{ url('usuarios') }}">Listar Usuários</a></li>
                 <li class="active">Adicionar Usuário</li>
             </ol>
         </div>

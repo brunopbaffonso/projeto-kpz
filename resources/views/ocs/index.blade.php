@@ -5,8 +5,8 @@
             <h1 class="page-header">Ordens de Compras</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Lista de Ordens de Compras</li>
-                <li><a href="{{ url('ocs/create') }} ">Adicionar Ordem de Compra</a></li>
+                <li class="active">Listar OC</li>
+                <li><a href="{{ url('ocs/create') }} ">Adicionar OC</a></li>
             </ol>
         </div>
         <div class="col-md-12">

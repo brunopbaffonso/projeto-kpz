@@ -5,8 +5,8 @@
             <h1 class="page-header">Ordem de Serviço</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li class="active">Lista de Serviços</li>
-                <li><a href="{{ url('oss/create') }}">Adicionar Serviço</a></li>
+                <li class="active">Listar OS</li>
+                <li><a href="{{ url('oss/create') }}">Adicionar OS</a></li>
             </ol>
         </div>
         <div class="col-md-12">

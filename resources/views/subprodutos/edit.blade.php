@@ -7,7 +7,7 @@
             <h1 class="page-header">Adicionar Subproduto</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href="{{ url('subprodutos') }}">Lista de Subprodutos</a></li>
+                <li><a href="{{ url('subprodutos') }}">Listar Subprodutos</a></li>
                 <li class="active">Adicionar Subproduto</li>
             </ol>
         </div>

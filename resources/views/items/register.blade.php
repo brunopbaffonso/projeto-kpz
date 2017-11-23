@@ -7,7 +7,7 @@
             <h1 class="page-header">Itens</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href="{{ url('items') }}">Lista de Itens</a></li>
+                <li><a href="{{ url('items') }}">Listar Itens</a></li>
                 <li class="active">Adicionar Item</a></li>
             </ol>
         </div>

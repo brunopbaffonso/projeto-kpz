@@ -102,7 +102,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><strong> KAPAZI</strong></a>
+            <a class="navbar-brand" href="{{ url('/') }}"><strong> KAPAZI</strong></a>
             <div id="sideNav" href="">
                 <i class="fa fa-bars icon"></i>
             </div>
@@ -138,7 +138,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Ordem de Serviço<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('oss') }}">Lista Ordem de Serviço</a>
+                            <a href="{{ url('oss') }}">Listar Ordens de Serviço</a>
                         </li>
                         <li>
                             <a href="{{ url('oss/create') }}">Adicionar Ordem de Serviço</a>
@@ -147,7 +147,7 @@
                             <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Itens<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('items') }}">Lista de Itens</a>
+                                    <a href="{{ url('items') }}">Listar Itens</a>
                                 </li>
                             </ul>
                         </li>
@@ -158,7 +158,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Ordem de Compra<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('ocs') }}">Lista Ordem de Compra</a>
+                            <a href="{{ url('ocs') }}">Listar Ordens de Compra</a>
                         </li>
                         <li>
                             <a href="{{ url('ocs/create') }}">Adicionar Ordem de Compra</a>
@@ -167,7 +167,7 @@
                             <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Insumo<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('insumos') }}">Lista Insumo</a>
+                                    <a href="{{ url('insumos') }}">Listar Insumos</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('insumos/create') }}">Adicionar Insumo</a>
@@ -181,7 +181,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> SubProduto<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('subprodutos') }}">Lista de Subprodutos</a>
+                            <a href="{{ url('subprodutos') }}">Listar Subprodutos</a>
                         </li>
                         <li>
                             <a href="{{ url('subprodutos/create') }}">Adicionar Subproduto</a>
@@ -193,7 +193,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Modelos<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('modelos') }}">Lista de Modelos</a>
+                            <a href="{{ url('modelos') }}">Listar Modelos</a>
                         </li>
                         <li>
                             <a href="{{ url('modelos/create') }}">Adicionar Modelo</a>
@@ -205,7 +205,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Fornecedores<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('fornecedores') }}">Entrar em Contato</a>
+                            <a href="{{ url('fornecedores') }}">Listar Fornecedores</a>
                         </li>
                         <li>
                             <a href="{{ url('fornecedores/create') }}">Adicionar Fornecedor</a>
@@ -217,7 +217,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Clientes<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('clientes') }}">Entrar em Contato</a>
+                            <a href="{{ url('clientes') }}">Listar Clientes</a>
                         </li>
                         <li>
                             <a href="{{ url('clientes/create') }}">Adicionar Cliente</a>
@@ -230,7 +230,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Usuarios<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('auth') }}">Lista de Usuarios</a>
+                            <a href="{{ url('usuarios') }}">Listar Usuarios</a>
                         </li>
                         <li>
                             <a href="{{ url('usuarios/create') }}">Adicionar Usuario</a>

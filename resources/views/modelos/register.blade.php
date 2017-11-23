@@ -7,7 +7,7 @@
         <h1 class="page-header">Adicionar Modelo</h1>
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
-                <li><a href=" {{ url('modelos') }}">Lista de Modelos</a></li>
+                <li><a href=" {{ url('modelos') }}">Listar Modelos</a></li>
                 <li class="active">Adicionar Modelo</li>
             </ol>               
     </div>
