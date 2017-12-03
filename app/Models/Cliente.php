@@ -17,7 +17,7 @@ class Cliente extends Model
     }
 
     public function cidade(){
-        return  $this->belongsTo(Cidade::class);
+        return  $this->belongsTo(Cidade::class, 'cidade_idCidade', 'nome');
 
     }
 }

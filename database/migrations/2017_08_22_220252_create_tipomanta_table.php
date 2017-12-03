@@ -16,7 +16,7 @@ class CreateTipomantaTable extends Migration {
 		{
 			$table->integer('idTipoManta')->unsigned()->unique('idTipoManta_UNIQUE');
 			$table->string('nome', 45);
-			$table->decimal('precoManta', 4);
+			$table->decimal('precoManta', 6,2);
 			$table->string('unidadeMedida', 2);
 			$table->string('cor_idCor', 4)->index('fk_TipoManta_Cor1_idx');
 		});

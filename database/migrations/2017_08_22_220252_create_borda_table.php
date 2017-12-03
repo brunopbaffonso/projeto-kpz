@@ -16,7 +16,7 @@ class CreateBordaTable extends Migration {
 		{
 			$table->integer('idBorda')->unsigned()->primary();
 			$table->string('nome', 45);
-			$table->decimal('precoBorda', 4);
+			$table->decimal('precoBorda', 6,2);
 			$table->string('undiadeMedida', 2);
 			$table->string('cor_idCor', 4)->index('fk_Borda_Cor1_idx');
 		});

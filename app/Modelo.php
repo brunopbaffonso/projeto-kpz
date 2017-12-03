@@ -12,5 +12,5 @@ class Modelo extends Model
         'idModelo', 'nome', 'created_at', 'updated_at', 
     ];
 
-    protected $table = 'modelo';
+    private $table = 'modelo';
 }

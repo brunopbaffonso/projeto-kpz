@@ -57,7 +57,7 @@
                         $("#endereco").val("...");
                         $("#bairro").val("...");
                         $("#cidade_idCidade").val("...");
-                        $("#uf").val("...");
+                        $("#estado_idEstado").val("...");
 
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
@@ -67,7 +67,7 @@
                                 $("#endereco").val(dados.logradouro);
                                 $("#bairro").val(dados.bairro);
                                 $("#cidade_idCidade").val(dados.localidade);
-                                $("#uf").val(dados.uf);
+                                $("#estado_idEstado").val(dados.uf);
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.
@@ -90,7 +90,6 @@
         });
 
     </script>
-
 </head>
 <body>
 <div id="wrapper">
