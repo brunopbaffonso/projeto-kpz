@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Cliente;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +15,7 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-       
+
         $Grid = new Grid(Cliente::query(), 'ClientesGrid');
 
         $Grid->fields([
@@ -33,7 +33,7 @@ class ClienteController extends Controller
 
             ->processLine(function($row){
                 $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
-                 $row['cnpj'] = substr($row['cnpj'], 0, 2) . '.' . substr($row['cnpj'], 2, 3) . '.' . substr($row['cnpj'], 5, 3) . '/' . substr($row['cnpj'], 8, 4) . '-' . substr($row['cnpj'], 12, 2);
+                $row['cnpj'] = substr($row['cnpj'], 0, 2) . '.' . substr($row['cnpj'], 2, 3) . '.' . substr($row['cnpj'], 5, 3) . '/' . substr($row['cnpj'], 8, 4) . '-' . substr($row['cnpj'], 12, 2);
                 $row['fone'] = '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'], 6);
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
                 return $row;
@@ -55,14 +55,14 @@ class ClienteController extends Controller
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
             ]);
 
-       $Grid->action('Editar', 'clientes/{idCliente}/edit', [
+        $Grid->action('Editar', 'clientes/{idCliente}/edit', [
             'confirm'=>'Deseja editar esse registro?',
             'method'=>'GET',
         ])
-        ->action('Deletar', 'clientes/{idCliente}', [
-            'confirm'=>'Deseja mesmo deletar esse registro?',
-            'method'=>'DELETE',
-        ]);
+            ->action('Deletar', 'clientes/{idCliente}', [
+                'confirm'=>'Deseja mesmo deletar esse registro?',
+                'method'=>'DELETE',
+            ]);
 
         $Grid->checkbox(true, 'emp_no');
         $Grid->bulkAction('Deletar itens selecionados', 'clientes/bulk-delete');
@@ -91,56 +91,35 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $cliente = new Cliente;
-        $cliente->ativo = $request->ativo;
-        $cliente->nome = $request->nome;
-        $cliente->cnpj = $request->cnpj;
-        $cliente->cpf = $request->cpf;
-        $cliente->ie = $request->ie;
-        $cliente->endereco = $request->endereco;
-        $cliente->bairro = $request->bairro;
-        $cliente->cep = $request->cep;
-        $cliente->fone = $request->fone;
-        $cliente->celular = $request->celular;
-        $cliente->email = $request->email;
-//        $cliente->created_at = $request->created_at;
-//        $cliente->updated_at = $request->updated_at;
-<<<<<<< HEAD
-        $cliente->cidade_idCidade = DB::table('cidade')->select('idCidade')->where('nome', '=', $request->cidade_idCidade)->get();
-        //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
-        dd($cliente);
-=======
-        $cliente->cidade_idCidade = Cidade::select('cidades.*', 'estados.uf as uf')
-                ->join('estados', 'uf', '=', 'cidades.uf')
-                ->where('cidades.nome', 'LIKE', Input::get('term') . '%')
-                ->orderBy('cidades.nome', 'asc')
-                ->orderBy('estados.nome', 'asc')
-                ->get();
-;
->>>>>>> f124d0269873ab0a188e79e0e72e6685797dfa51
-        $cliente-> save();
-        return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
-
-
         $this->validate($request,[
-            'nome'=>'required|min:3|max:255',
-            'cpf'=>'min:11|max:11',
-            'cnpf'=>'min:14|max:14',
+            'nome'=> 'string|min:3|max:255',
+            'cpf'=> 'min:11|max:11',
+            'cnpf'=> 'min:14|max:14',
+            'endereco'=> 'required|min:3|max:255',
+            'bairro'=> 'required|min:3|max:255',
+            'cidade'=> 'required|min:3|max:255'
         ],[
-
+            'nome.string'=>'Esse campo so aceita letras',
             'nome.min'=>'Minimo de 3 caracteres',
             'nome.max'=>'maximo de 255 caracteres',
             'cpf.min'=>'Minimo de 11 digitos',
             'cpf.max'=>'maximo de 11 digitos',
             'cnpj.min'=>'Minimo de 14 digitos',
             'cnpj.max'=>'maximo de 14 digitos',
+            'endereco.min'=>'Minimo de 3 caracteres',
+            'endereco.max'=>'maximo de 255 caracteres',
+            'bairro.min'=>'Minimo de 3 caracteres',
+            'bairro.max'=>'maximo de 255 caracteres',
+            'cidade.min'=>'Minimo de 3 caracteres',
+            'cidade.max'=>'maximo de 255 caracteres'
         ]);
+
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
-     *(
+     *
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
@@ -157,13 +136,15 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //dd($id);
+        //dd($id)
         $retorno = Cliente::where('idCliente', '=', $id)->first();
         if(count($retorno) == 0)
         {
             Session::flash('produto_nencontrado', 'Cliente não encontrado.');
             return redirect('/clientes');
         }
+
+
 
         return view('clientes.edit')->with('cliente', $retorno);
 
@@ -199,6 +180,7 @@ class ClienteController extends Controller
         dd($cliente);
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');
+
     }
 
     /**

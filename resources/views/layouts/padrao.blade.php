@@ -37,7 +37,7 @@
                 $("#uf").val("");
                 $("#ibge").val("");
             }
-            
+
             //Quando o campo cep perde o foco.
             $("#cep").blur(function() {
 
@@ -162,7 +162,7 @@
                         <li>
                             <a href="{{ url('ocs/create') }}">Adicionar Ordem de Compra</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Insumo<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

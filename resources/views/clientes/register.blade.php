@@ -32,7 +32,7 @@
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                     <label for="nome" class="col-md-2 control-label">Nome</label>
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" pattern="[a-zA-Z\s]+$" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('nome')}}</strong>
@@ -129,7 +129,7 @@
                                     <label for="cidade_idCidade" class="col-md-2 control-label">Cidade</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="text" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
+                                        <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
 
                                         @if ($errors->has('cidade_idCidade'))
                                             <span class="help-block">
@@ -139,18 +139,7 @@
                                     </div>
                                 </div>
 
-<<<<<<< HEAD
-                                <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
-                                    <label for="uf" class="col-md-2 control-label">Cidade</label>
-
-                                    <div class="col-md-8">
-                                        <input id="uf" type="text" class="form-control" name="uf" value="{{ old('uf') }}" required autofocus>
-
-                                        @if ($errors->has('uf'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('uf') }}</strong>
-=======
-                                 <div class="form-group{{ $errors->has('estado_idEstado') ? ' has-error' : '' }}">
+                                <div class="form-group{{ $errors->has('estado_idEstado') ? ' has-error' : '' }}">
                                     <label for="estado_idEstado" class="col-md-2 control-label">Estado</label>
 
                                     <div class="col-md-8">
@@ -159,7 +148,6 @@
                                         @if ($errors->has('estado_idEstado'))
                                             <span class="help-block">
                                         <strong>{{ $errors->first('estado_idEstado') }}</strong>
->>>>>>> f124d0269873ab0a188e79e0e72e6685797dfa51
                                     </span>
                                         @endif
                                     </div>
@@ -207,7 +195,7 @@
                                     </div>
                                 </div>
 
-                                
+
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">
