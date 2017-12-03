@@ -19,7 +19,7 @@ class CreateInsumoTable extends Migration {
 			$table->integer('comprimento');
 			$table->integer('largura');
 			$table->string('unidadeMedida', 2);
-			$table->decimal('precoUnit', 4);
+			$table->decimal('precoUnit', 6,2);
             $table->timestamp('update_at');
             $table->timestamp('created_at');
 			$table->integer('oc_idOC')->index('fk_Insumo_OC1_idx');

@@ -16,7 +16,7 @@ class CreateTipomaterialTable extends Migration {
 		{
 			$table->integer('idTipoMaterial')->unsigned()->unique('idTipoMaterial_UNIQUE');
 			$table->string('nome', 45);
-			$table->decimal('precoMaterial', 4);
+			$table->decimal('precoMaterial', 6,2);
 			$table->string('unidadeMedida', 45);
 			$table->string('cor_idCor', 4)->index('fk_TipoMaterial_Cor1_idx');
 		});

@@ -21,7 +21,7 @@ class CreateItemTable extends Migration {
 			$table->string('unidadeMedida', 2)->nullable();
 			$table->boolean('borda');
 			$table->string('arte')->nullable();
-			$table->decimal('precoUnit', 4);
+			$table->decimal('precoUnit', 6,2);
 			$table->string('fonte', 45);
             $table->timestamp('update_at');
             $table->timestamp('created_at');

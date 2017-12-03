@@ -1,5 +1,7 @@
 @extends('layouts.padrao')
 
+
+
 @section('content')
     <div id="page-wrapper">
 
@@ -29,14 +31,12 @@
 
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                     <label for="nome" class="col-md-2 control-label">Nome</label>
-
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
-
+                                        <input id="nome" type="text" pattern="[a-zA-Z\s]+$" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('nome') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('nome')}}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -139,11 +139,25 @@
                                     </div>
                                 </div>
 
+                                 <div class="form-group{{ $errors->has('estado_idEstado') ? ' has-error' : '' }}">
+                                    <label for="estado_idEstado" class="col-md-2 control-label">Estado</label>
+
+                                    <div class="col-md-8">
+                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" value="{{ old('estado_idEstado') }}" required autofocus>
+
+                                        @if ($errors->has('estado_idEstado'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('estado_idEstado') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group{{ $errors->has('fone') ? ' has-error' : '' }}">
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" autofocus>
+                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" required autofocus>
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">

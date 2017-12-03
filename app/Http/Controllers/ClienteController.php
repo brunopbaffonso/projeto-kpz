@@ -90,7 +90,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        
         $cliente = new Cliente;
         $cliente->ativo = $request->ativo;
         $cliente->nome = $request->nome;
@@ -105,9 +105,30 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
 //        $cliente->created_at = $request->created_at;
 //        $cliente->updated_at = $request->updated_at;
-        $cliente->cidade_idCidade = $request->cidade_idCidade;
+        $cliente->cidade_idCidade = Cidade::select('cidades.*', 'estados.uf as uf')
+                ->join('estados', 'uf', '=', 'cidades.uf')
+                ->where('cidades.nome', 'LIKE', Input::get('term') . '%')
+                ->orderBy('cidades.nome', 'asc')
+                ->orderBy('estados.nome', 'asc')
+                ->get();
+;
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
+
+
+        $this->validate($request,[
+            'nome'=>'required|min:3|max:255',
+            'cpf'=>'min:11|max:11',
+            'cnpf'=>'min:14|max:14',
+        ],[
+
+            'nome.min'=>'Minimo de 3 caracteres',
+            'nome.max'=>'maximo de 255 caracteres',
+            'cpf.min'=>'Minimo de 11 digitos',
+            'cpf.max'=>'maximo de 11 digitos',
+            'cnpj.min'=>'Minimo de 14 digitos',
+            'cnpj.max'=>'maximo de 14 digitos',
+        ]);
     }
 
     /**
