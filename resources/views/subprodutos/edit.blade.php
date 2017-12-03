@@ -95,19 +95,40 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('cor_idCor') ? ' has-error' : '' }}">
-                                <label for="cor_idCor" class="col-md-4 control-label">Cor:</label>
-
-                                <div class="col-md-6">
-                                    <input id="cor_idCor" type="number" class="form-control" name="cor_idCor" value="{{ $subproduto->cor_idCor }}" required autofocus>
-
-                                    @if ($errors->has('cor_idCor'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('cor_idCor') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+                            <div class="dropdown">
+                                <label for="cor" class="col-md-2 control-label">Cor:</label>
+                                <select name="cor_idCor">
+                                    <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
+                                    <option value="K01" class="dropdown-item">Cinza</option>
+                                    <option value="K02" class="dropdown-item">Grafite</option>
+                                    <option value="K03" class="dropdown-item">Preto</option>
+                                    <option value="K04" class="dropdown-item">Marrom</option>
+                                    <option value="K05" class="dropdown-item">Bege</option>
+                                    <option value="K06" class="dropdown-item">Ouro</option>
+                                    <option value="K08" class="dropdown-item">Amarelo</option>
+                                    <option value="K09" class="dropdown-item">Laranja</option>
+                                    <option value="K10" class="dropdown-item">Vermelho</option>
+                                    <option value="K11" class="dropdown-item">Bordo</option>
+                                    <option value="K12" class="dropdown-item">Azul Marinho</option>
+                                    <option value="K13" class="dropdown-item">Azul Royal</option>
+                                    <option value="K14" class="dropdown-item">Salmão</option>
+                                    <option value="K15" class="dropdown-item">Verde Bandeira</option>
+                                    <option value="K16" class="dropdown-item">Verde Limão</option>
+                                    <option value="K17" class="dropdown-item">Prata</option>
+                                    <option value="K18" class="dropdown-item">Lilás</option>
+                                    <option value="K19" class="dropdown-item">Azul Marítimo</option>
+                                    <option value="K20" class="dropdown-item">Verde Floresta</option>
+                                    <option value="K21" class="dropdown-item">Pink</option>
+                                    <option value="K22" class="dropdown-item">Verde Água</option>
+                                    <option value="K23" class="dropdown-item">Verde Piscina</option>
+                                    <option value="K24" class="dropdown-item">Azul Bebê</option>
+                                    <option value="K25" class="dropdown-item">Rosa Bebê</option>
+                                    <option value="K26" class="dropdown-item">Roxo</option>
+                                    <option value="K27" class="dropdown-item">Púrpura</option>
+                                </select>
                             </div>
+
+                            <br />
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">

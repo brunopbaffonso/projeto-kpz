@@ -22,7 +22,6 @@ class CreateItemTable extends Migration {
 			$table->boolean('borda');
 			$table->string('arte')->nullable();
 			$table->decimal('precoUnit', 4);
-			$table->string('fonte', 45);
             $table->timestamp('update_at');
             $table->timestamp('created_at');
 			$table->integer('os_idOS')->unsigned()->index('fk_Item_OS_idx');

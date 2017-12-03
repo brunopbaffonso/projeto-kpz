@@ -129,11 +129,25 @@
                                     <label for="cidade_idCidade" class="col-md-2 control-label">Cidade</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
+                                        <input id="cidade_idCidade" type="text" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" required autofocus>
 
                                         @if ($errors->has('cidade_idCidade'))
                                             <span class="help-block">
                                         <strong>{{ $errors->first('cidade_idCidade') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('uf') ? ' has-error' : '' }}">
+                                    <label for="uf" class="col-md-2 control-label">Cidade</label>
+
+                                    <div class="col-md-8">
+                                        <input id="uf" type="text" class="form-control" name="uf" value="{{ old('uf') }}" required autofocus>
+
+                                        @if ($errors->has('uf'))
+                                            <span class="help-block">
+                                        <strong>{{ $errors->first('uf') }}</strong>
                                     </span>
                                         @endif
                                     </div>

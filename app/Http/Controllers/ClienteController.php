@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -105,14 +106,16 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
 //        $cliente->created_at = $request->created_at;
 //        $cliente->updated_at = $request->updated_at;
-        $cliente->cidade_idCidade = $request->cidade_idCidade;
+        $cliente->cidade_idCidade = DB::table('cidade')->select('idCidade')->where('nome', '=', $request->cidade_idCidade)->get();
+        //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
+        dd($cliente);
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
     }
 
     /**
      * Display the specified resource.
-     *
+     *(
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
@@ -129,7 +132,7 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        //dd($id)
+        //dd($id);
         $retorno = Cliente::where('idCliente', '=', $id)->first();
         if(count($retorno) == 0)
         {
@@ -166,7 +169,9 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
 //        $cliente->created_at = $request->created_at;
 //        $cliente->updated_at = $request->updated_at;
-        $cliente->cidade_idCidade = $request->cidade_idCidade;
+        $cliente->cidade_idCidade = DB::table('cidade')->select('idCidade')->where('nome', '=', $request->cidade_idCidade)->get();
+        //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
+        dd($cliente);
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');
     }
