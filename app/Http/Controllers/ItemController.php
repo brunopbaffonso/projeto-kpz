@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Item;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Rafwell\Simplegrid\Grid;

@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\OS;
+use App\Models\OS;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\OperatingSystem;
 use Rafwell\Simplegrid\Grid;

@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
-use App\Modelo;
+use App\Models\Modelo;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
+
 class ModeloController extends Controller
 {
     /**
@@ -62,6 +63,16 @@ class ModeloController extends Controller
     {
         $modelo = new Modelo;
         $modelo->nome = $request->nome;
+
+
+        $this->validate($request,[
+            'nome'=> 'required|min:3|max:255',
+        ],[
+            'nome.string'=>'Esse campo so aceita Letras',
+            'nome.min'=>'Minimo de 3 caracteres',
+            'nome.max'=>'maximo de 255 caracteres',
+        ]);
+
         $modelo-> save();
         return redirect()->route('modelos.index')->with('message', 'Modelo Criado Com Sucesso');
     }

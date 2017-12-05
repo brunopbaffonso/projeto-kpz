@@ -33,7 +33,7 @@
                                     <label for="nome" class="col-md-2 control-label">Nome</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Ex:João da Silva" required autofocus>
                                         <div class="col-md-8">
                                             <input id="nome" pattern="[a-zA-Z\s]+$" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}"  required autofocus>
                                             @if ($errors->has('nome'))

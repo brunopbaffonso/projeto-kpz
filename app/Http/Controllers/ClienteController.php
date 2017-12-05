@@ -91,30 +91,48 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+
+        $cliente = new Cliente;
+        $cliente->ativo = $request->ativo;
+        $cliente->nome = $request->nome;
+        $cliente->cnpj = $request->cnpj;
+        $cliente->cpf = $request->cpf;
+        $cliente->ie = $request->ie;
+        $cliente->endereco = $request->endereco;
+        $cliente->bairro = $request->bairro;
+        $cliente->cep = $request->cep;
+        $cliente->fone = $request->fone;
+        $cliente->celular = $request->celular;
+        $cliente->email = $request->email;
+        $cliente->cidade_idCidade = $request->cidade_idCidade;
+
+       $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
-            'cpf'=> 'min:11|max:11',
-            'cnpf'=> 'min:14|max:14',
             'endereco'=> 'required|min:3|max:255',
             'bairro'=> 'required|min:3|max:255',
-            'cidade'=> 'required|min:3|max:255'
+            'cidade'=> 'required|min:3|max:255',
+            'telefone'=>'min:12|max:12',
+            'celular'=>'required|min:13|max:13'
         ],[
             'nome.string'=>'Esse campo so aceita letras',
             'nome.min'=>'Minimo de 3 caracteres',
             'nome.max'=>'maximo de 255 caracteres',
-            'cpf.min'=>'Minimo de 11 digitos',
-            'cpf.max'=>'maximo de 11 digitos',
-            'cnpj.min'=>'Minimo de 14 digitos',
-            'cnpj.max'=>'maximo de 14 digitos',
             'endereco.min'=>'Minimo de 3 caracteres',
             'endereco.max'=>'maximo de 255 caracteres',
             'bairro.min'=>'Minimo de 3 caracteres',
             'bairro.max'=>'maximo de 255 caracteres',
             'cidade.min'=>'Minimo de 3 caracteres',
-            'cidade.max'=>'maximo de 255 caracteres'
+            'cidade.max'=>'maximo de 255 caracteres',
+            'telefone.min'=>'Minimo de 12 caracteres',
+            'telefone.max'=>'maximo de 12 caracteres',
+            'celular.min'=>'Minimo de 13 caracteres',
+            'celular.max'=>'maximo de 13 caracteres'
         ]);
 
-        dd($request->all());
+        $cliente-> save();
+        return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
+
+        //dd($request->all());
     }
 
     /**
@@ -173,8 +191,6 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-//        $cliente->created_at = $request->created_at;
-//        $cliente->updated_at = $request->updated_at;
         $cliente->cidade_idCidade = DB::table('cidade')->select('idCidade')->where('nome', '=', $request->cidade_idCidade)->get();
         //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
         dd($cliente);

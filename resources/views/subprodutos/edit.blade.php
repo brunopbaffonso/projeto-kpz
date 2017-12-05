@@ -26,7 +26,7 @@
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'subprodutos/'.$subproduto->idSubproduto, 'method' => 'put'])!!}
                                 <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                                    <label for="tipo" class="col-md-4 control-label">Tipo:</label>
+                                    <label for="tipo" class="col-md-4 control-label">*Descrição:</label>
 
                                     <div class="col-md-6">
                                         <input id="tipo" type="text" class="form-control" name="tipo" value="{{ $subproduto->tipo }}" required autofocus>
@@ -40,10 +40,10 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
-                                    <label for="quantidade" class="col-md-4 control-label">Quantidade:</label>
+                                    <label for="quantidade" class="col-md-4 control-label">*Quantidade:</label>
 
                                     <div class="col-md-6">
-                                        <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ $subproduto->quantidade }}" required autofocus>
+                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ $subproduto->quantidade }}" required autofocus>
 
                                         @if ($errors->has('quantidade'))
                                             <span class="help-block">
@@ -57,7 +57,7 @@
                                     <label for="comprimento" class="col-md-4 control-label">Comprimento:</label>
 
                                     <div class="col-md-6">
-                                        <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ $subproduto->comprimento }}" required autofocus>
+                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ $subproduto->comprimento }}" required autofocus>
 
                                         @if ($errors->has('comprimento'))
                                             <span class="help-block">
@@ -71,7 +71,7 @@
                                     <label for="largura" class="col-md-4 control-label">Largura:</label>
 
                                     <div class="col-md-6">
-                                        <input id="largura" type="number" class="form-control" name="largura" value="{{ $subproduto->largura }}" required autofocus>
+                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ $subproduto->largura }}" required autofocus>
 
                                         @if ($errors->has('largura'))
                                             <span class="help-block">
@@ -81,23 +81,23 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
-                                    <label for="unidadeMedida" class="col-md-4 control-label">Unidade Medida:</label>
-
-                                    <div class="col-md-6">
-                                        <input id="unidadeMedida" type="text" class="form-control" name="unidadeMedida" value="{{ $subproduto->unidadeMedida }}" required autofocus>
-
-                                        @if ($errors->has('unidadeMedida'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('unidadeMedida') }}</strong>
-                                    </span>
-                                        @endif
+                                <div class="form-group row">
+                                <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
+                                <div class="col-md-8" name="unidadeMedida">
+                                        <select name="unidadeMedida" class="form-control form-control-lg">
+                                            <option value="mm" class="dropdown-item">mm (Milimetro)</option>
+                                            <option value="cm" class="dropdown-item">cm (Centimetros)</option>
+                                            <option value="dm" class="dropdown-item">dm (Decimetros)</option>
+                                            <option value="m" class="dropdown-item">m (Metros)</option>
+                                            <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div class="dropdown">
-                                    <label for="cor" class="col-md-2 control-label">Cor:</label>
-                                    <select name="cor_idCor">
+                                <div class="form-group row">
+                                <label for="cor" class="col-md-2 control-label">Cor:</label>
+                                <div class="col-md-8" name="cor_idCor">
+                                    <select class="form-control form-control-lg">
                                         <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
                                         <option value="K01" class="dropdown-item">Cinza</option>
                                         <option value="K02" class="dropdown-item">Grafite</option>
@@ -127,7 +127,7 @@
                                         <option value="K27" class="dropdown-item">Púrpura</option>
                                     </select>
                                 </div>
-
+                                </div>
                                 <br />
 
                                 <div class="form-group">

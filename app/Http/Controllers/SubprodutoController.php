@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Subproduto;
+use App\Models\Subproduto;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 

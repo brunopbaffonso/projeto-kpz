@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Fornecedor;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 
@@ -99,8 +99,33 @@ class FornecedorController extends Controller
         $fornecedor->fone = $request->fone;
         $fornecedor->celular = $request->celular;
         $fornecedor->email = $request->email;
-//        $fornecedor->created_at = $request->created_at;
-//        $fornecedor->updated_at = $request->updated_at;
+
+         $this->validate($request,[
+            'nome'=> 'string|min:3|max:255',
+            'cnpj'=> 'min:14|max:14',
+            'endereco'=> 'required|min:3|max:255',
+            'bairro'=> 'required|min:3|max:255',
+            'cidade'=> 'required|min:3|max:255',
+            'telefone'=>'min:12|max:12',
+            'celular'=>'required|min:13|max:13'
+        ],[
+            'nome.string'=>'Esse campo so aceita letras',
+            'nome.min'=>'Minimo de 3 caracteres',
+            'nome.max'=>'maximo de 255 caracteres',
+            'cnpj.min'=>'Minimo de 14 caracteres',
+            'cnpj.max'=>'maximo de 14 caracteres',
+            'endereco.min'=>'Minimo de 3 caracteres',
+            'endereco.max'=>'maximo de 255 caracteres',
+            'bairro.min'=>'Minimo de 3 caracteres',
+            'bairro.max'=>'maximo de 255 caracteres',
+            'cidade.min'=>'Minimo de 3 caracteres',
+            'cidade.max'=>'maximo de 255 caracteres',
+            'telefone.min'=>'Minimo de 12 caracteres',
+            'telefone.max'=>'maximo de 12 caracteres',
+            'celular.min'=>'Minimo de 13 caracteres',
+            'celular.max'=>'maximo de 13 caracteres'
+        ]);
+
         $fornecedor-> save();
         return redirect()->route('fornecedores.index')->with('message', 'Fornecedor Criado Com Sucesso');
     }

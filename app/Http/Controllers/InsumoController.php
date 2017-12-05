@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Insumo;
+use App\Models\Insumo;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 
@@ -29,7 +29,6 @@ class InsumoController extends Controller
         ->processLine(function($row){
                 $row['precoUnit'] = 'R$'.number_format($row['precoUnit'], 2, ',', '.');
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
-                $row['precoUnit'] =  number_format($row['precoUnit'], 2, ',', '.');
                 $row['comprimento'] =  number_format($row['comprimento'], 2, ',', '.');
                 $row['largura'] =  number_format($row['largura'], 2, ',', '.');
                 return $row;
@@ -83,6 +82,7 @@ class InsumoController extends Controller
      */
     public function store(Request $request)
     {
+
         $insumo = new Insumo;
         $insumo->nome = $request->nome;
         $insumo->quantidade = $request->quantidade;
@@ -90,8 +90,26 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
-//        $insumo->created_at = $request->created_at;
-//        $insumo->updated_at = $request->updated_at;
+        
+        $this->validate($request,[
+            'nome'=> 'string|min:3|max:255',
+            'quantidade'=> 'numeric|min:1',
+            'comprimento'=> 'numeric|between:0,99.99',
+            'largura'=> 'numeric|between:0,99.99',
+            'precoUnit'=> 'numeric|between:0.01,99.99'
+        ],[
+            'nome.string'=>'Esse campo so aceita Letras',
+            'nome.min'=>'Minimo de 3 caracteres',
+            'nome.max'=>'maximo de 255 caracteres',
+            'quantidade.numeric'=>'Esse campos so aceita numeros',
+            'quantidade.min'=>'Deve estar no intervalo',
+            'comprimento.numeric'=>'Esse campos so aceita numeros',
+            'comprimento.between'=>'Campo aceita numeros em um intervalo de 0 e 99,99',
+            'largura.numeric'=>'Esse campos so aceita numeros',
+            'largura.between'=>'Campo aceita numeros em um intervalo de 0 e 99,99',
+            'precoUnit.between'=>'Campo aceita valor entre de 0,01 e 99,99 reais'
+        ]);
+
         $insumo-> save();
         return redirect()->route('insumos.index')->with('message', 'Insumo Criado Com Sucesso');
     }
