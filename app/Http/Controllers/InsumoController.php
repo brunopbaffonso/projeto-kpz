@@ -96,7 +96,7 @@ class InsumoController extends Controller
             'quantidade'=> 'numeric|min:1',
             'comprimento'=> 'numeric|between:0,99.99',
             'largura'=> 'numeric|between:0,99.99',
-            'precoUnit'=> 'numeric|between:0.01,99.99'
+            'precoUnit'=> 'numeric|between:0.01,9999.99'
         ],[
             'nome.string'=>'Esse campo so aceita Letras',
             'nome.min'=>'Minimo de 3 caracteres',
@@ -107,7 +107,7 @@ class InsumoController extends Controller
             'comprimento.between'=>'Campo aceita numeros em um intervalo de 0 e 99,99',
             'largura.numeric'=>'Esse campos so aceita numeros',
             'largura.between'=>'Campo aceita numeros em um intervalo de 0 e 99,99',
-            'precoUnit.between'=>'Campo aceita valor entre de 0,01 e 99,99 reais'
+            'precoUnit.between'=>'Campo aceita valor entre de 0,01 e 9999,99 reais'
         ]);
 
         $insumo-> save();

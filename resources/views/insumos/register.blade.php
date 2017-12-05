@@ -27,10 +27,10 @@
                                 {!!Form::open(['url' => 'insumos/', 'method' => 'post'])!!}
 
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
-                                    <label for="nome" class="col-md-2 control-label">Descrição:</label>
+                                    <label for="nome" class="col-md-2 control-label">*Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Ex: Manta/Tinta" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
@@ -41,10 +41,10 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
-                                    <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
+                                    <label for="quantidade" class="col-md-2 control-label">*Quantidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ old('quantidade') }}" required autofocus>
+                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ old('quantidade') }}" placeholder="Ex: 1 Rolo/10 Latas" required autofocus>
 
                                         @if ($errors->has('quantidade'))
                                             <span class="help-block">
@@ -58,7 +58,7 @@
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                     <div class="col-md-8">
-                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ old('comprimento') }}" required autofocus>
+                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ old('comprimento') }}" placeholder="Ex: 0.60/0.90" required autofocus>
 
                                         @if ($errors->has('comprimento'))
                                             <span class="help-block">
@@ -72,7 +72,7 @@
                                     <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                     <div class="col-md-8">
-                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ old('largura') }}" required autofocus>
+                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ old('largura') }}" placeholder="Ex: 0.60/0.90" required autofocus>
 
                                         @if ($errors->has('largura'))
                                             <span class="help-block">
@@ -99,7 +99,7 @@
                                     <label for="precoUnit" class="col-md-2 control-label">Preço Unitário:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoUnit" type="text" class="form-control" name="precoUnit" value="{{ old('precoUnit') }}" required autofocus>
+                                        <input id="precoUnit" type="text" class="form-control" name="precoUnit" value="{{ old('precoUnit') }}" placeholder="Ex: R$ 10.00/ R$270.55" required autofocus>
 
                                         @if ($errors->has('precoUnit'))
                                             <span class="help-block">

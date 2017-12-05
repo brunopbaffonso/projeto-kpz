@@ -32,7 +32,7 @@
                                         <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                         <div class="col-md-8">
-                                            <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ old('quantidade') }}" required autofocus>
+                                            <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ old('quantidade') }}" placeholder="Ex: 1/10" required autofocus>
 
                                             @if ($errors->has('quantidade'))
                                                 <span class="help-block">
@@ -46,7 +46,7 @@
                                         <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                         <div class="col-md-8">
-                                            <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ old('comprimento') }}" required autofocus>
+                                            <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ old('comprimento') }}" placeholder="Ex: 0.90/ 1.20" required autofocus>
 
                                             @if ($errors->has('comprimento'))
                                                 <span class="help-block">
@@ -60,7 +60,7 @@
                                         <label for="comprimento" class="col-md-2 control-label">Largura:</label>
 
                                         <div class="col-md-8">
-                                            <input id="largura" type="number" class="form-control" name="largura" value="{{ old('largura') }}" required autofocus>
+                                            <input id="largura" type="number" class="form-control" name="largura" value="{{ old('largura') }}" f required autofocus>
 
                                             @if ($errors->has('largura'))
                                                 <span class="help-block">
@@ -85,7 +85,7 @@
                                         <label for="borda" class="col-md-2 control-label">Borda:</label>
 
                                         <div class="col-md-8">
-                                            <input id="borda" type="number" class="form-control" name="borda" value="{{ old('borda') }}" required autofocus>
+                                            <input id="borda" type="number" class="form-control" name="borda" value="{{ old('borda') }}"  required autofocus>
 
                                             @if ($errors->has('borda'))
                                                 <span class="help-block">

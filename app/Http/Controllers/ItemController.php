@@ -105,11 +105,10 @@ class ItemController extends Controller
         }
         $item->precoUnit = $request->precoUnit;
         $item->fonte = $request->fonte;
-//        $item->created_at = $request->created_at;
-//        $item->updated_at = $request->updated_at;
 //        $item->os_idOS = OS::orderBy('idOS', 'desc')->first();
         $item->os_idOS = $request->os_idOS;
 //        dd($item);
+
         $item-> save();
         if($request->submit == "0"){
             return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
