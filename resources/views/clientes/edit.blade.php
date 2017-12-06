@@ -33,7 +33,7 @@
                                     <label for="nome" class="col-md-2 control-label">Nome</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Ex:João da Silva" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Ex:João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$" required autofocus>
                                         <div class="col-md-8">
                                             <input id="nome" pattern="[a-zA-Z\s]+$" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}"  required autofocus>
                                             @if ($errors->has('nome'))
@@ -48,7 +48,7 @@
                                         <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                         <div class="col-md-8">
-                                            <input id="cpf" type="text" class="form-control" name="cpf" value="{{ $cliente->cpf }}" autofocus>
+                                            <input id="cpf" type="text" class="form-control" name="cpf" value="{{ $cliente->cpf }}" pattern="[0-9.-/]+$"  maxlength="11" autofocus>
                                             <div class="col-md-8">
                                                 <input id="cpf" type="text" class="form-control" name="cpf" value="{{ $cliente->cpf }}" autofocus>
                                                 @if ($errors->has('cpf'))
@@ -63,12 +63,12 @@
                                             <label for="cnpj" class="col-md-2 control-label">CNPJ</label>
 
                                             <div class="col-md-8">
-                                                <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $cliente->cnpj }}" autofocus>
+                                                <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $cliente->cnpj }}" pattern="[0-9.-/]+$" maxlength="14" autofocus>
 
                                                 @if ($errors->has('cnpj'))
                                                     <span class="help-block">
-                                        <strong>{{ $cliente->cnpj }}</strong>
-                                    </span>
+                                                        <strong>{{ $cliente->cnpj }}</strong>
+                                                    </span>
                                                 @endif
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control"  value="{{ $cliente->fone }}" name="fone" autofocus>
+                                        <input id="fone" type="text" class="form-control"  value="{{ $cliente->fone }}" name="fone" maxlength="12" pattern="[0-9-]" autofocus>
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">
@@ -215,7 +215,7 @@
                                     <label for="celular" class="col-md-2 control-label">Celular</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" value="{{ $cliente->celular }}" name="celular" required autofocus>
+                                        <input id="celular" type="text" class="form-control" value="{{ $cliente->celular }}" name="celular" maxlength="13" pattern="[0-9-]" required autofocus>
 
                                         @if ($errors->has('celular'))
                                             <span class="help-block">
@@ -229,7 +229,7 @@
                                     <label for="email" class="col-md-2 control-label">E-mail</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="text" class="form-control" value="{{ $cliente->email }}" name="email" required autofocus>
+                                        <input id="email" type="text" class="form-control" value="{{ $cliente->email }}" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -248,8 +248,8 @@
                                 </div>
                                     {!! Form::close() !!}
                             </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                   </div>
+        </div>
+    </div>
+</div>
 @endsection

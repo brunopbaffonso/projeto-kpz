@@ -29,7 +29,7 @@
                                 <div class="form-group<?php echo e($errors->has('nome') ? ' has-error' : ''); ?>">
                                     <label for="nome" class="col-md-2 control-label">*Nome</label>
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Ex:João da Silva" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Ex:João da Silva" pattern="[a-z\s]+$" required autofocus>
                                         <?php if($errors->has('nome')): ?>
                                             <span class="help-block">
                                                 <strong><?php echo e($errors->first('nome')); ?></strong>
@@ -42,7 +42,7 @@
                                     <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                     <div class="col-md-8">
-                                        <input id="cpf" type="text" class="form-control" name="cpf" value="<?php echo e(old('cpf')); ?>"  placeholder="Ex:000.000.00-00" autofocus>
+                                        <input id="cpf" type="text" class="form-control" name="cpf" value="<?php echo e(old('cpf')); ?>"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="Ex:000.000.00-00" autofocus>
 
                                         <?php if($errors->has('cpf')): ?>
                                             <span class="help-block">
@@ -56,7 +56,7 @@
                                     <label for="cnpj" class="col-md-2 control-label">CNPJ</label>
 
                                     <div class="col-md-8">
-                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="<?php echo e(old('cnpj')); ?>"  placeholder="Ex:00.00.000/0000-00" autofocus>
+                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="<?php echo e(old('cnpj')); ?>" pattern="[0-9.-/]+$"  maxlength="14"  placeholder="Ex:00.00.000/0000-00" autofocus>
 
                                         <?php if($errors->has('cnpj')): ?>
                                             <span class="help-block">

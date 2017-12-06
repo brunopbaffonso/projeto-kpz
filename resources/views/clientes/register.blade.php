@@ -32,7 +32,7 @@
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                     <label for="nome" class="col-md-2 control-label">*Nome</label>
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Ex:João da Silva" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Ex:João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$" required autofocus>
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('nome')}}</strong>
@@ -45,7 +45,7 @@
                                     <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                     <div class="col-md-8">
-                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}"  placeholder="Ex:000.000.00-00" autofocus>
+                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="Ex:000.000.00-00" autofocus>
 
                                         @if ($errors->has('cpf'))
                                             <span class="help-block">
@@ -59,7 +59,7 @@
                                     <label for="cnpj" class="col-md-2 control-label">CNPJ</label>
 
                                     <div class="col-md-8">
-                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}"  placeholder="Ex:00.00.000/0000-00" autofocus>
+                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" pattern="[0-9.-/]+$"  maxlength="14"  placeholder="Ex:00.00.000/0000-00" autofocus>
 
                                         @if ($errors->has('cnpj'))
                                             <span class="help-block">
@@ -87,7 +87,7 @@
                                     <label for="cep" class="col-md-2 control-label">*CEP</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" placeholder="Ex:00.000-000" autofocus>
+                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" placeholder="Ex:00.000-000" maxlength="9" pattern="[0-9.-]" autofocus>
 
                                         @if ($errors->has('cep'))
                                             <span class="help-block">
@@ -143,7 +143,7 @@
                                     <label for="estado_idEstado" class="col-md-2 control-label">*Estado</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" value="{{ old('estado_idEstado') }}" placeholder="Ex:PR" required autofocus>
+                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" maxlength="255" pattern="[a-z\s]+$" value="{{ old('estado_idEstado') }}" placeholder="Ex:PR" required autofocus>
 
                                         @if ($errors->has('estado_idEstado'))
                                             <span class="help-block">
@@ -157,7 +157,7 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="Ex:(00)0000-0000" required autofocus>
+                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="Ex:(00)0000-0000" maxlength="12" pattern="[0-9-]" required autofocus>
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">
@@ -171,7 +171,7 @@
                                     <label for="celular" class="col-md-2 control-label">*Celular</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="Ex:(00)00000-0000" required autofocus>
+                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="Ex:(00)00000-0000"  maxlength="13" pattern="[0-9-]" required autofocus>
 
                                         {{--@if ($errors->has('celular'))--}}
                                         {{--<span class="help-block">--}}
@@ -185,7 +185,7 @@
                                     <label for="email" class="col-md-2 control-label">*E-Mail</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Ex:abcde@gmail.com" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Ex:abcde@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
