@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\TipoMaterial;
+use App\Models\Cor;
 use Illuminate\Http\Request;
 
 
-class TipoMaterialController extends Controller
+class CorController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\TipoMaterial;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 
-class TipoMaterialController extends Controller
+class EstadoController extends Controller
 {
     /**
      * Display a listing of the resource.
