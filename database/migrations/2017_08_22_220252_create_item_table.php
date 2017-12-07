@@ -14,19 +14,15 @@ class CreateItemTable extends Migration {
 	{
 		Schema::create('item', function(Blueprint $table)
 		{
-			$table->increments('idPedido');
+			$table->primary('idItem');
 			$table->integer('quantidade');
 			$table->float('largura', 10, 0)->unsigned();
 			$table->float('comprimento', 10, 0)->unsigned();
 			$table->string('unidadeMedida', 2)->nullable();
 			$table->boolean('borda');
 			$table->string('arte')->nullable();
-<<<<<<< HEAD
 			$table->decimal('precoUnit', 4);
-=======
 			$table->decimal('precoUnit', 6,2);
-			$table->string('fonte', 45);
->>>>>>> f124d0269873ab0a188e79e0e72e6685797dfa51
             $table->timestamp('update_at');
             $table->timestamp('created_at');
 			$table->integer('os_idOS')->unsigned()->index('fk_Item_OS_idx');

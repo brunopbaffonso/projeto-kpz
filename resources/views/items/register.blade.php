@@ -70,29 +70,25 @@
                                         </div>
                                     </div>
 
-                                    <div class="dropdown">
-                                        <label for="cor" class="col-md-2 control-label">Unidade de Medida</label>
+                                    <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
+                                        <label for="unidadeMeidada" class="col-md-2 control-label">Unidade de Medida</label>
                                         <select name="unidadeMedida">
-                                            <option value="mm" class="dropdown-item">mm (Milimetro)</option>
-                                            <option value="cm" class="dropdown-item">cm (Centimetros)</option>
-                                            <option value="dm" class="dropdown-item">dm (Decimetros)</option>
-                                            <option value="m" class="dropdown-item">m (Metros)</option>
-                                            <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            <option value="mm" class="form-control">mm (Milimetro)</option>
+                                            <option value="cm" class="form-control">cm (Centimetros)</option>
+                                            <option value="dm" class="form-control">dm (Decimetros)</option>
+                                            <option value="m" class="form-control">m (Metros)</option>
+                                            <option value="dam" class="form-control">dam (Decametros)</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group{{ $errors->has('borda') ? ' has-error' : '' }}">
-                                        <label for="borda" class="col-md-2 control-label">Borda:</label>
-
-                                        <div class="col-md-8">
-                                            <input id="borda" type="number" class="form-control" name="borda" value="{{ old('borda') }}"  required autofocus>
-
-                                            @if ($errors->has('borda'))
-                                                <span class="help-block">
-                                        <strong>{{ $errors->first('borda') }}</strong>
-                                    </span>
-                                            @endif
-                                        </div>
+                                        <label for="borda" class="col-md-2 control-label">Borda</label>
+                                        <select name="borda">
+                                            <option value="0" class="form-control">Sem Borda</option>
+                                            <option value="1" class="form-control">Pintada</option>
+                                            <option value="2" class="form-control">Vulcanizada</option>
+                                            <option value="3" class="form-control">Rebaixada</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group{{ $errors->has('arte') ? ' has-error' : '' }}">

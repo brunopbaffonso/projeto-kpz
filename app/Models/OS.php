@@ -9,6 +9,7 @@ class OS extends Model
 
     protected $table = 'os';
     protected $primaryKey = 'idOS';
+    public $incrementing = false;
     public $timestamps = true;
     protected $fillable = ['idOS', 'tipo', 'observacoes'];
 
