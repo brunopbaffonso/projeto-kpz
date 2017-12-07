@@ -1,7 +1,5 @@
 @extends('layouts.padrao')
 
-
-
 @section('content')
     <div id="page-wrapper">
 
@@ -32,7 +30,7 @@
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                     <label for="nome" class="col-md-2 control-label">*Nome</label>
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Ex:João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$"  required autofocus>
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('nome')}}</strong>
@@ -45,12 +43,12 @@
                                     <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                     <div class="col-md-8">
-                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="Ex:000.000.00-00" autofocus>
+                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="000.000.00-00" autofocus>
 
                                         @if ($errors->has('cpf'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('cpf') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('cpf') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -63,8 +61,8 @@
 
                                         @if ($errors->has('cnpj'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('cnpj') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('cnpj') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -77,8 +75,8 @@
 
                                         @if ($errors->has('ie'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('ie') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('ie') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -87,12 +85,12 @@
                                     <label for="cep" class="col-md-2 control-label">*CEP</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" placeholder="Ex:00.000-000" maxlength="9" pattern="[0-9.-]" autofocus>
+                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" placeholder="00.000-000" maxlength="10" pattern="[0-9.-]+$" autofocus>
 
                                         @if ($errors->has('cep'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('cep') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('cep') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -101,12 +99,12 @@
                                     <label for="endereco" class="col-md-2 control-label">*Endereço</label>
 
                                     <div class="col-md-8">
-                                        <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" placeholder="Ex:Rua Aloisio de Azevedo" required autofocus>
+                                        <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" placeholder="Rua Aloisio de Azevedo" required autofocus>
 
                                         @if ($errors->has('endereco'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('endereco') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('endereco') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -115,12 +113,12 @@
                                     <label for="bairro" class="col-md-2 control-label">*Bairro</label>
 
                                     <div class="col-md-8">
-                                        <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" placeholder="Ex:Olarias" required autofocus>
+                                        <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" placeholder="Olarias" required autofocus>
 
                                         @if ($errors->has('bairro'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('bairro') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('bairro') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -133,8 +131,8 @@
 
                                         @if ($errors->has('cidade_idCidade'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('cidade_idCidade') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('cidade_idCidade') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -143,12 +141,12 @@
                                     <label for="estado_idEstado" class="col-md-2 control-label">*Estado</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" maxlength="255" pattern="[a-z\s]+$" value="{{ old('estado_idEstado') }}" placeholder="Ex:PR" required autofocus>
+                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" maxlength="255" pattern="[a-zA-Z\s]+$" value="{{ old('estado_idEstado') }}" placeholder="PR" required autofocus>
 
                                         @if ($errors->has('estado_idEstado'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('estado_idEstado') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('estado_idEstado') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -157,12 +155,12 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="Ex:(00)0000-0000" maxlength="12" pattern="[0-9-]" required autofocus>
+                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="(00)0000-0000" maxlength="12" pattern="[0-9-]+$" required autofocus>
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('fone') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('fone') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -171,13 +169,13 @@
                                     <label for="celular" class="col-md-2 control-label">*Celular</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="Ex:(00)00000-0000"  maxlength="13" pattern="[0-9-]" required autofocus>
+                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="(00)00000-0000"  maxlength="13" pattern="[0-9-]+$" required autofocus>
 
-                                        {{--@if ($errors->has('celular'))--}}
-                                        {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('celular') }}</strong>--}}
-                                        {{--</span>--}}
-                                        {{--@endif--}}
+                                        @if ($errors->has('celular'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('celular') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -185,18 +183,15 @@
                                     <label for="email" class="col-md-2 control-label">*E-Mail</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Ex:abcde@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="abcde@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
-
-
-
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">
                                         <button type="submit" class="btn btn-primary">

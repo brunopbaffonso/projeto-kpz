@@ -70,7 +70,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
-                                    <label for="unidadeMeidada" class="col-md-2 control-label">Unidade de Medida</label>
+                                    <label for="unidadeMedida" class="col-md-2 control-label">Unidade de Medida</label>
                                     <select name="unidadeMedida">
                                         <option value="mm" class="form-control">mm (Milimetro)</option>
                                         <option value="cm" class="form-control">cm (Centimetros)</option>

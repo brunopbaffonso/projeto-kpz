@@ -83,6 +83,7 @@ class OSController extends Controller
     public function store(Request $request)
     {
         $os = new OS;
+        $os->contato=$request->contato;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
@@ -128,6 +129,7 @@ class OSController extends Controller
     public function update(Request $request, $id)
     {
         $os = OS::where('idOS', '=', $id)->first();
+        $os->contato=$request->contato;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;

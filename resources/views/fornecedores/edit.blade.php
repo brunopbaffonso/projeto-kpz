@@ -30,7 +30,7 @@
                                     <label for="nome" class="col-md-2 control-label">*Nome:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $fornecedor->nome }}" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Kapazi LTDA" maxlength="255" pattern="[a-zA-Z\s]+$" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">

@@ -29,7 +29,7 @@
                                 <div class="form-group<?php echo e($errors->has('nome') ? ' has-error' : ''); ?>">
                                     <label for="nome" class="col-md-2 control-label">*Nome</label>
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Ex:João da Silva" pattern="[a-z\s]+$" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$"  required autofocus>
                                         <?php if($errors->has('nome')): ?>
                                             <span class="help-block">
                                                 <strong><?php echo e($errors->first('nome')); ?></strong>
@@ -42,12 +42,12 @@
                                     <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                     <div class="col-md-8">
-                                        <input id="cpf" type="text" class="form-control" name="cpf" value="<?php echo e(old('cpf')); ?>"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="Ex:000.000.00-00" autofocus>
+                                        <input id="cpf" type="text" class="form-control" name="cpf" value="<?php echo e(old('cpf')); ?>"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="000.000.00-00" autofocus>
 
                                         <?php if($errors->has('cpf')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('cpf')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('cpf')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -60,8 +60,8 @@
 
                                         <?php if($errors->has('cnpj')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('cnpj')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('cnpj')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -74,8 +74,8 @@
 
                                         <?php if($errors->has('ie')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('ie')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('ie')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -84,12 +84,12 @@
                                     <label for="cep" class="col-md-2 control-label">*CEP</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" name="cep" value="<?php echo e(old('cep')); ?>" placeholder="Ex:00.000-000" autofocus>
+                                        <input id="cep" type="text" class="form-control" name="cep" value="<?php echo e(old('cep')); ?>" placeholder="00.000-000" maxlength="10" pattern="[0-9.-]+$" autofocus>
 
                                         <?php if($errors->has('cep')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('cep')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('cep')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -98,12 +98,12 @@
                                     <label for="endereco" class="col-md-2 control-label">*Endereço</label>
 
                                     <div class="col-md-8">
-                                        <input id="endereco" type="text" class="form-control" name="endereco" value="<?php echo e(old('endereco')); ?>" placeholder="Ex:Rua Aloisio de Azevedo" required autofocus>
+                                        <input id="endereco" type="text" class="form-control" name="endereco" value="<?php echo e(old('endereco')); ?>" placeholder="Rua Aloisio de Azevedo" required autofocus>
 
                                         <?php if($errors->has('endereco')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('endereco')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('endereco')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -112,12 +112,12 @@
                                     <label for="bairro" class="col-md-2 control-label">*Bairro</label>
 
                                     <div class="col-md-8">
-                                        <input id="bairro" type="text" class="form-control" name="bairro" value="<?php echo e(old('bairro')); ?>" placeholder="Ex:Olarias" required autofocus>
+                                        <input id="bairro" type="text" class="form-control" name="bairro" value="<?php echo e(old('bairro')); ?>" placeholder="Olarias" required autofocus>
 
                                         <?php if($errors->has('bairro')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('bairro')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('bairro')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -130,8 +130,8 @@
 
                                         <?php if($errors->has('cidade_idCidade')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('cidade_idCidade')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('cidade_idCidade')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -140,12 +140,12 @@
                                     <label for="estado_idEstado" class="col-md-2 control-label">*Estado</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" value="<?php echo e(old('estado_idEstado')); ?>" placeholder="Ex:PR" required autofocus>
+                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" maxlength="255" pattern="[a-zA-Z\s]+$" value="<?php echo e(old('estado_idEstado')); ?>" placeholder="PR" required autofocus>
 
                                         <?php if($errors->has('estado_idEstado')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('estado_idEstado')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('estado_idEstado')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -154,12 +154,12 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" name="fone" value="<?php echo e(old('fone')); ?>" placeholder="Ex:(00)0000-0000" required autofocus>
+                                        <input id="fone" type="text" class="form-control" name="fone" value="<?php echo e(old('fone')); ?>" placeholder="(00)0000-0000" maxlength="12" pattern="[0-9-]+$" required autofocus>
 
                                         <?php if($errors->has('fone')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('fone')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('fone')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -168,13 +168,13 @@
                                     <label for="celular" class="col-md-2 control-label">*Celular</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" name="celular" value="<?php echo e(old('celular')); ?>" placeholder="Ex:(00)00000-0000" required autofocus>
+                                        <input id="celular" type="text" class="form-control" name="celular" value="<?php echo e(old('celular')); ?>" placeholder="(00)00000-0000"  maxlength="13" pattern="[0-9-]+$" required autofocus>
 
-                                        
-                                        
-                                        
-                                        
-                                        
+                                        <?php if($errors->has('celular')): ?>
+                                        <span class="help-block">
+                                            <strong><?php echo e($errors->first('celular')); ?></strong>
+                                        </span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 
@@ -182,18 +182,15 @@
                                     <label for="email" class="col-md-2 control-label">*E-Mail</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" placeholder="Ex:abcde@gmail.com" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="<?php echo e(old('email')); ?>" placeholder="abcde@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
 
                                         <?php if($errors->has('email')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('email')); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($errors->first('email')); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
-
-
-
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">
                                         <button type="submit" class="btn btn-primary">
