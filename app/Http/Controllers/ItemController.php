@@ -24,7 +24,6 @@ class ItemController extends Controller
             'unidadeMedida'=>'Medida',
             'borda'=>'Borda',
             'arte'=>'Arte',
-            'fonte'=>'Fonte',
             'precoUnit'=>'Unitario',
             'created_at'=>'Data Cadastro'
         ])
@@ -48,7 +47,6 @@ class ItemController extends Controller
                 'comprimento'=>['type'=>'doubleval(comprimento)', 'label'=>'Comprimento'],
                 'borda'=>['type'=>'text', 'label'=>'Borda'],
                 'arte'=>['type'=>'link', 'label'=>'Arte'],
-                'fonte'=>['type'=>'text', 'label'=>'Fonte'],
                 'unidadeMedida'=>['type'=>'text', 'label'=>'Medida'],
                 'precoUnit'=>['type'=>'money', 'label'=>'Unitario'],
                 'created_at'=>['type'=>'date', 'label'=>'Data Cadastro'],
@@ -104,7 +102,6 @@ class ItemController extends Controller
             $item->arte = Storage::put('artes', $arte);
         }
         $item->precoUnit = $request->precoUnit;
-        $item->fonte = $request->fonte;
 //        $item->os_idOS = OS::orderBy('idOS', 'desc')->first();
         $item->os_idOS = $request->os_idOS;
 //        dd($item);
@@ -154,7 +151,6 @@ class ItemController extends Controller
         $item->borda = $request->borda;
         $item->arte = $request->arte;
         $item->precoUnit = $request->precoUnit;
-        $item->fonte = $request->fonte;
 //        $item->created_at = $request->created_at;
 //        $item->updated_at = $request->updated_at;
         $item-> save();
