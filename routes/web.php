@@ -26,10 +26,11 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('clientes', 'ClienteController');
     Route::resource('fornecedores', 'FornecedorController');
     Route::resource('insumos', 'InsumoController');
-    Route::resource('items', 'ItemController');
+    Route::resource('items', 'ItemController'); // Aqui deve ser criado um REDIRECT, de OS
     Route::resource('modelos', 'ModeloController');
     Route::resource('ocs', 'OCController');
     Route::resource('oss', 'OSController');
     Route::resource('subprodutos', 'SubprodutoController');
     Route::resource('usuarios', 'UsuarioController');
+    Route::get('relatorios', 'RelatorioController@index');
 //});

@@ -30,7 +30,7 @@
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                     <label for="nome" class="col-md-2 control-label">*Nome</label>
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$"  required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="João da Silva" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('nome')}}</strong>
@@ -43,7 +43,7 @@
                                     <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                     <div class="col-md-8">
-                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}"  pattern="[0-9.-/]+$"  maxlength="11" placeholder="000.000.00-00" autofocus>
+                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}"  pattern="[0-9]+$"  maxlength="11" placeholder="00000000000" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         @if ($errors->has('cpf'))
                                             <span class="help-block">
@@ -57,7 +57,7 @@
                                     <label for="cnpj" class="col-md-2 control-label">CNPJ</label>
 
                                     <div class="col-md-8">
-                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" pattern="[0-9.-/]+$"  maxlength="14"  placeholder="Ex:00.00.000/0000-00" autofocus>
+                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ old('cnpj') }}" pattern="[0-9.-/]+$"  maxlength="14" placeholder="00000000000000" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         @if ($errors->has('cnpj'))
                                             <span class="help-block">
@@ -71,7 +71,7 @@
                                     <label for="ie" class="col-md-2 control-label">IE</label>
 
                                     <div class="col-md-8">
-                                        <input id="ie" type="text" class="form-control" name="ie" value="{{ old('ie') }}" autofocus>
+                                        <input id="ie" type="text" class="form-control" name="ie" value="{{ old('ie') }}" pattern="[0-9]+$"  maxlength="10" placeholder="0000000000" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         @if ($errors->has('ie'))
                                             <span class="help-block">
@@ -85,7 +85,7 @@
                                     <label for="cep" class="col-md-2 control-label">*CEP</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" placeholder="00.000-000" maxlength="10" pattern="[0-9.-]+$" autofocus>
+                                        <input id="cep" type="text" class="form-control" name="cep" value="{{ old('cep') }}" placeholder="00000-000" maxlength="10" pattern="[0-9-]+$" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         @if ($errors->has('cep'))
                                             <span class="help-block">
@@ -99,7 +99,7 @@
                                     <label for="endereco" class="col-md-2 control-label">*Endereço</label>
 
                                     <div class="col-md-8">
-                                        <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" placeholder="Rua Aloisio de Azevedo" required autofocus>
+                                        <input id="endereco" type="text" class="form-control" name="endereco" value="{{ old('endereco') }}" placeholder="Rua Aloisio de Azevedo" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('endereco'))
                                             <span class="help-block">
@@ -113,7 +113,7 @@
                                     <label for="bairro" class="col-md-2 control-label">*Bairro</label>
 
                                     <div class="col-md-8">
-                                        <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" placeholder="Olarias" required autofocus>
+                                        <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" placeholder="Olarias" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('bairro'))
                                             <span class="help-block">
@@ -127,7 +127,7 @@
                                     <label for="cidade_idCidade" class="col-md-2 control-label">*Cidade</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" placeholder="Ex:Ponta Grossa" required autofocus>
+                                        <input id="cidade_idCidade" type="cidade_idCidade" class="form-control" name="cidade_idCidade" value="{{ old('cidade_idCidade') }}" placeholder="Ex: Ponta Grossa" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('cidade_idCidade'))
                                             <span class="help-block">
@@ -137,15 +137,15 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('estado_idEstado') ? ' has-error' : '' }}">
-                                    <label for="estado_idEstado" class="col-md-2 control-label">*Estado</label>
+                                <div class="form-group{{ $errors->has('estado_uf') ? ' has-error' : '' }}">
+                                    <label for="estado_uf" class="col-md-2 control-label">*Estado</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_idEstado" type="estado_idEstado" class="form-control" name="estado_idEstado" maxlength="255" pattern="[a-zA-Z\s]+$" value="{{ old('estado_idEstado') }}" placeholder="PR" required autofocus>
+                                        <input id="estado_uf" type="text" class="form-control" name="estado_uf" maxlength="2" pattern="[A-Z\s]+$" value="{{ old('estado_uf') }}" placeholder="PR" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
-                                        @if ($errors->has('estado_idEstado'))
+                                        @if ($errors->has('estado_uf'))
                                             <span class="help-block">
-                                                <strong>{{ $errors->first('estado_idEstado') }}</strong>
+                                                <strong>{{ $errors->first('estado_uf') }}</strong>
                                             </span>
                                         @endif
                                     </div>
@@ -155,7 +155,7 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="(00)0000-0000" maxlength="12" pattern="[0-9-]+$" required autofocus>
+                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" placeholder="(00)00000000" maxlength="12" pattern="[0-9-]+$" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">
@@ -169,7 +169,7 @@
                                     <label for="celular" class="col-md-2 control-label">*Celular</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="(00)00000-0000"  maxlength="13" pattern="[0-9-]+$" required autofocus>
+                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="(00)900000000"  maxlength="13" pattern="[0-9-]+$" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('celular'))
                                         <span class="help-block">
@@ -183,7 +183,7 @@
                                     <label for="email" class="col-md-2 control-label">*E-Mail</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="abcde@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="nome@mail.com.br" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">

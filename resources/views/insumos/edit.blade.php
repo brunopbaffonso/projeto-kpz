@@ -31,7 +31,7 @@
                                     <label for="nome" class="col-md-2 control-label">Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $insumo->nome }}" placeholder="Ex: Manta/Tinta" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $insumo->nome }}" placeholder="Ex: Manta/Tinta"  data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
@@ -45,7 +45,7 @@
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ $insumo->quantidade }}" placeholder="Ex: 1 Rolo/10 Latas" required autofocus>
+                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ $insumo->quantidade }}" placeholder="Ex: 1 Rolo/10 Latas" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('quantidade'))
                                             <span class="help-block">
@@ -59,7 +59,7 @@
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                     <div class="col-md-4">
-                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ $insumo->comprimento }}" placeholder="Ex: 0.60/0.90" required autofocus>
+                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ $insumo->comprimento }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('comprimento'))
                                             <span class="help-block">
@@ -73,7 +73,7 @@
                                     <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                     <div class="col-md-8">
-                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ $insumo->largura }}" placeholder="Ex: 0.60/0.90" required autofocus>
+                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ $insumo->largura }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('largura'))
                                             <span class="help-block">
@@ -101,7 +101,7 @@
                                     <label for="precoUnit" class="col-md-2 control-label">Preço Unitário:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoUnit" type="text" class="form-control"  value="{{ $insumo->precoUnit }}" name="precoUnit" placeholder="Ex: R$ 10.00/ R$270.55"  required autofocus>
+                                        <input id="precoUnit" type="text" class="form-control"  value="{{ $insumo->precoUnit }}" name="precoUnit" placeholder="Ex: R$ 10.00/ R$270.55" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('precoUnit'))
                                             <span class="help-block">

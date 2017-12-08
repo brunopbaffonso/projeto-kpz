@@ -10,7 +10,7 @@ class Cidade extends Model
     protected $table = 'cidade';
     protected $primaryKey = 'idCidade';
     public $timestamps = false;
-    protected $fillable = ['idCidade', 'nome'];
+    protected $fillable = ['idCidade', 'nome', 'estado_uf'];
 
     public function cliente(){
         return  $this->hasMany(Cliente::class);

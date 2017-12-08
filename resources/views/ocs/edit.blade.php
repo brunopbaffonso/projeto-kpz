@@ -30,7 +30,7 @@
                                     <label for="tipo" class="col-md-2 control-label">Tipo:</label>
 
                                     <div class="col-md-8">
-                                        <input id="tipo" type="text" class="form-control" name="tipo" value="{{ $oc->tipo }}" required autofocus>
+                                        <input id="tipo" type="text" class="form-control" name="tipo" value="{{ $oc->tipo }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('tipo'))
                                             <span class="help-block">
@@ -44,7 +44,7 @@
                                     <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-10">
-                                        <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $oc->observacoes }}" autofocus></textarea>
+                                        <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $oc->observacoes }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus></textarea>
 
                                         @if ($errors->has('observacoes'))
                                             <span class="help-block">

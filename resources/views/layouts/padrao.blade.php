@@ -6,6 +6,11 @@
     <meta content="" name="description" />
     <meta content="Templateq" name="author" />
     <title>KAPAZI CAPACHOS PERSONALIZADOS</title>
+    <!-- Tooltip -->
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
     <!-- Bootstrap Styles-->
 {!! Html::style('css/bootstrap.min.css') !!}
 <!-- FontAwesome Styles-->
@@ -233,6 +238,15 @@
                         </li>
                         <li>
                             <a href="{{ url('usuarios/create') }}">Adicionar Usuario</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ url('relatorio/teste') }}">Relatóriso</a>
                         </li>
                     </ul>
                 </li>

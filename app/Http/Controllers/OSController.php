@@ -82,8 +82,10 @@ class OSController extends Controller
      */
     public function store(Request $request)
     {
+        $id = OS::count();
         $os = new OS;
-        $os->contato=$request->contato;
+        $os->idOS = $id + 1;
+        //$os->contato=$request->contato;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
@@ -96,6 +98,7 @@ class OSController extends Controller
         $ordem=$os;
         //dd($ordem);
         //return redirect('items/create/' . $os->idOS)->with('message', 'OS Criado Com Sucesso'); // TODO: Atributo na rota
+
         return view('items.register', ['OS' => $ordem]);
     }
     /**

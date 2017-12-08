@@ -32,7 +32,7 @@
                                     <label for="nome" class="col-md-2 control-label">Nome:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Ex:Tapete/Chinelo" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Tapete" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">

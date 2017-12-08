@@ -30,7 +30,7 @@
                                     <label for="precoTotal" class="col-md-2 control-label">Preço Total:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="{{ $os->precoTotal }}" required autofocus>
+                                        <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="{{ $os->precoTotal }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('precoTotal'))
                                             <span class="help-block">
@@ -44,7 +44,7 @@
                                     <label for="desconto" class="col-md-2 control-label">Desconto:</label>
 
                                     <div class="col-md-8">
-                                        <input id="desconto" type="number" class="form-control" name="desconto" value="{{ $os->desconto }}" autofocus>
+                                        <input id="desconto" type="number" class="form-control" name="desconto" value="{{ $os->desconto }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         @if ($errors->has('desconto'))
                                             <span class="help-block">
@@ -58,7 +58,7 @@
                                     <label for="formaPgto" class="col-md-2 control-label">Forma de Pagamento:</label>
 
                                     <div class="col-md-8">
-                                        <input id="formaPgto" type="text" class="form-control" name="formaPgto" value="{{ $os->formaPgto }}" required autofocus>
+                                        <input id="formaPgto" type="text" class="form-control" name="formaPgto" value="{{ $os->formaPgto }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('formaPgto'))
                                             <span class="help-block">
@@ -72,7 +72,7 @@
                                     <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-8">
-                                        <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $os->observacoes }}" autofocus ></textarea>
+                                        <textarea id="observacoes" class="form-control" name="observacoes" value="{{ $os->observacoes }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus></textarea>
 
                                         @if ($errors->has('observacoes'))
                                             <span class="help-block">

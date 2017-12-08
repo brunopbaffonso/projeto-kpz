@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Cidade;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
@@ -91,7 +92,6 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-
         $cliente = new Cliente;
         $cliente->ativo = $request->ativo;
         $cliente->nome = $request->nome;
@@ -104,7 +104,7 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-        $cliente->cidade_idCidade = $request->cidade_idCidade;
+        $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome', '=', $request->cidade_idCidade],['estado_uf', '=', $request->estado_uf])->get();
 
        $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
@@ -191,9 +191,9 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-        $cliente->cidade_idCidade = DB::table('cidade')->select('idCidade')->where('nome', '=', $request->cidade_idCidade)->get();
+        $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome', '=', $request->cidade_idCidade],['estado_uf', '=', $request->estado_uf])->get();
         //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
-        dd($cliente);
+        //dd($cliente);
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');
 

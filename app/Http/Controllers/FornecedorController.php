@@ -99,6 +99,7 @@ class FornecedorController extends Controller
         $fornecedor->fone = $request->fone;
         $fornecedor->celular = $request->celular;
         $fornecedor->email = $request->email;
+        $fornecedor->cidade_idCidade = Cidade::select('idCidade')->where(['nome', '=', $request->cidade_idCidade],['estado_uf', '=', $request->estado_uf])->get();
 
          $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
@@ -172,6 +173,7 @@ class FornecedorController extends Controller
         $fornecedor->fone = $request->fone;
         $fornecedor->celular = $request->celular;
         $fornecedor->email = $request->email;
+        $fornecedor->cidade_idCidade = Cidade::select('idCidade')->where(['nome', '=', $request->cidade_idCidade],['estado_uf', '=', $request->estado_uf])->get();
 //        $fornecedor->created_at = $request->created_at;
 //        $fornecedor->updated_at = $request->updated_at;
         $fornecedor-> save();

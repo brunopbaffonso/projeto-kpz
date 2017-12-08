@@ -20,7 +20,7 @@
                 </div>
                 <div class="panel-body" align="left">
                     <a href="usuarios/create">
-                        <button type="button" class="btn btn-primary">Cadastrar Usuarios</button>
+                        <button type="button" class="btn btn-primary">Cadastrar Usuário</button>
                     </a>
                 </div>
             </div>

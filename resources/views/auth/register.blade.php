@@ -32,7 +32,7 @@
                                     <label for="cpf" class="col-md-2 control-label">CPF</label>
 
                                     <div class="col-md-8">
-                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                        <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('cpf'))
                                             <span class="help-block">
@@ -46,7 +46,7 @@
                                     <label for="nome" class="col-md-2 control-label">Nome</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
@@ -60,7 +60,7 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" autofocus>
+                                        <input id="fone" type="text" class="form-control" name="fone" value="{{ old('fone') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">
@@ -74,7 +74,7 @@
                                     <label for="celular" class="col-md-2 control-label">Celular</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" required autofocus>
+                                        <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('celular'))
                                             <span class="help-block">
@@ -88,7 +88,7 @@
                                     <label for="email" class="col-md-2 control-label">E-Mail Address</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('email'))
                                             <span class="help-block">
@@ -102,7 +102,7 @@
                                     <label for="password" class="col-md-2 control-label">Password</label>
 
                                     <div class="col-md-8">
-                                        <input id="password" type="password" class="form-control" name="password" required autofocus>
+                                        <input id="password" type="password" class="form-control" name="password" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('password'))
                                             <span class="help-block">
@@ -116,7 +116,7 @@
                                     <label for="password-confirm" class="col-md-2 control-label">Confirm Password</label>
 
                                     <div class="col-md-8">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autofocus>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
                                     </div>
                                 </div>
 
@@ -124,7 +124,7 @@
                                     <label for="tipoAcesso" class="col-md-2 control-label">Tipo de Acesso</label>
 
                                     <div class="col-md-8">
-                                        <input id="tipoAcesso" type="number" class="form-control" name="tipoAcesso" required autofocus>
+                                        <input id="tipoAcesso" type="number" class="form-control" name="tipoAcesso" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('tipoAcesso'))
                                             <span class="help-block">

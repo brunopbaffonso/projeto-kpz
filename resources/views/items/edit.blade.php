@@ -31,7 +31,7 @@
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ $item->quantidade }}" required autofocus>
+                                        <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ $item->quantidade }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('quantidade'))
                                             <span class="help-block">
@@ -45,7 +45,7 @@
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento</label>
 
                                     <div class="col-md-8">
-                                        <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ $item->comprimento }}" required autofocus>
+                                        <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ $item->comprimento }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('comprimento'))
                                             <span class="help-block">
@@ -59,7 +59,7 @@
                                     <label for="largura" class="col-md-2 control-label">Largura</label>
 
                                     <div class="col-md-8">
-                                        <input id="largura" type="number" class="form-control" name="largura" value="{{ $item->largura }}" required autofocus>
+                                        <input id="largura" type="number" class="form-control" name="largura" value="{{ $item->largura }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('largura'))
                                             <span class="help-block">
@@ -94,7 +94,7 @@
                                     <label for="arte" class="col-md-2 control-label">Arte</label>
 
                                     <div class="col-md-8">
-                                        <input id="arte" type="file"   value="{{ $item->arte }}" name="arte" required autofocus>
+                                        <input id="arte" type="file"   value="{{ $item->arte }}" name="arte" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('arte'))
                                             <span class="help-block">
@@ -108,7 +108,7 @@
                                     <label for="precoUnit" class="col-md-2 control-label">Preço Unitário</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoUnit" type="number" class="form-control"  value="{{ $item->precoUnit }}" name="precoUnit" required autofocus>
+                                        <input id="precoUnit" type="number" class="form-control"  value="{{ $item->precoUnit }}" name="precoUnit" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         @if ($errors->has('precoUnit'))
                                             <span class="help-block">
