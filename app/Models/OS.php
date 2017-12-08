@@ -11,7 +11,7 @@ class OS extends Model
     protected $primaryKey = 'idOS';
     public $incrementing = false;
     public $timestamps = true;
-    protected $fillable = ['idOS','contato','precoTotal','', 'tipo', 'observacoes'];
+    protected $fillable = ['idOS','contato','precoTotal', 'tipo', 'observacoes'];
 
     public function usuario(){
         return  $this->belongsTo(Usuario::class);

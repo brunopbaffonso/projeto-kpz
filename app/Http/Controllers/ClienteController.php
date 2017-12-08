@@ -104,15 +104,16 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-        $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome', '=', $request->cidade_idCidade],['estado_uf', '=', $request->estado_uf])->get();
+        $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome' => $request->cidade_idCidade,'estado_uf' => $request->estado_uf])->first()->idCidade;
+
 
        $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
             'endereco'=> 'required|min:3|max:255',
             'bairro'=> 'required|min:3|max:255',
             'cidade'=> 'required|min:3|max:255',
-            'telefone'=>'min:12|max:12',
-            'celular'=>'required|min:13|max:13'
+            'telefone'=>'min:10|max:12',
+            'celular'=>'required|min:11|max:13'
         ],[
             'nome.string'=>'Esse campo so aceita letras',
             'nome.min'=>'Minimo de 3 caracteres',
@@ -123,13 +124,15 @@ class ClienteController extends Controller
             'bairro.max'=>'maximo de 255 caracteres',
             'cidade.min'=>'Minimo de 3 caracteres',
             'cidade.max'=>'maximo de 255 caracteres',
-            'telefone.min'=>'Minimo de 12 caracteres',
+            'telefone.min'=>'Minimo de 10 caracteres',
             'telefone.max'=>'maximo de 12 caracteres',
-            'celular.min'=>'Minimo de 13 caracteres',
+            'celular.min'=>'Minimo de 11 caracteres',
             'celular.max'=>'maximo de 13 caracteres'
         ]);
 
         $cliente-> save();
+
+
         return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
 
         //dd($request->all());
@@ -191,7 +194,7 @@ class ClienteController extends Controller
         $cliente->fone = $request->fone;
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
-        $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome', '=', $request->cidade_idCidade],['estado_uf', '=', $request->estado_uf])->get();
+        $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome' => $request->cidade_idCidade,'estado_uf' => $request->estado_uf])->first()->idCidade;
         //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
         //dd($cliente);
         $cliente-> save();

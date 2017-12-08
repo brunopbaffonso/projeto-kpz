@@ -87,9 +87,19 @@
                                         <button type="submit" class="btn btn-primary">
                                             Cadastrar!
                                         </button>
+
+                                        <button type="button" id="novoItem" class="btn btn-primary">
+                                            Novo Item
+                                        </button>
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
+
+                            <div id="item">
+                                <li>text</li>
+                            </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -97,4 +107,18 @@
             </div>
         </div>
     </div>
+
+    @push('js')
+        <script>
+            $('#novoItem').on('click', function() {
+
+                var para = document.createElement("p");
+                var node = document.createTextNode("Novo Item");
+                para.appendChild(node);
+
+                var element = document.getElementById("item");
+                element.appendChild(para);
+            });
+        </script>
+    @endpush
 @endsection

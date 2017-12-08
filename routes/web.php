@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::group(['middleware' => 'auth'], function() {
 
     Route::get('items/create/{id}', 'ItemController@create');
+    Route::get('relatorios', 'RelatorioController@index');
 
     Route::resource('clientes', 'ClienteController');
     Route::resource('fornecedores', 'FornecedorController');
@@ -32,5 +33,4 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('oss', 'OSController');
     Route::resource('subprodutos', 'SubprodutoController');
     Route::resource('usuarios', 'UsuarioController');
-    Route::get('relatorios', 'RelatorioController@index');
 //});

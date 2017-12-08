@@ -90,8 +90,13 @@ class OSController extends Controller
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-        $os-> save();
+        $os->item()->create([
 
+        ],
+            [
+
+            ]);
+        $os->save();
         //$ordem = OS::orderBy('idOS', 'desc')->first();
         //$ordem = OS::select()->where('created_at',)->first();
         //dd($ordem);
@@ -99,6 +104,10 @@ class OSController extends Controller
         //dd($ordem);
         //return redirect('items/create/' . $os->idOS)->with('message', 'OS Criado Com Sucesso'); // TODO: Atributo na rota
 
+        return view('items.register', ['OS' => $ordem]);
+    }
+
+    public function itemsOSS($ordem) {
         return view('items.register', ['OS' => $ordem]);
     }
     /**

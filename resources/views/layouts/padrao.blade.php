@@ -255,6 +255,8 @@
         </div>
     </nav>
 @yield('content')
+
+    @stack('js')
 {{ Html::script('js/jquery-1.10.2.js') }}
 <!-- Bootstrap Js -->
 {{ Html::script('js/bootstrap.min.js') }}
