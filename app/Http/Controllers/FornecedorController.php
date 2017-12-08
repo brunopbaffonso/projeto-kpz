@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Cidade;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
