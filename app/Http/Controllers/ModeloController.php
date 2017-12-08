@@ -51,7 +51,7 @@ class ModeloController extends Controller
      */
     public function create()
     {
-        return view('modelos.register')->with('id', $id);;
+        return view('modelos.register');
     }
     /**
      * Store a newly created resource in storage.

@@ -29,7 +29,7 @@
                                     <label for="precoTotal" class="col-md-2 control-label">Preço Total:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="<?php echo e(old('precoTotal')); ?>" required autofocus>
+                                        <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="<?php echo e(old('precoTotal')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         <?php if($errors->has('precoTotal')): ?>
                                             <span class="help-block">
@@ -43,7 +43,7 @@
                                     <label for="desconto" class="col-md-2 control-label">Desconto:</label>
 
                                     <div class="col-md-8">
-                                        <input id="desconto" type="number" class="form-control" name="desconto" value="<?php echo e(old('desconto')); ?>" autofocus>
+                                        <input id="desconto" type="number" class="form-control" name="desconto" value="<?php echo e(old('desconto')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
                                         <?php if($errors->has('desconto')): ?>
                                             <span class="help-block">
@@ -57,7 +57,7 @@
                                     <label for="formaPgto" class="col-md-2 control-label">Forma de Pagamento:</label>
 
                                     <div class="col-md-8">
-                                        <input id="formaPgto" type="text" class="form-control" name="formaPgto" value="<?php echo e(old('formaPgto')); ?>" required autofocus>
+                                        <input id="formaPgto" type="text" class="form-control" name="formaPgto" value="<?php echo e(old('formaPgto')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
                                         <?php if($errors->has('formaPgto')): ?>
                                             <span class="help-block">
@@ -71,7 +71,7 @@
                                     <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-8">
-                                        <textarea id="observacoes" class="form-control" name="observacoes" value="<?php echo e(old('observacoes')); ?>" autofocus ></textarea>
+                                        <textarea id="observacoes" class="form-control" name="observacoes" value="<?php echo e(old('observacoes')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus ></textarea>
 
                                         <?php if($errors->has('observacoes')): ?>
                                             <span class="help-block">
@@ -86,9 +86,19 @@
                                         <button type="submit" class="btn btn-primary">
                                             Cadastrar!
                                         </button>
+
+                                        <button type="button" id="novoItem" class="btn btn-primary">
+                                            Novo Item
+                                        </button>
                                     </div>
                                 </div>
                                 <?php echo Form::close(); ?>
+
+
+                            <div id="item">
+                                <li>text</li>
+                            </div>
+
 
                             </div>
                         </div>
@@ -97,6 +107,20 @@
             </div>
         </div>
     </div>
+
+    <?php $__env->startPush('js'); ?>
+        <script>
+            $('#novoItem').on('click', function() {
+
+                var para = document.createElement("p");
+                var node = document.createTextNode("Novo Item");
+                para.appendChild(node);
+
+                var element = document.getElementById("item");
+                element.appendChild(para);
+            });
+        </script>
+    <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.padrao', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

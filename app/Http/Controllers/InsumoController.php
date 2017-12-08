@@ -16,7 +16,7 @@ class InsumoController extends Controller
         $Grid = new Grid(Insumo::query(), 'InsumosGrid');
 
         $Grid->fields([
-            'idInsumo'=>'Código',
+            'idInsumo'=>'#o',
             'nome'=>'Descrição',
             'quantidade'=>'Quantidade',
             'comprimento'=>'Comprimento',

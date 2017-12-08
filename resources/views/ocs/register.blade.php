@@ -27,10 +27,10 @@
                                 {!!Form::open(['url' => 'ocs/', 'method' => 'post'])!!}
 
                                 <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                                    <label for="tipo" class="col-md-2 control-label">Tipo:</label>
+                                    <label for="tipo" class="col-md-2 control-label">Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="tipo" type="text" class="form-control" name="tipo" value="{{ old('tipo') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
+                                        <input id="tipo" type="text" class="form-control" name="tipo" value="{{ old('tipo') }}" placeholder="Compra de Manta" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('tipo'))
                                             <span class="help-block">
@@ -44,7 +44,7 @@
                                     <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-10">
-                                        <textarea id="observacoes" type="text" class="form-control" name="observacoes" value="{{ old('observacoes') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus ></textarea>
+                                        <textarea id="observacoes" type="text" class="form-control" name="observacoes" value="{{ old('observacoes') }}" dplaceholder="Compra de Manta" maxlength="255" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS, números e caracteres especiais" autofocus ></textarea>
 
                                         @if ($errors->has('observacoes'))
                                             <span class="help-block">

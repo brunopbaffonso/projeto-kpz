@@ -31,7 +31,7 @@
                                     <label for="nome" class="col-md-2 control-label">Nome:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Ex:Tapete/Chinelo" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Tapete/Chinelo" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('nome')): ?>
                                             <span class="help-block">

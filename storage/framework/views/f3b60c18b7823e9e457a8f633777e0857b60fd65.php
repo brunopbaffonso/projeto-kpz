@@ -6,6 +6,11 @@
     <meta content="" name="description" />
     <meta content="Templateq" name="author" />
     <title>KAPAZI CAPACHOS PERSONALIZADOS</title>
+    <!-- Tooltip -->
+    <!--$(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })-->
+
     <!-- Bootstrap Styles-->
 <?php echo Html::style('css/bootstrap.min.css'); ?>
 
@@ -242,10 +247,21 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?php echo e(url('relatorio/teste')); ?>">Relatórios</a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </nav>
 <?php echo $__env->yieldContent('content'); ?>
+
+    <?php echo $__env->yieldPushContent('js'); ?>
 <?php echo e(Html::script('js/jquery-1.10.2.js')); ?>
 
 <!-- Bootstrap Js -->

@@ -7,9 +7,9 @@
     <meta content="Templateq" name="author" />
     <title>KAPAZI CAPACHOS PERSONALIZADOS</title>
     <!-- Tooltip -->
-    $(function () {
+    <!--$(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
+    })-->
 
     <!-- Bootstrap Styles-->
 {!! Html::style('css/bootstrap.min.css') !!}
@@ -246,7 +246,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('relatorio/teste') }}">Relatóriso</a>
+                            <a href="{{ url('relatorio/teste') }}">Relatórios</a>
                         </li>
                     </ul>
                 </li>

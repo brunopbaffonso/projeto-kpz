@@ -5,8 +5,8 @@
             <h1 class="page-header">Adicionar Ordem de Compra</h1>
             <ol class="breadcrumb">
                 <li><a href="<?php echo e(url('/')); ?>">Inicio</a></li>
-                <li><a href="<?php echo e(url('ocs')); ?>  ">Lista de Compra</a></li>
-                <li class="active">Adicionar Ordem de Compra</li>
+                <li><a href="<?php echo e(url('ocs')); ?>  ">Listar OC</a></li>
+                <li class="active">Adicionar OC</li>
             </ol>
         </div>
 
@@ -26,10 +26,10 @@
 
 
                                 <div class="form-group<?php echo e($errors->has('tipo') ? ' has-error' : ''); ?>">
-                                    <label for="tipo" class="col-md-2 control-label">Tipo:</label>
+                                    <label for="tipo" class="col-md-2 control-label">Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="tipo" type="text" class="form-control" name="tipo" value="<?php echo e(old('tipo')); ?>" required autofocus>
+                                        <input id="tipo" type="text" class="form-control" name="tipo" value="<?php echo e(old('tipo')); ?>" placeholder="Compra de Manta" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('tipo')): ?>
                                             <span class="help-block">
@@ -43,7 +43,7 @@
                                     <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
                                     <div class="col-md-10">
-                                        <textarea id="observacoes" type="text" class="form-control" name="observacoes" value="<?php echo e(old('observacoes')); ?>" autofocus ></textarea>
+                                        <textarea id="observacoes" type="text" class="form-control" name="observacoes" value="<?php echo e(old('observacoes')); ?>" dplaceholder="Compra de Manta" maxlength="255" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS, números e caracteres especiais" autofocus ></textarea>
 
                                         <?php if($errors->has('observacoes')): ?>
                                             <span class="help-block">

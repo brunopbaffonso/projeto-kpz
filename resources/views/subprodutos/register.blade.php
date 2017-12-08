@@ -30,7 +30,7 @@
                                     <label for="tipo" class="col-md-2 control-label">*Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="tipo" type="text" class="form-control" name="tipo" value="{{ old('tipo') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
+                                        <input id="tipo" type="text" class="form-control" name="tipo" value="{{ old('tipo') }}" placeholder="Chinelo Preto/ Chaveiro" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('tipo'))
                                             <span class="help-block">
@@ -44,7 +44,7 @@
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ old('quantidade') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
+                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ old('quantidade') }}" placeholder="Ex: 1 (Rolo) / 10 (Latas)" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9" required autofocus>
 
                                         @if ($errors->has('quantidade'))
                                             <span class="help-block">
@@ -58,7 +58,7 @@
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                     <div class="col-md-8">
-                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ old('comprimento') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
+                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ old('comprimento') }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         @if ($errors->has('comprimento'))
                                             <span class="help-block">
@@ -72,7 +72,7 @@
                                     <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                     <div class="col-md-8">
-                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ old('largura') }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
+                                        <input id="largura" type="text" class="form-control" name="largura" value="{{ old('largura') }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         @if ($errors->has('largura'))
                                             <span class="help-block">
