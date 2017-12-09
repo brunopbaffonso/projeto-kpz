@@ -20,7 +20,7 @@
                 </div>
                 <div class="panel-body" align="left">
                     <a href="oss/create">
-                        <button type="button" class="btn btn-primary">Cadastrar Os</button>
+                        <button type="button" class="btn btn-primary">Cadastrar OS</button>
                     </a>
                 </div>
             </div>

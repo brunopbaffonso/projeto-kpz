@@ -19,6 +19,8 @@ class OSController extends Controller
 
         $Grid->fields([
             'idOS'=>'Código',
+            'contato'=>'Contato',
+            'status'=>'Status',
             'precoTotal'=>'Preço Total',
             'desconto'=>'Desconto',
             'formaPgto'=>'Forma Pgto.',
@@ -41,6 +43,8 @@ class OSController extends Controller
 
             ->advancedSearch([
                 'idOS'=>['type'=>'integer','label'=>'Código'],
+                'contato'=>['type'=>'text', 'label'=>'Contato'],
+                'status'=>['type'=>'text', 'label'=>'Status'],
                 'precoTotal'=>['type'=>'money', 'label'=>'Preço Total'],
                 'desconto'=>['type'=>'money', 'label'=>'Desconto'],
                 'formaPgto'=>['type'=>'text', 'label'=>'Forma Pgto.'],

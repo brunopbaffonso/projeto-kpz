@@ -15,6 +15,8 @@ class CreateOsTable extends Migration {
 		Schema::create('os', function(Blueprint $table)
 		{
 			$table->primary('idOS');
+            $table->string('contato', 255);
+            $table->integer('status');
 			$table->decimal('precoTotal', 6,2);
 			$table->decimal('desconto', 6,2)->nullable();
 			$table->string('formaPgto', 45);

@@ -246,7 +246,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('relatorio/teste') }}">Relatórios</a>
+                            <a href="{{ url('relatorios/teste') }}">Relatórios</a>
                         </li>
                     </ul>
                 </li>

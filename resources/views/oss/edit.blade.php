@@ -26,29 +26,30 @@
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'put'])!!}
 
-                                <div class="form-group{{ $errors->has('precoTotal') ? ' has-error' : '' }}">
-                                    <label for="precoTotal" class="col-md-2 control-label">Preço Total:</label>
+                                <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                                    <label for="status" class="col-md-2 control-label">Status:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="{{ $os->precoTotal }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
-
-                                        @if ($errors->has('precoTotal'))
-                                            <span class="help-block">
-                                            <strong>{{ $errors->first('precoTotal') }}</strong>
-                                        </span>
-                                        @endif
+                                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+                                            <label for="status" class="col-md-2 control-label">Status</label>
+                                            <select name="status">
+                                                <option value="Aberta" class="form-control">Aberta</option>
+                                                <option value="Executando" class="form-control">Executando</option>
+                                                <option value="Concluida" class="form-control">Concluida</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('desconto') ? ' has-error' : '' }}">
-                                    <label for="desconto" class="col-md-2 control-label">Desconto:</label>
+                                <div class="form-group{{ $errors->has('contato') ? ' has-error' : '' }}">
+                                    <label for="contato" class="col-md-2 control-label">Contato:</label>
 
                                     <div class="col-md-8">
-                                        <input id="desconto" type="number" class="form-control" name="desconto" value="{{ $os->desconto }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
+                                        <input id="contato" type="text" class="form-control" name="contato" value="{{ $os->contato }}" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
 
-                                        @if ($errors->has('desconto'))
+                                        @if ($errors->has('contato'))
                                             <span class="help-block">
-                                            <strong>{{ $errors->first('desconto') }}</strong>
+                                            <strong>{{ $errors->first('contato') }}</strong>
                                         </span>
                                         @endif
                                     </div>
