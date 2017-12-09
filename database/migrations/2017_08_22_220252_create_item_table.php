@@ -16,12 +16,11 @@ class CreateItemTable extends Migration {
 		{
 			$table->primary('idItem');
 			$table->integer('quantidade');
-			$table->float('largura', 10, 0)->unsigned();
-			$table->float('comprimento', 10, 0)->unsigned();
+			$table->float('largura', 6, 2)->unsigned();
+			$table->float('comprimento', 6, 2)->unsigned();
 			$table->string('unidadeMedida', 2)->nullable();
 			$table->boolean('borda');
 			$table->string('arte')->nullable();
-			$table->decimal('precoUnit', 4);
 			$table->decimal('precoUnit', 6,2);
             $table->timestamp('update_at');
             $table->timestamp('created_at');

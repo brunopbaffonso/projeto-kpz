@@ -8,11 +8,31 @@
             <ol class="breadcrumb">
                 <li><a href="{{ url('/') }}">Inicio</a></li>
                 <li><a href="{{ url('items') }}">Listar Itens</a></li>
-                <li class="active">Adicionar Item</a></li>
+                <li class="active"><a>Adicionar Item</a></li>
             </ol>
         </div>
 
         <div id="page-inner">
+
+                <div id="error-div" class='alert-danger'>
+                    <ul id="error-page">
+                    </ul>
+                </div>
+
+            @if (Session::has('mensagem'))
+            <!-- mostra este bloco se existe uma chave na sessão chamada mensagens-sucesso -->
+                <div class='alert alert-success'>
+                    @if (is_array(Session::get('mensagem')))
+                        <ul>
+                            @foreach (Session::get('mensagem') as $msg)
+                                <li>{{$msg}}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{Session::get('mensagem')}}
+                    @endif
+                </div>
+            @endif
 
             <div class="row">
                 <div class="col-xs-12">
@@ -23,10 +43,10 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="form-horizontal" for="quantidade" class="col-md-2 control-label">Código OS:</label>  {{ $OS->idOS }}
+                            <div class="form-horizontal" for="quantidade" class="col-md-2 control-label">Código OS:</label>  {{ $OS }}
                                 <div class="form-horizontal">
                                     {!!Form::open(['url' => 'items/', 'method' => 'post', 'enctype' => 'multipart/form-data'])!!}
-                                    <input id="os_idOS" type="hidden" class="form-control" name="os_idOS" value="{{ $OS->idOS }}">
+                                    <input id="os_idOS" type="hidden" class="form-control" name="os_idOS" value="{{ $OS }}">
 
                                     <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                         <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
@@ -119,21 +139,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="col-md-4 col-md-offset-2">
-                                            <button type="submit" id="submit" name="submit" value="0" class="btn btn-primary">
-                                                Cadastrar & Finalizar!
-                                            </button>
-                                        </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4 col-md-offset-2">
+                                                <button type="submit" name="submit" value="0" class="btn btn-primary">
+                                                    Cadastrar Novo Item
+                                                </button>
 
-                                    <div class="form-group">
-                                        <div class="col-md-4 col-md-offset-2">
-                                            <button type="submit" id="submit" name="submit" value="1" class="btn btn-primary">
-                                                Novo Item
-                                            </button>
+                                                <button type="submit" name="submit" value="1" class="btn btn-success">
+                                                    Cadastrar & Finalizar!
+                                                </button>
+                                            </div>
+
+                                            {{--<div class="col-md-4 col-md-offset-2">--}}
+                                                {{----}}
+                                            {{--</div>--}}
                                         </div>
-                                    </div>
                                     {!! Form::close() !!}
                                 </div>
                             </div>
@@ -142,4 +162,46 @@
                 </div>
             </div>
         </div>
+
+
+        @push('js')
+        <script>
+            {{--$('#cadastraNovo').on('click', function () {--}}
+                {{--$('#error-div').removeClass('alert');--}}
+                {{--$('#error-page').html('');--}}
+                {{--var formData = {--}}
+                    {{--'os_ID'              : $('input[name="os_idOS"]').val(),--}}
+                    {{--'quantidade'         : $('input[name="quantidade"]').val(),--}}
+                    {{--'comprimento'        : $('input[name="comprimento"]').val(),--}}
+                    {{--'largura'            : $('input[name="largura"]').val(),--}}
+                    {{--'unidadeMedida'      : $('select[name="unidadeMedida"]').val(),--}}
+                    {{--'borda'              : $('select[name="borda"]').val(),--}}
+                    {{--'arte'               : $('input[name="arte"]').val(),--}}
+                    {{--'precoUnit'          : $('input[name="precoUnit"]').val(),--}}
+                    {{--'tipoBtn'            : '0'--}}
+                {{--};--}}
+
+                {{--$.ajaxSetup({--}}
+                    {{--headers: {--}}
+                        {{--'X-CSRF-TOKEN': "{{ csrf_token() }}"--}}
+                    {{--}--}}
+                {{--});--}}
+                {{--$.ajax({--}}
+                    {{--url: '{{ url('items')  }}',--}}
+                    {{--type: 'POST',--}}
+                    {{--dataType: 'json',--}}
+                    {{--data: formData--}}
+                {{--}).done(function(data) {--}}
+                    {{--if (data.errorInfo) {--}}
+                        {{--{{ $error = true }}--}}
+                            {{--$('#error-div').addClass('alert');--}}
+                            {{--$('#error-page').append('<div class="help-block">' + data.errorInfo + '</div>'); // add the actual error message under our input--}}
+                        {{--console.log(data);--}}
+                    {{--} else {--}}
+                        {{--console.log(data);--}}
+                    {{--}--}}
+                {{--});--}}
+            {{--});--}}
+        </script>
+    @endpush
 @endsection

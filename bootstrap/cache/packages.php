@@ -6,6 +6,18 @@
       0 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
     ),
   ),
+  'barryvdh/laravel-snappy' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Snappy\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\Snappy\\Facades\\SnappyPdf',
+      'SnappyImage' => 'Barryvdh\\Snappy\\Facades\\SnappyImage',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
@@ -25,14 +37,6 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
-  'xethron/migrations-generator' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Way\\Generators\\GeneratorsServiceProvider',
-      1 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
-    ),
-  ),
   'maatwebsite/excel' => 
   array (
     'providers' => 
@@ -44,16 +48,12 @@
       'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
     ),
   ),
-  'barryvdh/laravel-snappy' => 
+  'xethron/migrations-generator' => 
   array (
     'providers' => 
     array (
-      0 => 'Barryvdh\\Snappy\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'PDF' => 'Barryvdh\\Snappy\\Facades\\SnappyPdf',
-      'SnappyImage' => 'Barryvdh\\Snappy\\Facades\\SnappyImage',
+      0 => 'Way\\Generators\\GeneratorsServiceProvider',
+      1 => 'Xethron\\MigrationsGenerator\\MigrationsGeneratorServiceProvider',
     ),
   ),
 );

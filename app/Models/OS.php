@@ -24,7 +24,7 @@ class OS extends Model
     }
 
     public function item(){
-        return  $this->hasMany(Item::class);
+        return  $this->hasMany(Item::class, 'os_idOS');
 
     }
 

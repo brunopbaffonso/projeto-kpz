@@ -33,4 +33,5 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('oss', 'OSController');
     Route::resource('subprodutos', 'SubprodutoController');
     Route::resource('usuarios', 'UsuarioController');
+    Route::get('registra/item/{os_id}', 'OsController@ItemOSS');
 //});

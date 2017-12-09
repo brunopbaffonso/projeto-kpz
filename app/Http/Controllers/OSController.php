@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Item;
 use App\Models\OS;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\OperatingSystem;
@@ -87,32 +88,24 @@ class OSController extends Controller
     public function store(Request $request)
     {
         $id = OS::count();
-        $os = new OS;
+        $os = new OS();
         $os->idOS = $id + 1;
         $os->contato=$request->contato;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-        $os->item()->create([
-
-        ],
-            [
-
-            ]);
         $os->save();
         //$ordem = OS::orderBy('idOS', 'desc')->first();
         //$ordem = OS::select()->where('created_at',)->first();
         //dd($ordem);
-        $ordem=$os;
         //dd($ordem);
         //return redirect('items/create/' . $os->idOS)->with('message', 'OS Criado Com Sucesso'); // TODO: Atributo na rota
-
-        return view('items.register', ['OS' => $ordem]);
+        return redirect('registra/item/'.$os->idOS);
     }
 
-    public function itemsOSS($ordem) {
-        return view('items.register', ['OS' => $ordem]);
+    public function itemOSS($ordem) {
+        return view('items.register')->with(['OS' => $ordem]);
     }
     /**
      * Display the specified resource.
@@ -132,7 +125,7 @@ class OSController extends Controller
      */
     public function edit($id)
     {
-        $os = OS::where('idOS', '=', $id)->first();
+        $os = OS::where('idOS', '=', $id)->with('item')->first();
         return view('oss.edit', compact('os'));
     }
     /**
