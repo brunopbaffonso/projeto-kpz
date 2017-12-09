@@ -115,7 +115,7 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="PHP" type="php">
+      <library name="PHP">
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-snappy" />
@@ -205,9 +205,6 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
           <root url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
-          <root url="file://$MODULE_DIR$/vendor/vendor/bin" />
-          <root url="file://$MODULE_DIR$/vendor/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/vendor/h4cc" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
           <root url="file://$MODULE_DIR$/vendor/webmozart/assert" />
           <root url="file://$MODULE_DIR$/vendor/xethron/laravel-4-generators" />
@@ -302,9 +299,6 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
           <root url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
-          <root url="file://$MODULE_DIR$/vendor/vendor/bin" />
-          <root url="file://$MODULE_DIR$/vendor/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/vendor/h4cc" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
           <root url="file://$MODULE_DIR$/vendor/webmozart/assert" />
           <root url="file://$MODULE_DIR$/vendor/xethron/laravel-4-generators" />

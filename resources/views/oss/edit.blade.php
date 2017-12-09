@@ -91,6 +91,41 @@
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
+
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Quantidade</th>
+                                        <th>Largura</th>
+                                        <th>Comprimento</th>
+                                        <th>Unidade de Medida</th>
+                                        <th>Borda</th>
+                                        <th>Preço Unitario</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($os->item as $item)
+                                        <tr>
+                                            <td>{{ $item->quantidade }}</td>
+                                            <td>{{ $item->largura }}</td>
+                                            <td>{{ $item->comprimento }}</td>
+                                            <td>{{ $item->unidadeMedida }}</td>
+                                            <td>{{ $item->borda }}</td>
+                                            <td>{{ $item->precoUnit }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Quantidade</th>
+                                        <th>Largura</th>
+                                        <th>Comprimento</th>
+                                        <th>Unidade de Medida</th>
+                                        <th>Borda</th>
+                                        <th>Preço Unitario</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>

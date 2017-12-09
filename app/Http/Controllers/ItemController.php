@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Item;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Rafwell\Simplegrid\Grid;
+use App\Models\OS;
 
 class ItemController extends Controller
 {
@@ -90,8 +92,10 @@ class ItemController extends Controller
     {
         $arte = $request->file('arte');
         //dd($arte);
-
-        $item = new Item;
+// os_ID
+        $idItem = Item::count();
+        $item = new Item();
+        $item->idItem = $idItem + 1;
         $item->quantidade = $request->quantidade;
         $item->largura = $request->largura;
         $item->comprimento = $request->comprimento;
@@ -103,15 +107,17 @@ class ItemController extends Controller
         }
         $item->precoUnit = $request->precoUnit;
 //        $item->os_idOS = OS::orderBy('idOS', 'desc')->first();
-        $item->os_idOS = $request->os_idOS;
+        $item->os()->associate(OS::find($request->os_idOS));
 //        dd($item);
 
         $item-> save();
+//            return response()->json($e);
         if($request->submit == "0"){
-            return redirect()->route('items.index')->with('message', 'Item Criado Com Sucesso');
+            session()->flash('mensagem', 'Item Criado Com Sucesso');
+            return redirect('registra/item/'.$request->os_idOS);
+        } else {
+            return redirect('oss');
         }
-        else return view('items.register', ['OS' => $item->os_idOS]);
-
     }
     /**
      * Display the specified resource.
