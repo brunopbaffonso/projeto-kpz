@@ -62,7 +62,7 @@
                         $("#endereco").val("...");
                         $("#bairro").val("...");
                         $("#cidade_idCidade").val("...");
-                        $("#estado_idEstado").val("...");
+                        $("#estado_uf").val("...");
 
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
@@ -72,7 +72,7 @@
                                 $("#endereco").val(dados.logradouro);
                                 $("#bairro").val(dados.bairro);
                                 $("#cidade_idCidade").val(dados.localidade);
-                                $("#estado_idEstado").val(dados.uf);
+                                $("#estado_uf").val(dados.uf);
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.
@@ -246,7 +246,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ url('relatorios/teste') }}">Relatórios</a>
+                            <a href="{{ url('relatorios') }}">Relatórios</a>
                         </li>
                     </ul>
                 </li>

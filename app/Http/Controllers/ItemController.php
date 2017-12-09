@@ -31,7 +31,7 @@ class ItemController extends Controller
         ])
 
         ->processLine(function($row){
-                $row['arte'] = link_to($row['arte']);
+                $row['arte'] = '<a target=_blank href='.$row['arte'].'><img height=75 weight=75 src='.$row['arte'].'></a>';
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
                 $row['precoUnit'] =  'R$ '.number_format($row['precoUnit'], 2, ',', '.');
                 $row['comprimento'] =  number_format($row['comprimento'], 2, ',', '.');

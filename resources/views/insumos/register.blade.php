@@ -30,7 +30,7 @@
                                     <label for="nome" class="col-md-2 control-label">*Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Manta preta/ Tinta" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ old('nome') }}" placeholder="Manta preta/ Tinta" maxlength="255" pattern="[a-zA-Z0-9\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
@@ -109,9 +109,9 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="cor" class="col-md-2 control-label">Cor:</label>
+                                    <label for="cor_idCor" class="col-md-2 control-label">Cor:</label>
                                     <div class="col-md-8" name="cor_idCor">
-                                        <select class="form-control form-control-lg">
+                                        <select name="cor_idCor" class="form-control form-control-lg">
                                             <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
                                             <option value="K01" class="dropdown-item">Cinza</option>
                                             <option value="K02" class="dropdown-item">Grafite</option>
@@ -143,6 +143,42 @@
                                     </div>
                                 </div>
 
+
+                                <div class="form-group row">
+                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            @foreach($fornecedores as $fornecedor)
+
+                                                <option value={{ $fornecedor->idFornecedor }} class="dropdown-item">{{ $fornecedor->nome }}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="tipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="tipoManta">
+                                        <select name="tipoManta" class="form-control form-control-lg">
+                                            <option value="1" class="dropdown-item">Alto Tráfego</option>
+                                            <option value="2" class="dropdown-item">Gold</option>
+                                            <option value="3" class="dropdown-item">Silver</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="tipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="tipoMaterial">
+                                        <select name="tipoMaterial" class="form-control form-control-lg">
+                                            <option value="1" class="dropdown-item">Fita PVC</option>
+                                            <option value="2" class="dropdown-item">Laminados PVC</option>
+                                            <option value="3" class="dropdown-item">CleanKap</option>
+                                            <option value="4" class="dropdown-item">ADK</option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <br />
 
