@@ -44,7 +44,7 @@ class OSController extends Controller
             ->advancedSearch([
                 'idOS'=>['type'=>'integer','label'=>'Código'],
                 'contato'=>['type'=>'text', 'label'=>'Contato'],
-                'status'=>['type'=>'text', 'label'=>'Status'],
+                'status'=>['type'=>'in', 'label'=>'Preço Total'],
                 'precoTotal'=>['type'=>'money', 'label'=>'Preço Total'],
                 'desconto'=>['type'=>'money', 'label'=>'Desconto'],
                 'formaPgto'=>['type'=>'text', 'label'=>'Forma Pgto.'],
@@ -89,7 +89,7 @@ class OSController extends Controller
         $id = OS::count();
         $os = new OS;
         $os->idOS = $id + 1;
-        //$os->contato=$request->contato;
+        $os->contato=$request->contato;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;

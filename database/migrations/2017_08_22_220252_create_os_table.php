@@ -16,7 +16,7 @@ class CreateOsTable extends Migration {
 		{
 			$table->primary('idOS');
             $table->string('contato', 255);
-            $table->integer('status');
+            $table->string('status', 11);
 			$table->decimal('precoTotal', 6,2);
 			$table->decimal('desconto', 6,2)->nullable();
 			$table->string('formaPgto', 45);

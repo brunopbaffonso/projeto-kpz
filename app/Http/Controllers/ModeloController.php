@@ -64,7 +64,6 @@ class ModeloController extends Controller
         $modelo = new Modelo;
         $modelo->nome = $request->nome;
 
-
         $this->validate($request,[
             'nome'=> 'required|min:3|max:255',
         ],[

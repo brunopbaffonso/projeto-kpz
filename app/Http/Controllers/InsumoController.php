@@ -1,6 +1,10 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Cor;
+use App\Models\Fornecedor;
 use App\Models\Insumo;
+use App\Models\TipoManta;
+use App\Models\TipoMaterial;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 
@@ -72,7 +76,9 @@ class InsumoController extends Controller
      */
     public function create()
     {
-        return view('insumos.register');
+        $fornecedores = Fornecedor::All();
+
+        return view('insumos.register')->with('fornecedores', $fornecedores);
     }
     /**
      * Store a newly created resource in storage.
@@ -90,6 +96,10 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
+        $insumo->cor_idCor = $request->cor_idCor;
+        $insumo->fornecedor_idFornecedor = $request->idFornecedor;
+        $insumo->tipoManta_idTipoManta = $request->tipoManta;
+        $insumo->tipoMaterial_idTipoMaterial = $request->tipoMaterial;
         
         $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
@@ -132,7 +142,11 @@ class InsumoController extends Controller
     public function edit($id)
     {
         $insumo = Insumo::where('idInsumo', '=', $id)->first();
-        return view('insumos.edit', compact('insumo'));
+        $cor = Cor::All();
+        $material = TipoMaterial::All();
+        $manta = TipoManta::All();
+        //return view('insumos.edit', compact('insumo'));
+        return view('insumos.edit')->with('insumo', $insumo)->with('cor', $cor)->with('material', $material)->with('manta', $manta);
     }
     /**
      * Update the specified resource in storage.
@@ -150,6 +164,10 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
+        $insumo->cor_idCor = $request->cor_idCor;
+        $insumo->fornecedor_idFornecedor = $request->idFornecedor;
+        $insumo->tipoManta_idTipoManta = $request->tipoManta;
+        $insumo->tipoMaterial_idTipoMaterial = $request->tipoMaterial;
 //        $insumo->created_at = $request->created_at;
 //        $insumo->updated_at = $request->updated_at;
         $insumo-> save();

@@ -84,14 +84,34 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
-                                <div class="col-md-8" name="unidadeMedida">
+                                    <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
+                                    <div class="col-md-8" name="unidadeMedida">
                                         <select name="unidadeMedida" class="form-control form-control-lg">
-                                            <option value="mm" class="dropdown-item">mm (Milimetro)</option>
-                                            <option value="cm" class="dropdown-item">cm (Centimetros)</option>
-                                            <option value="dm" class="dropdown-item">dm (Decimetros)</option>
-                                            <option value="m" class="dropdown-item">m (Metros)</option>
-                                            <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            @if($insumo->unidadeMedida == 'mm')
+                                                <option value="mm" class="dropdown-item" selected>mm (Milimetro)</option>
+                                            @else
+                                                <option value="mm" class="dropdown-item">mm (Milimetro)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'cm')
+                                                <option value="cm" class="dropdown-item" selected>cm (Centimetros)</option>
+                                            @else
+                                                <option value="cm" class="dropdown-item">cm (Centimetros)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'dm')
+                                                <option value="dm" class="dropdown-item" selected>dm (Decimetros)</option>
+                                            @else
+                                                <option value="dm" class="dropdown-item">dm (Decimetros)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'm')
+                                                <option value="m" class="dropdown-item" selected>m (Metros)</option>
+                                            @else
+                                                <option value="m" class="dropdown-item">m (Metros)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'dam')
+                                                <option value="dam" class="dropdown-item" selected>dam (Decametros)</option>
+                                            @else
+                                                <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
@@ -112,36 +132,46 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="cor" class="col-md-2 control-label">Cor:</label>
+                                    <label for="cor" class="col-md-2 control-label">Cor:</label>
                                     <div class="col-md-8" name="cor_idCor">
                                         <select class="form-control form-control-lg">
-                                            <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
-                                            <option value="K01" class="dropdown-item">Cinza</option>
-                                            <option value="K02" class="dropdown-item">Grafite</option>
-                                            <option value="K03" class="dropdown-item">Preto</option>
-                                            <option value="K04" class="dropdown-item">Marrom</option>
-                                            <option value="K05" class="dropdown-item">Bege</option>
-                                            <option value="K06" class="dropdown-item">Ouro</option>
-                                            <option value="K08" class="dropdown-item">Amarelo</option>
-                                            <option value="K09" class="dropdown-item">Laranja</option>
-                                            <option value="K10" class="dropdown-item">Vermelho</option>
-                                            <option value="K11" class="dropdown-item">Bordo</option>
-                                            <option value="K12" class="dropdown-item">Azul Marinho</option>
-                                            <option value="K13" class="dropdown-item">Azul Royal</option>
-                                            <option value="K14" class="dropdown-item">Salmão</option>
-                                            <option value="K15" class="dropdown-item">Verde Bandeira</option>
-                                            <option value="K16" class="dropdown-item">Verde Limão</option>
-                                            <option value="K17" class="dropdown-item">Prata</option>
-                                            <option value="K18" class="dropdown-item">Lilás</option>
-                                            <option value="K19" class="dropdown-item">Azul Marítimo</option>
-                                            <option value="K20" class="dropdown-item">Verde Floresta</option>
-                                            <option value="K21" class="dropdown-item">Pink</option>
-                                            <option value="K22" class="dropdown-item">Verde Água</option>
-                                            <option value="K23" class="dropdown-item">Verde Piscina</option>
-                                            <option value="K24" class="dropdown-item">Azul Bebê</option>
-                                            <option value="K25" class="dropdown-item">Rosa Bebê</option>
-                                            <option value="K26" class="dropdown-item">Roxo</option>
-                                            <option value="K27" class="dropdown-item">Púrpura</option>
+                                            @foreach($cor as $c)
+                                                @if($c->idCor == $insumo->cor_idCor )
+                                                    <option value="{{$c->idCor}}" class="dropdown-item" selected>{{$c->nome}}</option>
+                                                @else
+                                                    <option value="{{$c->idCor}}" class="dropdown-item">{{$c->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="tipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="tipoManta">
+                                        <select name="tipoManta" class="form-control form-control-lg">
+                                            @foreach($manta as $m)
+                                                @if($m->idTipoManta == $insumo->tipoManta_idTipoManta )
+                                                    <option value="{{$m->idTipoManta}}" class="dropdown-item" selected>{{$m->nome}}</option>
+                                                @else
+                                                    <option value="{{$m->idTipoManta}}" class="dropdown-item">{{$m->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="tipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="tipoMaterial">
+                                        <select name="tipoMaterial" class="form-control form-control-lg">
+                                            @foreach($material as $m2)
+                                                @if($m2->idTipoMaterial == $insumo->tipoMaterial_idTipoManterial )
+                                                    <option value="{{$m2->idTipoMaterial}}" class="dropdown-item" selected>{{$m2->nome}}</option>
+                                                @else
+                                                    <option value="{{$m2->idTipoMaterial}}" class="dropdown-item">{{$m2->nome}}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
