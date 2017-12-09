@@ -4,19 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" description="use Rafwell\Simplegrid\Grid;" line="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a7aba37-637e-4c66-b992-ac7412eaf95e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InsumoController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/InsumoController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ItemController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ItemController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ModeloController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ModeloController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OSController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/OSController.php" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2017_08_22_220252_create_os_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_08_22_220252_create_os_table.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/insumos/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/insumos/edit.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/insumos/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/insumos/register.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/padrao.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/padrao.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/oss/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/oss/register.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/subprodutos/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/subprodutos/register.blade.php" />
-      <change beforePath="$PROJECT_DIR$/storage/logs/laravel.log" afterPath="$PROJECT_DIR$/storage/logs/laravel.log" />
-    </list>
+    <list default="true" id="9a7aba37-637e-4c66-b992-ac7412eaf95e" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,8 +207,8 @@
       <file leaf-file-name="edit.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/insumos/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1084">
-              <caret line="106" column="49" lean-forward="true" selection-start-line="106" selection-start-column="49" selection-end-line="106" selection-end-column="49" />
+            <state relative-caret-position="562">
+              <caret line="182" column="77" lean-forward="true" selection-start-line="182" selection-start-column="77" selection-end-line="182" selection-end-column="77" />
               <folding>
                 <marker date="1512853911566" expanded="true" signature="9:25" ph="..." />
                 <marker date="1512853911566" expanded="true" signature="37:46" ph="..." />
@@ -777,12 +765,12 @@
       <workItem from="1512742927606" duration="3409000" />
       <workItem from="1512823724140" duration="556000" />
       <workItem from="1512824491278" duration="4708000" />
-      <workItem from="1512838131360" duration="14049000" />
+      <workItem from="1512838131360" duration="14220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223203000" />
+    <option name="totallyTimeSpent" value="223374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="396" y="84" width="1857" height="1092" extended-state="6" />
@@ -1538,8 +1526,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/insumos/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1084">
-          <caret line="106" column="49" lean-forward="true" selection-start-line="106" selection-start-column="49" selection-end-line="106" selection-end-column="49" />
+        <state relative-caret-position="562">
+          <caret line="182" column="77" lean-forward="true" selection-start-line="182" selection-start-column="77" selection-end-line="182" selection-end-column="77" />
           <folding>
             <marker date="1512853911566" expanded="true" signature="9:25" ph="..." />
             <marker date="1512853911566" expanded="true" signature="37:46" ph="..." />
