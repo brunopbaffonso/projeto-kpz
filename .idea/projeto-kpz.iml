@@ -21,12 +21,30 @@
           <root url="file://$MODULE_DIR$/vendor/h4cc/wkhtmltoimage-amd64" />
           <root url="file://$MODULE_DIR$/vendor/h4cc/wkhtmltopdf-amd64" />
           <root url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy" />
+          <root url="file://$MODULE_DIR$/vendor/vendor/bin" />
+          <root url="file://$MODULE_DIR$/vendor/vendor/composer" />
+          <root url="file://$MODULE_DIR$/vendor/vendor/h4cc" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/barryvdh/laravel-snappy" />
           <root url="file://$MODULE_DIR$/vendor/h4cc/wkhtmltoimage-amd64" />
           <root url="file://$MODULE_DIR$/vendor/h4cc/wkhtmltopdf-amd64" />
           <root url="file://$MODULE_DIR$/vendor/knplabs/knp-snappy" />
+          <root url="file://$MODULE_DIR$/vendor/vendor/bin" />
+          <root url="file://$MODULE_DIR$/vendor/vendor/composer" />
+          <root url="file://$MODULE_DIR$/vendor/vendor/h4cc" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="PHARS">
+        <CLASSES>
+          <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
+        </CLASSES>
+        <SOURCES>
+          <root url="phar://$MODULE_DIR$/vendor/phar-io/manifest/tests/_fixture/test.phar/" />
+          <root url="phar://$MODULE_DIR$/vendor/phpunit/phpunit/tests/_files/phpunit-example-extension/tools/phpunit.d/phpunit-example-extension-1.0.1.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

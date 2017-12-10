@@ -163,45 +163,4 @@
             </div>
         </div>
 
-
-        @push('js')
-        <script>
-            {{--$('#cadastraNovo').on('click', function () {--}}
-                {{--$('#error-div').removeClass('alert');--}}
-                {{--$('#error-page').html('');--}}
-                {{--var formData = {--}}
-                    {{--'os_ID'              : $('input[name="os_idOS"]').val(),--}}
-                    {{--'quantidade'         : $('input[name="quantidade"]').val(),--}}
-                    {{--'comprimento'        : $('input[name="comprimento"]').val(),--}}
-                    {{--'largura'            : $('input[name="largura"]').val(),--}}
-                    {{--'unidadeMedida'      : $('select[name="unidadeMedida"]').val(),--}}
-                    {{--'borda'              : $('select[name="borda"]').val(),--}}
-                    {{--'arte'               : $('input[name="arte"]').val(),--}}
-                    {{--'precoUnit'          : $('input[name="precoUnit"]').val(),--}}
-                    {{--'tipoBtn'            : '0'--}}
-                {{--};--}}
-
-                {{--$.ajaxSetup({--}}
-                    {{--headers: {--}}
-                        {{--'X-CSRF-TOKEN': "{{ csrf_token() }}"--}}
-                    {{--}--}}
-                {{--});--}}
-                {{--$.ajax({--}}
-                    {{--url: '{{ url('items')  }}',--}}
-                    {{--type: 'POST',--}}
-                    {{--dataType: 'json',--}}
-                    {{--data: formData--}}
-                {{--}).done(function(data) {--}}
-                    {{--if (data.errorInfo) {--}}
-                        {{--{{ $error = true }}--}}
-                            {{--$('#error-div').addClass('alert');--}}
-                            {{--$('#error-page').append('<div class="help-block">' + data.errorInfo + '</div>'); // add the actual error message under our input--}}
-                        {{--console.log(data);--}}
-                    {{--} else {--}}
-                        {{--console.log(data);--}}
-                    {{--}--}}
-                {{--});--}}
-            {{--});--}}
-        </script>
-    @endpush
 @endsection

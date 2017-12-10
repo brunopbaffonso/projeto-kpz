@@ -72,12 +72,12 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
-                                    <div class="col-md-8" name="idFornecedor">
-                                        <select name="idFornecedor" class="form-control form-control-lg">
-                                            @foreach($fornecedores as $fornecedor)
+                                    <label for="cliente_idCliente" class="col-md-2 control-label">Cliente:</label>
+                                    <div class="col-md-8" name="cliente_idCliente">
+                                        <select name="cliente_idCliente" class="form-control form-control-lg">
+                                            @foreach($clientes as $cliente)
 
-                                                <option value={{ $fornecedor->idFornecedor }} class="dropdown-item">{{ $fornecedor->nome }}</option>
+                                                <option value={{ $cliente->idCliente }} class="dropdown-item">{{ $cliente->nome }}</option>
 
                                             @endforeach
                                         </select>

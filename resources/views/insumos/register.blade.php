@@ -14,6 +14,27 @@
 
         <div id="page-inner">
 
+            <div id="error-div" class='alert-danger'>
+                <ul id="error-page">
+                </ul>
+            </div>
+
+        @if (Session::has('mensagem'))
+            <!-- mostra este bloco se existe uma chave na sessão chamada mensagens-sucesso -->
+                <div class='alert alert-success'>
+                    @if (is_array(Session::get('mensagem')))
+                        <ul>
+                            @foreach (Session::get('mensagem') as $msg)
+                                <li>{{$msg}}</li>
+                            @endforeach
+                        </ul>
+                    @else
+                        {{Session::get('mensagem')}}
+                    @endif
+                </div>
+            @endif
+
+
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel panel-default">
@@ -23,7 +44,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="form-horizontal">
+                            <div class="form-horizontal">Código OC:</label>  {{ $OC }}
                                 {!!Form::open(['url' => 'insumos/', 'method' => 'post'])!!}
 
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
@@ -184,8 +205,12 @@
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">
-                                        <button type="submit" class="btn btn-primary">
-                                            Cadastrar!
+                                        <button type="submit" name="submit" value="0" class="btn btn-primary">
+                                            Cadastrar Novo Insumo
+                                        </button>
+
+                                        <button type="submit" name="submit" value="1" class="btn btn-success">
+                                            Cadastrar & Finalizar!
                                         </button>
                                     </div>
                                 </div>

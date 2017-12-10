@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Cliente;
 use App\Models\Item;
 use App\Models\OS;
 use Illuminate\Http\Request;
@@ -77,7 +78,9 @@ class OSController extends Controller
      */
     public function create()
     {
-        return view('oss.register');
+        $clientes = Cliente::All();
+
+        return view('oss.register')->with('clientes', $clientes);
     }
     /**
      * Store a newly created resource in storage.
@@ -95,6 +98,7 @@ class OSController extends Controller
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
+        $os->cliente_idCliente = $request->cliente_idCliente;
         $os->save();
         //$ordem = OS::orderBy('idOS', 'desc')->first();
         //$ordem = OS::select()->where('created_at',)->first();
@@ -143,6 +147,7 @@ class OSController extends Controller
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
+        $os->cliente_idCliente = $request->cliente_idCliente;
 //        $os->created_at = $request->created_at;
 //        $os->updated_at = $request->updated_at;
         $os-> save();

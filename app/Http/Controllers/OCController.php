@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\Fornecedor;
 use App\Models\OC;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
@@ -61,7 +62,9 @@ class OCController extends Controller
      */
     public function create()
     {
-        return view('ocs.register');
+        $fornecedores = Fornecedor::All();
+
+        return view('ocs.register')->with('fornecedores', $fornecedores);
     }
     /**
      * Store a newly created resource in storage.
@@ -71,13 +74,21 @@ class OCController extends Controller
      */
     public function store(Request $request)
     {
-        $oc = new OC;
+        $id = OC::count();
+        $oc = new OC();
+        $oc->idOC = $id + 1;
         $oc->tipo = $request->tipo;
         $oc->observacoes = $request->observacoes;
 //        $oc->created_at = $request->created_at;
 //        $oc->updated_at = $request->updated_at;
         $oc-> save();
-        return redirect()->route('ocs.index')->with('message', 'OC Criado Com Sucesso');
+
+        //return redirect()->route('ocs.index')->with('message', 'OC Criado Com Sucesso');
+        return redirect('registra/insumo/'.$oc->idOC);
+    }
+
+    public function insumoOCS($ordem) {
+        return view('insumos.register')->with(['OC' => $ordem]);
     }
     /**
      * Display the specified resource.
@@ -114,6 +125,7 @@ class OCController extends Controller
         $oc->observacoes = $request->observacoes;
 //        $oc->created_at = $request->created_at;
 //        $oc->updated_at = $request->updated_at;
+
         $oc-> save();
         return redirect()->route('ocs.index')->with('message', 'OC Editado Com Sucesso');
     }

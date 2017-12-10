@@ -62,6 +62,41 @@
                                     </div>
                                 </div>
                                 {!! Form::close() !!}
+
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Quantidade</th>
+                                        <th>Largura</th>
+                                        <th>Comprimento</th>
+                                        <th>Unidade de Medida</th>
+                                        <th>Borda</th>
+                                        <th>Preço Unitario</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($oc->insumo as $insumo)
+                                        <tr>
+                                            <td>{{ $insumo->quantidade }}</td>
+                                            <td>{{ $insumo->largura }}</td>
+                                            <td>{{ $insumo->comprimento }}</td>
+                                            <td>{{ $insumo->unidadeMedida }}</td>
+                                            <td>{{ $insumo->borda }}</td>
+                                            <td>{{ $insumo->precoUnit }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th>Quantidade</th>
+                                        <th>Largura</th>
+                                        <th>Comprimento</th>
+                                        <th>Unidade de Medida</th>
+                                        <th>Borda</th>
+                                        <th>Preço Unitario</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>
