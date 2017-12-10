@@ -67,7 +67,7 @@
                         $("#endereco").val("...");
                         $("#bairro").val("...");
                         $("#cidade_idCidade").val("...");
-                        $("#estado_idEstado").val("...");
+                        $("#estado_uf").val("...");
 
                         //Consulta o webservice viacep.com.br/
                         $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
@@ -77,7 +77,7 @@
                                 $("#endereco").val(dados.logradouro);
                                 $("#bairro").val(dados.bairro);
                                 $("#cidade_idCidade").val(dados.localidade);
-                                $("#estado_idEstado").val(dados.uf);
+                                $("#estado_uf").val(dados.uf);
                             } //end if.
                             else {
                                 //CEP pesquisado não foi encontrado.
@@ -100,6 +100,8 @@
         });
 
     </script>
+
+    
 </head>
 <body>
 <div id="wrapper">
@@ -152,14 +154,6 @@
                         <li>
                             <a href="<?php echo e(url('oss/create')); ?>">Adicionar Ordem de Serviço</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Itens<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo e(url('items')); ?>">Listar Itens</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </li>
 
@@ -171,17 +165,6 @@
                         </li>
                         <li>
                             <a href="<?php echo e(url('ocs/create')); ?>">Adicionar Ordem de Compra</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Insumo<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo e(url('insumos')); ?>">Listar Insumos</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo e(url('insumos/create')); ?>">Adicionar Insumo</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -251,7 +234,7 @@
                     <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php echo e(url('relatorio/teste')); ?>">Relatórios</a>
+                            <a href="<?php echo e(url('relatorios')); ?>">Relatórios</a>
                         </li>
                     </ul>
                 </li>

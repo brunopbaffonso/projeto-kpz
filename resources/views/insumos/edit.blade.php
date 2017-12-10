@@ -58,7 +58,7 @@
                                 <div class="form-group{{ $errors->has('comprimento') ? ' has-error' : '' }}">
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ $insumo->comprimento }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         @if ($errors->has('comprimento'))
@@ -147,10 +147,10 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
-                                    <div class="col-md-8" name="tipoManta">
-                                        <select name="tipoManta" class="form-control form-control-lg">
-                                            @foreach($manta as $m)
+                                    <label for="idTipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="idTipoManta">
+                                        <select name="idTipoManta" class="form-control form-control-lg">
+                                            @foreach($tipoManta as $m)
                                                 @if($m->idTipoManta == $insumo->tipoManta_idTipoManta )
                                                     <option value="{{$m->idTipoManta}}" class="dropdown-item" selected>{{$m->nome}}</option>
                                                 @else
@@ -162,14 +162,29 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
-                                    <div class="col-md-8" name="tipoMaterial">
-                                        <select name="tipoMaterial" class="form-control form-control-lg">
-                                            @foreach($material as $m2)
-                                                @if($m2->idTipoMaterial == $insumo->tipoMaterial_idTipoManterial )
+                                    <label for="idTipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="idTipoMaterial">
+                                        <select name="idTipoMaterial" class="form-control form-control-lg">
+                                            @foreach($tipoMaterial as $m2)
+                                                @if($m2->idTipoMaterial == $insumo->tipoMaterial_idTipoMaterial )
                                                     <option value="{{$m2->idTipoMaterial}}" class="dropdown-item" selected>{{$m2->nome}}</option>
                                                 @else
                                                     <option value="{{$m2->idTipoMaterial}}" class="dropdown-item">{{$m2->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idFornecedor" class="col-md-2 control-label">*Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            @foreach($fornecedor as $f)
+                                                @if($f->idFornecedor == $insumo->fornecedor_idFornecedor )
+                                                    <option value="{{$f->idFornecedor}}" class="dropdown-item" selected>{{$f->nome}}</option>
+                                                @else
+                                                    <option value="{{$f->idFornecedor}}" class="dropdown-item">{{$f->nome}}</option>
                                                 @endif
                                             @endforeach
                                         </select>

@@ -28,6 +28,19 @@
 
                                 <input id="status" type="hidden" class="form-control" name="status" value="Aberta">
 
+                                <div class="form-group row">
+                                    <label for="idCliente" class="col-md-2 control-label">*Cliente:</label>
+                                    <div class="col-md-8" name="idCliente">
+                                        <select name="idCliente" class="form-control form-control-lg">
+                                            @foreach($clientes as $cliente)
+
+                                                <option value={{ $cliente->idCliente }} class="dropdown-item">{{ $cliente->nome }}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
 
                                 <div class="form-group{{ $errors->has('contato') ? ' has-error' : '' }}">
                                     <label for="contato" class="col-md-2 control-label">Contato</label>
@@ -68,19 +81,6 @@
                                         <strong>{{ $errors->first('observacoes') }}</strong>
                                     </span>
                                         @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="cliente_idCliente" class="col-md-2 control-label">Cliente:</label>
-                                    <div class="col-md-8" name="cliente_idCliente">
-                                        <select name="cliente_idCliente" class="form-control form-control-lg">
-                                            @foreach($clientes as $cliente)
-
-                                                <option value={{ $cliente->idCliente }} class="dropdown-item">{{ $cliente->nome }}</option>
-
-                                            @endforeach
-                                        </select>
                                     </div>
                                 </div>
 

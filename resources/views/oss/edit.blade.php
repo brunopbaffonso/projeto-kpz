@@ -26,18 +26,42 @@
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'put'])!!}
 
-                                <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                                    <label for="status" class="col-md-2 control-label">Status:</label>
 
-                                    <div class="col-md-8">
-                                        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-                                            <label for="status" class="col-md-2 control-label">Status</label>
-                                            <select name="status">
-                                                <option value="Aberta" class="form-control">Aberta</option>
-                                                <option value="Executando" class="form-control">Executando</option>
-                                                <option value="Concluida" class="form-control">Concluida</option>
-                                            </select>
-                                        </div>
+                                <div class="form-group row">
+                                    <div class="col-md-8" name="cor_idCor">
+                                        <label for="status" class="col-md-2 control-label">Status</label>
+                                        <select name="status" class="form-control form-control-lg">
+                                            @if($os->status == 'Aberta')
+                                                <option value="Aberta" class="dropdown-item" selected>Aberta</option>
+                                            @else
+                                                <option value="Aberta" class="dropdown-item">Aberta</option>
+                                            @endif
+                                            @if($os->status == 'Executando')
+                                                <option value="Executando" class="dropdown-item" selected>Executando</option>
+                                            @else
+                                                <option value="Executando" class="dropdown-item">Executando</option>
+                                            @endif
+                                            @if($os->status == 'Concluida')
+                                                <option value="Concluida" class="dropdown-item" selected>Concluida</option>
+                                            @else
+                                                <option value="Concluida" class="dropdown-item">Concluida</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="idCliente" class="col-md-2 control-label">*Cliente:</label>
+                                    <div class="col-md-8" name="idCliente">
+                                        <select name="idCliente" class="form-control form-control-lg">
+                                            @foreach($cliente as $c)
+                                                @if($c->idCliente == $os->cliente_idCliente )
+                                                    <option value="{{$c->idCliente}}" class="dropdown-item" selected>{{$c->nome}}</option>
+                                                @else
+                                                    <option value="{{$c->idCliente}}" class="dropdown-item">{{$c->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
@@ -90,8 +114,9 @@
                                         </button>
                                     </div>
                                 </div>
-                                {!! Form::close() !!}
 
+ 
+                                {!! Form::close() !!}
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
@@ -115,17 +140,8 @@
                                         </tr>
                                     @endforeach
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Quantidade</th>
-                                        <th>Largura</th>
-                                        <th>Comprimento</th>
-                                        <th>Unidade de Medida</th>
-                                        <th>Borda</th>
-                                        <th>Preço Unitario</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>

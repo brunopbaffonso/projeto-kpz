@@ -27,6 +27,7 @@
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'put'])!!}
 
+
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
@@ -69,15 +70,52 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
-                                    <label for="unidadeMedida" class="col-md-2 control-label">Unidade de Medida</label>
-                                    <select name="unidadeMedida">
-                                        <option value="mm" class="form-control">mm (Milimetro)</option>
-                                        <option value="cm" class="form-control">cm (Centimetros)</option>
-                                        <option value="dm" class="form-control">dm (Decimetros)</option>
-                                        <option value="m" class="form-control">m (Metros)</option>
-                                        <option value="dam" class="form-control">dam (Decametros)</option>
-                                    </select>
+                                 <div class="form-group row">
+                                    <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
+                                    <div class="col-md-8" name="unidadeMedida">
+                                        <select name="unidadeMedida" class="form-control form-control-lg">
+                                            @if($insumo->unidadeMedida == 'mm')
+                                                <option value="mm" class="dropdown-item" selected>mm (Milimetro)</option>
+                                            @else
+                                                <option value="mm" class="dropdown-item">mm (Milimetro)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'cm')
+                                                <option value="cm" class="dropdown-item" selected>cm (Centimetros)</option>
+                                            @else
+                                                <option value="cm" class="dropdown-item">cm (Centimetros)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'dm')
+                                                <option value="dm" class="dropdown-item" selected>dm (Decimetros)</option>
+                                            @else
+                                                <option value="dm" class="dropdown-item">dm (Decimetros)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'm')
+                                                <option value="m" class="dropdown-item" selected>m (Metros)</option>
+                                            @else
+                                                <option value="m" class="dropdown-item">m (Metros)</option>
+                                            @endif
+                                            @if($insumo->unidadeMedida == 'dam')
+                                                <option value="dam" class="dropdown-item" selected>dam (Decametros)</option>
+                                            @else
+                                                <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idBorda" class="col-md-2 control-label">*Borda:</label>
+                                    <div class="col-md-8" name="idBorda">
+                                        <select name="idBorda" class="form-control form-control-lg">
+                                            @foreach($borda as $b)
+                                                @if($b->idBorda == $os->borda_idBorda )
+                                                    <option value="{{$m->idBorda}}" class="dropdown-item" selected>{{$b->nome}}</option>
+                                                @else
+                                                    <option value="{{$m->idBorda}}" class="dropdown-item">{{$b->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="form-group{{ $errors->has('borda') ? ' has-error' : '' }}">

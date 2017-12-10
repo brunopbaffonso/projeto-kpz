@@ -13,7 +13,10 @@ class EstadoController extends Controller
      */
     public function index(Request $request)
     {
-        
+      
+      $estados = Estados::all();
+      return response()->json($estados);
+    
     }
     /**
      * Show the form for creating a new resource.

@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('observacoes') ? ' has-error' : '' }}">
-                                    <label for="observacoes" class="col-md-2 control-label">Observações:</label>
+                                    <label for="observacoes" class="col-md-4 control-label">Observações:</label>
 
                                     <div class="col-md-10">
                                         <textarea id="observacoes" type="text" class="form-control" name="observacoes" value="{{ old('observacoes') }}" dplaceholder="Compra de Manta" maxlength="255" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS, números e caracteres especiais" autofocus ></textarea>

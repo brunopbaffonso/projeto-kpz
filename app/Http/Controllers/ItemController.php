@@ -1,11 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Item;
+use App\Models\OS;
+use App\Models\Modelo;
+use app\Models\Borda;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Rafwell\Simplegrid\Grid;
-use App\Models\OS;
+
 
 class ItemController extends Controller
 {
@@ -79,8 +82,9 @@ class ItemController extends Controller
      */
     public function create($id)
     {
-        //dd($id);
-        return view('items.register')->with('id', $id);
+        $bordas = Borda::all();
+        $modelos = Modelo::all();
+        return view('items.register')->with('id', $id)->with('borda', $bordas)->with('modelo', $modelos);
     }
     /**
      * Store a newly created resource in storage.
@@ -91,8 +95,6 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $arte = $request->file('arte');
-        //dd($arte);
-// os_ID
         $idItem = Item::count();
         $item = new Item();
         $item->idItem = $idItem + 1;
@@ -100,7 +102,8 @@ class ItemController extends Controller
         $item->largura = $request->largura;
         $item->comprimento = $request->comprimento;
         $item->unidadeMedida = $request->unidadeMedida;
-        $item->borda = $request->borda;
+        $item->borda_idBorda = $request->idBorda;
+        $item->modelo_idModelo = $request->idModelo;
         if(!empty($arte))
         {
             $item->arte = Storage::put('artes', $arte);
@@ -138,7 +141,9 @@ class ItemController extends Controller
     public function edit($id)
     {
         $item = Item::where('idItem', '=', $id)->first();
-        return view('items.edit', compact('item'));
+        $borda = Borda::all();
+        $modelo = Modelo::all();
+        return view('items.edit', compact('item','borda','modelo'));
     }
     /**
      * Update the specified resource in storage.
@@ -154,7 +159,8 @@ class ItemController extends Controller
         $item->largura = $request->largura;
         $item->comprimento = $request->comprimento;
         $item->unidadeMedida = $request->unidadeMedida;
-        $item->borda = $request->borda;
+        $item->borda = $request->idBorda;
+        $item->modelo_idModelo = $request->idModelo;
         $item->arte = $request->arte;
         $item->precoUnit = $request->precoUnit;
 //        $item->created_at = $request->created_at;

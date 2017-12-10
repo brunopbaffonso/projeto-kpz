@@ -25,29 +25,31 @@
                                 <?php echo Form::open(['url' => 'oss/', 'method' => 'post']); ?>
 
 
-                                <div class="form-group<?php echo e($errors->has('precoTotal') ? ' has-error' : ''); ?>">
-                                    <label for="precoTotal" class="col-md-2 control-label">Preço Total:</label>
+                                <input id="status" type="hidden" class="form-control" name="status" value="Aberta">
 
-                                    <div class="col-md-8">
-                                        <input id="precoTotal" type="number" class="form-control" name="precoTotal" value="<?php echo e(old('precoTotal')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
+                                <div class="form-group row">
+                                    <label for="idCliente" class="col-md-2 control-label">*Cliente:</label>
+                                    <div class="col-md-8" name="idCliente">
+                                        <select name="idCliente" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $clientes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cliente): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                        <?php if($errors->has('precoTotal')): ?>
-                                            <span class="help-block">
-                                        <strong><?php echo e($errors->first('precoTotal')); ?></strong>
-                                    </span>
-                                        <?php endif; ?>
+                                                <option value=<?php echo e($cliente->idCliente); ?> class="dropdown-item"><?php echo e($cliente->nome); ?></option>
+
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
                                     </div>
                                 </div>
 
-                                <div class="form-group<?php echo e($errors->has('desconto') ? ' has-error' : ''); ?>">
-                                    <label for="desconto" class="col-md-2 control-label">Desconto:</label>
+
+                                <div class="form-group<?php echo e($errors->has('contato') ? ' has-error' : ''); ?>">
+                                    <label for="contato" class="col-md-2 control-label">Contato</label>
 
                                     <div class="col-md-8">
-                                        <input id="desconto" type="number" class="form-control" name="desconto" value="<?php echo e(old('desconto')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" autofocus>
+                                        <input id="contato" type="text" class="form-control" name="contato" value="<?php echo e(old('contato')); ?>" data-toggle="tooltip" data-placement="top" title="Tooltip on top" required autofocus>
 
-                                        <?php if($errors->has('desconto')): ?>
+                                        <?php if($errors->has('contato')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($errors->first('desconto')); ?></strong>
+                                        <strong><?php echo e($errors->first('contato')); ?></strong>
                                     </span>
                                         <?php endif; ?>
                                     </div>
@@ -86,41 +88,16 @@
                                         <button type="submit" class="btn btn-primary">
                                             Cadastrar!
                                         </button>
-
-                                        <button type="button" id="novoItem" class="btn btn-primary">
-                                            Novo Item
-                                        </button>
                                     </div>
                                 </div>
                                 <?php echo Form::close(); ?>
 
-
-                            <div id="item">
-                                <li>text</li>
-                            </div>
-
-
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
-
-    <?php $__env->startPush('js'); ?>
-        <script>
-            $('#novoItem').on('click', function() {
-
-                var para = document.createElement("p");
-                var node = document.createTextNode("Novo Item");
-                para.appendChild(node);
-
-                var element = document.getElementById("item");
-                element.appendChild(para);
-            });
-        </script>
-    <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.padrao', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

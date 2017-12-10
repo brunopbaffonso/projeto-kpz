@@ -20,7 +20,7 @@ class InsumoController extends Controller
         $Grid = new Grid(Insumo::query(), 'InsumosGrid');
 
         $Grid->fields([
-            'idInsumo'=>'#o',
+            'idInsumo'=>'#',
             'nome'=>'Descrição',
             'quantidade'=>'Quantidade',
             'comprimento'=>'Comprimento',
@@ -77,8 +77,11 @@ class InsumoController extends Controller
     public function create()
     {
         $fornecedores = Fornecedor::All();
+        $cors = Cor::All();
+        $materials = TipoMaterial::All();
+        $mantas = TipoManta::All();
 
-        return view('insumos.register')->with('fornecedores', $fornecedores);
+        return view('insumos.register')->with('fornecedor', $fornecedores)->with('cor', $cors)->with('tipoMaterial', $materials)->with('tipoManta', $mantas);
     }
     /**
      * Store a newly created resource in storage.
@@ -96,10 +99,10 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
-        $insumo->cor_idCor = $request->cor_idCor;
+        $insumo->cor_idCor = $request->idCor;
         $insumo->fornecedor_idFornecedor = $request->idFornecedor;
-        $insumo->tipoManta_idTipoManta = $request->tipoManta;
-        $insumo->tipoMaterial_idTipoMaterial = $request->tipoMaterial;
+        $insumo->tipoManta_idTipoManta = $request->idTipoManta;
+        $insumo->tipoMaterial_idTipoMaterial = $request->idTipoMaterial;
         
         $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
@@ -142,11 +145,13 @@ class InsumoController extends Controller
     public function edit($id)
     {
         $insumo = Insumo::where('idInsumo', '=', $id)->first();
+        $fornecedor = Fornecedor::All();
         $cor = Cor::All();
-        $material = TipoMaterial::All();
-        $manta = TipoManta::All();
+        $tipoMaterial = TipoMaterial::All();
+        $tipoManta = TipoManta::All();
         //return view('insumos.edit', compact('insumo'));
-        return view('insumos.edit')->with('insumo', $insumo)->with('cor', $cor)->with('material', $material)->with('manta', $manta);
+        //return view('insumos.edit')->with('insumo', $insumo)->with('fornecedor', $fornecedor)->with('cor', $cor)->with('tipoMaterial', $material)->with('tipoManta', $manta);
+        return view('insumos.edit', compact('insumo','fornecedor','cor','tipoMaterial','tipoManta'));
     }
     /**
      * Update the specified resource in storage.
@@ -164,12 +169,13 @@ class InsumoController extends Controller
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
-        $insumo->cor_idCor = $request->cor_idCor;
+        $insumo->cor_idCor = $request->idCor;
         $insumo->fornecedor_idFornecedor = $request->idFornecedor;
-        $insumo->tipoManta_idTipoManta = $request->tipoManta;
-        $insumo->tipoMaterial_idTipoMaterial = $request->tipoMaterial;
+        $insumo->tipoManta_idTipoManta = $request->idTipoManta;
+        $insumo->tipoMaterial_idTipoMaterial = $request->idTipoMaterial;
 //        $insumo->created_at = $request->created_at;
 //        $insumo->updated_at = $request->updated_at;
+
         $insumo-> save();
         return redirect()->route('insumos.index')->with('message', 'Insumo Editado Com Sucesso');
     }

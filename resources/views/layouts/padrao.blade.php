@@ -95,6 +95,8 @@
         });
 
     </script>
+
+    
 </head>
 <body>
 <div id="wrapper">
@@ -147,14 +149,6 @@
                         <li>
                             <a href="{{ url('oss/create') }}">Adicionar Ordem de Serviço</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Itens<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ url('items') }}">Listar Itens</a>
-                                </li>
-                            </ul>
-                        </li>
                     </ul>
                 </li>
 
@@ -166,17 +160,6 @@
                         </li>
                         <li>
                             <a href="{{ url('ocs/create') }}">Adicionar Ordem de Compra</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Insumo<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ url('insumos') }}">Listar Insumos</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('insumos/create') }}">Adicionar Insumo</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </li>

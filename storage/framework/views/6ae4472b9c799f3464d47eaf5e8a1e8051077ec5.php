@@ -30,7 +30,7 @@
                                     <label for="nome" class="col-md-2 control-label">Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e($insumo->nome); ?>" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e($insumo->nome); ?>" placeholder="Ex: Manta/Tinta"  data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('nome')): ?>
                                             <span class="help-block">
@@ -40,11 +40,25 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group<?php echo e($errors->has('quantidade') ? ' has-error' : ''); ?>">
+                                    <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
+
+                                    <div class="col-md-8">
+                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="<?php echo e($insumo->quantidade); ?>" placeholder="Ex: 1 (Rolo)/10 (Latas)" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9" required autofocus>
+
+                                        <?php if($errors->has('quantidade')): ?>
+                                            <span class="help-block">
+                                                <strong><?php echo e($insumo->quantidade); ?></strong>
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+
                                 <div class="form-group<?php echo e($errors->has('comprimento') ? ' has-error' : ''); ?>">
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
-                                    <div class="col-md-4">
-                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="<?php echo e($insumo->comprimento); ?>" required autofocus>
+                                    <div class="col-md-8">
+                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="<?php echo e($insumo->comprimento); ?>" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         <?php if($errors->has('comprimento')): ?>
                                             <span class="help-block">
@@ -58,7 +72,7 @@
                                     <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                     <div class="col-md-8">
-                                        <input id="largura" type="text"  step="0.01" class="form-control" name="largura" value="<?php echo e($insumo->largura); ?>" required autofocus>
+                                        <input id="largura" type="text" class="form-control" name="largura" value="<?php echo e($insumo->largura); ?>" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         <?php if($errors->has('largura')): ?>
                                             <span class="help-block">
@@ -69,14 +83,34 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
-                                <div class="col-md-8" name="unidadeMedida">
+                                    <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
+                                    <div class="col-md-8" name="unidadeMedida">
                                         <select name="unidadeMedida" class="form-control form-control-lg">
-                                            <option value="mm" class="dropdown-item">mm (Milimetro)</option>
-                                            <option value="cm" class="dropdown-item">cm (Centimetros)</option>
-                                            <option value="dm" class="dropdown-item">dm (Decimetros)</option>
-                                            <option value="m" class="dropdown-item">m (Metros)</option>
-                                            <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            <?php if($insumo->unidadeMedida == 'mm'): ?>
+                                                <option value="mm" class="dropdown-item" selected>mm (Milimetro)</option>
+                                            <?php else: ?>
+                                                <option value="mm" class="dropdown-item">mm (Milimetro)</option>
+                                            <?php endif; ?>
+                                            <?php if($insumo->unidadeMedida == 'cm'): ?>
+                                                <option value="cm" class="dropdown-item" selected>cm (Centimetros)</option>
+                                            <?php else: ?>
+                                                <option value="cm" class="dropdown-item">cm (Centimetros)</option>
+                                            <?php endif; ?>
+                                            <?php if($insumo->unidadeMedida == 'dm'): ?>
+                                                <option value="dm" class="dropdown-item" selected>dm (Decimetros)</option>
+                                            <?php else: ?>
+                                                <option value="dm" class="dropdown-item">dm (Decimetros)</option>
+                                            <?php endif; ?>
+                                            <?php if($insumo->unidadeMedida == 'm'): ?>
+                                                <option value="m" class="dropdown-item" selected>m (Metros)</option>
+                                            <?php else: ?>
+                                                <option value="m" class="dropdown-item">m (Metros)</option>
+                                            <?php endif; ?>
+                                            <?php if($insumo->unidadeMedida == 'dam'): ?>
+                                                <option value="dam" class="dropdown-item" selected>dam (Decametros)</option>
+                                            <?php else: ?>
+                                                <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            <?php endif; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -86,7 +120,7 @@
                                     <label for="precoUnit" class="col-md-2 control-label">Preço Unitário:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoUnit" type="text" step="0.01" class="form-control"  value="<?php echo e($insumo->precoUnit); ?>" name="precoUnit" required autofocus>
+                                        <input id="precoUnit" type="text" class="form-control"  value="<?php echo e($insumo->precoUnit); ?>" name="precoUnit" placeholder="Ex: R$ 10.00/ R$270.55" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         <?php if($errors->has('precoUnit')): ?>
                                             <span class="help-block">
@@ -97,36 +131,61 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="cor" class="col-md-2 control-label">Cor:</label>
+                                    <label for="cor" class="col-md-2 control-label">Cor:</label>
                                     <div class="col-md-8" name="cor_idCor">
                                         <select class="form-control form-control-lg">
-                                            <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
-                                            <option value="K01" class="dropdown-item">Cinza</option>
-                                            <option value="K02" class="dropdown-item">Grafite</option>
-                                            <option value="K03" class="dropdown-item">Preto</option>
-                                            <option value="K04" class="dropdown-item">Marrom</option>
-                                            <option value="K05" class="dropdown-item">Bege</option>
-                                            <option value="K06" class="dropdown-item">Ouro</option>
-                                            <option value="K08" class="dropdown-item">Amarelo</option>
-                                            <option value="K09" class="dropdown-item">Laranja</option>
-                                            <option value="K10" class="dropdown-item">Vermelho</option>
-                                            <option value="K11" class="dropdown-item">Bordo</option>
-                                            <option value="K12" class="dropdown-item">Azul Marinho</option>
-                                            <option value="K13" class="dropdown-item">Azul Royal</option>
-                                            <option value="K14" class="dropdown-item">Salmão</option>
-                                            <option value="K15" class="dropdown-item">Verde Bandeira</option>
-                                            <option value="K16" class="dropdown-item">Verde Limão</option>
-                                            <option value="K17" class="dropdown-item">Prata</option>
-                                            <option value="K18" class="dropdown-item">Lilás</option>
-                                            <option value="K19" class="dropdown-item">Azul Marítimo</option>
-                                            <option value="K20" class="dropdown-item">Verde Floresta</option>
-                                            <option value="K21" class="dropdown-item">Pink</option>
-                                            <option value="K22" class="dropdown-item">Verde Água</option>
-                                            <option value="K23" class="dropdown-item">Verde Piscina</option>
-                                            <option value="K24" class="dropdown-item">Azul Bebê</option>
-                                            <option value="K25" class="dropdown-item">Rosa Bebê</option>
-                                            <option value="K26" class="dropdown-item">Roxo</option>
-                                            <option value="K27" class="dropdown-item">Púrpura</option>
+                                            <?php $__currentLoopData = $cor; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($c->idCor == $insumo->cor_idCor ): ?>
+                                                    <option value="<?php echo e($c->idCor); ?>" class="dropdown-item" selected><?php echo e($c->nome); ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?php echo e($c->idCor); ?>" class="dropdown-item"><?php echo e($c->nome); ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idTipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="idTipoManta">
+                                        <select name="idTipoManta" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $tipoManta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($m->idTipoManta == $insumo->tipoManta_idTipoManta ): ?>
+                                                    <option value="<?php echo e($m->idTipoManta); ?>" class="dropdown-item" selected><?php echo e($m->nome); ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?php echo e($m->idTipoManta); ?>" class="dropdown-item"><?php echo e($m->nome); ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idTipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="idTipoMaterial">
+                                        <select name="idTipoMaterial" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $tipoMaterial; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($m2->idTipoMaterial == $insumo->tipoMaterial_idTipoMaterial ): ?>
+                                                    <option value="<?php echo e($m2->idTipoMaterial); ?>" class="dropdown-item" selected><?php echo e($m2->nome); ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?php echo e($m2->idTipoMaterial); ?>" class="dropdown-item"><?php echo e($m2->nome); ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idFornecedor" class="col-md-2 control-label">*Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $fornecedor; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($f->idFornecedor == $insumo->fornecedor_idFornecedor ): ?>
+                                                    <option value="<?php echo e($f->idFornecedor); ?>" class="dropdown-item" selected><?php echo e($f->nome); ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?php echo e($f->idFornecedor); ?>" class="dropdown-item"><?php echo e($f->nome); ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>

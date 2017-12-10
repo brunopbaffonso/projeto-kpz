@@ -24,8 +24,8 @@ class CreateInsumoTable extends Migration {
             $table->timestamp('created_at');
 			$table->integer('oc_idOC')->index('fk_Insumo_OC1_idx');
 			$table->string('usuario_cpf', 45)->index('fk_Insumo_Usuario1_idx');
-			$table->integer('cor_idCor')->index('fk_Insumo_Cor1_idx');
-			$table->integer('fornecedor_idFornecedor')->index('fk_Insumo_Fornecedor1_idx');
+			$table->integer('cor_idCor')->unsigned()->index('fk_Insumo_Cor1_idx');
+			$table->integer('fornecedor_idFornecedor')->unsigned()->index('fk_Insumo_Fornecedor1_idx');
 			$table->integer('tipoManta_idTipoManta')->unsigned()->index('fk_Insumo_TipoManta1_idx');
 			$table->integer('tipoMaterial_idTipoMaterial')->unsigned()->index('fk_Insumo_TipoMaterial1_idx');
 		});

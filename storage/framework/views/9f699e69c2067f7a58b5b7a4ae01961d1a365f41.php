@@ -29,7 +29,7 @@
                                     <label for="nome" class="col-md-2 control-label">*Nome:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e($cliente->nome); ?>" placeholder="Kapazi LTDA" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minusculos/MAIUSCULOS" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e($cliente->nome); ?>" placeholder="Kapazi LTDA" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('nome')): ?>
                                             <span class="help-block">
@@ -43,7 +43,8 @@
                                     <label for="cnpj" class="col-md-2 control-label">*CNPJ:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="<?php echo e($cliente->cnpj); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" required autofocus>
+                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="<?php echo e($cliente->cnpj); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" maxlength="14"
+                                         autofocus>
 
                                         <?php if($errors->has('cnpj')): ?>
                                             <span class="help-block">
@@ -57,12 +58,12 @@
                                     <label for="ie" class="col-md-2 control-label">IE:</label>
 
                                     <div class="col-md-8">
-                                        <input id="ie" type="text" class="form-control" name="ie" value="<?php echo e($cliente->ie); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" autofocus>
+                                        <input id="ie" type="text" class="form-control" name="ie" value="<?php echo e($cliente->ie); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" autofocus>
 
                                         <?php if($errors->has('ie')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($cliente->ie); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($cliente->ie); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -71,12 +72,12 @@
                                     <label for="cep" class="col-md-2 control-label">CEP:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" value="<?php echo e($cliente->cep); ?>" name="cep" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" autofocus>
+                                        <input id="cep" type="text" class="form-control" value="<?php echo e($cliente->cep); ?>" name="cep" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" autofocus>
 
                                         <?php if($errors->has('cep')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($cliente->cep); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($cliente->cep); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -85,12 +86,12 @@
                                     <label for="endereco" class="col-md-2 control-label">*Endereço:</label>
 
                                     <div class="col-md-8">
-                                        <input id="endereco" type="text" class="form-control"  value="<?php echo e($cliente->endereco); ?>" name="endereco" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minusculos/MAIUSCULOS" required autofocus>
+                                        <input id="endereco" type="text" class="form-control"  value="<?php echo e($cliente->endereco); ?>" name="endereco" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('endereco')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($cliente->endereco); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($cliente->endereco); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -99,35 +100,35 @@
                                     <label for="bairro" class="col-md-2 control-label">*Bairro:</label>
 
                                     <div class="col-md-8">
-                                        <input id="bairro" type="text" class="form-control" value="<?php echo e($cliente->bairro); ?>" name="bairro" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minusculos/MAIUSCULOS" required autofocus>
+                                        <input id="bairro" type="text" class="form-control" value="<?php echo e($cliente->bairro); ?>" name="bairro" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('bairro')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($cliente->bairro); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($cliente->bairro); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group<?php echo e($errors->has('cidade_idCidade') ? ' has-error' : ''); ?>">
-                                    <label for="bairro" class="col-md-2 control-label">*Cidade:</label>
+                                    <label for="cidade_idCidade" class="col-md-2 control-label">*Cidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="text" class="form-control" value="<?php echo e($cliente->cidade_idCidade); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minusculos/MAIUSCULOS" name="cidade_idCidade" required autofocus>
+                                        <input id="cidade_idCidade" type="text" class="form-control" value="<?php echo e($cliente->cidade_idCidade); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculos/MAIÚSCULOS"  name="cidade_idCidade" required autofocus>
 
                                         <?php if($errors->has('cidade_idCidade')): ?>
                                             <span class="help-block">
-                                        <strong><?php echo e($cliente->cidade_idCidade); ?></strong>
-                                    </span>
+                                                <strong><?php echo e($cliente->cidade_idCidade); ?></strong>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group<?php echo e($errors->has('estado_uf') ? ' has-error' : ''); ?>">
-                                    <label for="bairro" class="col-md-2 control-label">*Estado:</label>
+                                    <label for="estado" class="col-md-2 control-label">*Estado:</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_uf" type="text" class="form-control" value="<?php echo e($cliente->estado_uf); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIUSCULOS" name="estado_uf" required autofocus>
+                                        <input id="estado_uf" type="text" maxlength="2" class="form-control" value="<?php echo e($cliente->estado_uf); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS"  name="estado_uf" required autofocus>
 
                                         <?php if($errors->has('estado_uf')): ?>
                                             <span class="help-block">
@@ -141,7 +142,7 @@
                                     <label for="fone" class="col-md-2 control-label">Telefone:</label>
 
                                     <div class="col-md-8">
-                                        <input id="fone" type="text" class="form-control" value="<?php echo e($cliente->fone); ?>" name="fone" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente numeros 0 a 9" autofocus>
+                                        <input id="fone" type="text" class="form-control" value="<?php echo e($cliente->fone); ?>" name="fone" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente números 0 a 9" autofocus>
 
                                         <?php if($errors->has('fone')): ?>
                                             <span class="help-block">
@@ -155,7 +156,7 @@
                                     <label for="celular" class="col-md-2 control-label">*Celular:</label>
 
                                     <div class="col-md-8">
-                                        <input id="celular" type="text" class="form-control" name="celular" value="<?php echo e($cliente->celular); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente numeros 0 a 9" required autofocus>
+                                        <input id="celular" type="text" class="form-control" name="celular" value="<?php echo e($cliente->celular); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente números 0 a 9" required autofocus>
 
                                         
                                         
@@ -169,7 +170,7 @@
                                     <label for="email" class="col-md-2 control-label">*E-Mail:</label>
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="form-control" name="email" value="<?php echo e($cliente->email); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minusculo,MAIUSCULOS e caracteres especiais. Obrigatorio o uso de @!" required autofocus>
+                                        <input id="email" type="email" class="form-control" name="email" value="<?php echo e($cliente->email); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS e caracteres especiais. Obrigatório o uso de @!" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
 
                                         <?php if($errors->has('email')): ?>
                                          <span class="help-block">

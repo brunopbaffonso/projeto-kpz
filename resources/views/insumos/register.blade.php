@@ -130,6 +130,19 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            @foreach($fornecedores as $fornecedor)
+
+                                                <option value={{ $fornecedor->idFornecedor }} class="dropdown-item">{{ $fornecedor->nome }}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="cor_idCor" class="col-md-2 control-label">Cor:</label>
                                     <div class="col-md-8" name="cor_idCor">
                                         <select name="cor_idCor" class="form-control form-control-lg">
@@ -160,20 +173,6 @@
                                             <option value="K25" class="dropdown-item">Rosa Bebê</option>
                                             <option value="K26" class="dropdown-item">Roxo</option>
                                             <option value="K27" class="dropdown-item">Púrpura</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row">
-                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
-                                    <div class="col-md-8" name="idFornecedor">
-                                        <select name="idFornecedor" class="form-control form-control-lg">
-                                            @foreach($fornecedores as $fornecedor)
-
-                                                <option value={{ $fornecedor->idFornecedor }} class="dropdown-item">{{ $fornecedor->nome }}</option>
-
-                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

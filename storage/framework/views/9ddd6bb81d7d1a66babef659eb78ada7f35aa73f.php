@@ -70,7 +70,7 @@
                                     <label for="cep" class="col-md-2 control-label">*CEP</label>
 
                                     <div class="col-md-8">
-                                        <input id="cep" type="text" class="form-control" name="cep" value="<?php echo e(old('cep')); ?>" placeholder="00000-000" maxlength="10" pattern="[0-9]+$" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" autofocus>
+                                        <input id="cep" type="text" class="form-control" name="cep" value="<?php echo e(old('cep')); ?>" placeholder="00000-000" maxlength="10" pattern="[0-9]+$" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" required autofocus>
 
                                         <?php if($errors->has('cep')): ?>
                                             <span class="help-block">

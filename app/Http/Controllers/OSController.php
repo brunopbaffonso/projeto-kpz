@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Item;
 use App\Models\OS;
+use App\Models\Modelo;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\OperatingSystem;
 use Rafwell\Simplegrid\Grid;
@@ -93,17 +94,15 @@ class OSController extends Controller
         $id = OS::count();
         $os = new OS();
         $os->idOS = $id + 1;
+        $os->status=$request->status;
         $os->contato=$request->contato;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-        $os->cliente_idCliente = $request->cliente_idCliente;
+        $os->cliente_idCliente = $request->idCliente;
         $os->save();
-        //$ordem = OS::orderBy('idOS', 'desc')->first();
-        //$ordem = OS::select()->where('created_at',)->first();
-        //dd($ordem);
-        //dd($ordem);
+        //dd($os);
         //return redirect('items/create/' . $os->idOS)->with('message', 'OS Criado Com Sucesso'); // TODO: Atributo na rota
         return redirect('registra/item/'.$os->idOS);
     }
@@ -130,7 +129,8 @@ class OSController extends Controller
     public function edit($id)
     {
         $os = OS::where('idOS', '=', $id)->with('item')->first();
-        return view('oss.edit', compact('os'));
+        $cliente = Cliente::All();
+        return view('oss.edit', compact('os', 'cliente'));
     }
     /**
      * Update the specified resource in storage.
@@ -143,13 +143,15 @@ class OSController extends Controller
     {
         $os = OS::where('idOS', '=', $id)->first();
         $os->contato=$request->contato;
+        $os->status=$request->status;
         $os->precoTotal = $request->precoTotal;
         $os->desconto = $request->desconto;
         $os->formaPgto = $request->formaPgto;
         $os->observacoes = $request->observacoes;
-        $os->cliente_idCliente = $request->cliente_idCliente;
-//        $os->created_at = $request->created_at;
-//        $os->updated_at = $request->updated_at;
+        $os->cliente_idCliente = $request->idCliente;
+
+        //dd($os);
+
         $os-> save();
         return redirect()->route('oss.index')->with('message', 'OS Editado Com Sucesso');
     }

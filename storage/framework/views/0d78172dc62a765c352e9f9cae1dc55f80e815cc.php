@@ -29,7 +29,7 @@
                                     <label for="nome" class="col-md-2 control-label">*Descrição:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Ex: Manta/Tinta" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="<?php echo e(old('nome')); ?>" placeholder="Manta preta/ Tinta" maxlength="255" pattern="[a-zA-Z0-9\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         <?php if($errors->has('nome')): ?>
                                             <span class="help-block">
@@ -43,7 +43,7 @@
                                     <label for="quantidade" class="col-md-2 control-label">*Quantidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="<?php echo e(old('quantidade')); ?>" placeholder="Ex: 1 Rolo/10 Latas" required autofocus>
+                                        <input id="quantidade" type="text" class="form-control" name="quantidade" value="<?php echo e(old('quantidade')); ?>" placeholder="Ex: 1 (Rolo)/10 (Latas)" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9" required autofocus>
 
                                         <?php if($errors->has('quantidade')): ?>
                                             <span class="help-block">
@@ -57,7 +57,7 @@
                                     <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                     <div class="col-md-8">
-                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="<?php echo e(old('comprimento')); ?>" placeholder="Ex: 0.60/0.90" required autofocus>
+                                        <input id="comprimento" type="text" class="form-control" name="comprimento" value="<?php echo e(old('comprimento')); ?>" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         <?php if($errors->has('comprimento')): ?>
                                             <span class="help-block">
@@ -71,7 +71,7 @@
                                     <label for="largura" class="col-md-2 control-label">Largura:</label>
 
                                     <div class="col-md-8">
-                                        <input id="largura" type="text" class="form-control" name="largura" value="<?php echo e(old('largura')); ?>" placeholder="Ex: 0.60/0.90" required autofocus>
+                                        <input id="largura" type="text" class="form-control" name="largura" value="<?php echo e(old('largura')); ?>" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         <?php if($errors->has('largura')): ?>
                                             <span class="help-block">
@@ -98,7 +98,7 @@
                                     <label for="precoUnit" class="col-md-2 control-label">Preço Unitário:</label>
 
                                     <div class="col-md-8">
-                                        <input id="precoUnit" type="text" class="form-control" name="precoUnit" value="<?php echo e(old('precoUnit')); ?>" placeholder="Ex: R$ 10.00/ R$270.55" required autofocus>
+                                        <input id="precoUnit" type="text" class="form-control" name="precoUnit" value="<?php echo e(old('precoUnit')); ?>" placeholder="Ex: R$ 10.00/ R$270.55" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                         <?php if($errors->has('precoUnit')): ?>
                                             <span class="help-block">
@@ -108,10 +108,10 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="cor" class="col-md-2 control-label">Cor:</label>
-                                    <div class="col-md-8" name="cor_idCor">
-                                        <select class="form-control form-control-lg">
-                                            <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
+                                    <label for="idCor" class="col-md-2 control-label">Cor:</label>
+                                    <div class="col-md-8" name="idCor">
+                                        <select name="idCor" class="form-control form-control-lg">
+                                             <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
                                             <option value="K01" class="dropdown-item">Cinza</option>
                                             <option value="K02" class="dropdown-item">Grafite</option>
                                             <option value="K03" class="dropdown-item">Preto</option>
@@ -142,6 +142,41 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label for="idTipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="idTipoManta">
+                                        <select name="idTipoManta" class="form-control form-control-lg">
+                                            <option value="1" class="dropdown-item">Alto Tráfego</option>
+                                            <option value="2" class="dropdown-item">Gold</option>
+                                            <option value="3" class="dropdown-item">Silver</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idTipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="idTipoMaterial">
+                                        <select name="idTipoMaterial" class="form-control form-control-lg">
+                                            <option value="1" class="dropdown-item">Fita PVC</option>
+                                            <option value="2" class="dropdown-item">Laminados PVC</option>
+                                            <option value="3" class="dropdown-item">CleanKap</option>
+                                            <option value="4" class="dropdown-item">ADK</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $fornecedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fornecedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <option value=<?php echo e($fornecedor->idFornecedor); ?> class="dropdown-item"><?php echo e($fornecedor->nome); ?></option>
+
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <br />
 

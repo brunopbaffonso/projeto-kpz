@@ -44,7 +44,8 @@
                                     <label for="cnpj" class="col-md-2 control-label">*CNPJ:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $cliente->cnpj }}" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" maxlength="14" required autofocus>
+                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $cliente->cnpj }}" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" maxlength="14"
+                                         autofocus>
 
                                         @if ($errors->has('cnpj'))
                                             <span class="help-block">
@@ -62,8 +63,8 @@
 
                                         @if ($errors->has('ie'))
                                             <span class="help-block">
-                                        <strong>{{ $cliente->ie }}</strong>
-                                    </span>
+                                                <strong>{{ $cliente->ie }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -76,8 +77,8 @@
 
                                         @if ($errors->has('cep'))
                                             <span class="help-block">
-                                        <strong>{{ $cliente->cep }}</strong>
-                                    </span>
+                                                <strong>{{ $cliente->cep }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -86,12 +87,12 @@
                                     <label for="endereco" class="col-md-2 control-label">*Endereço:</label>
 
                                     <div class="col-md-8">
-                                        <input id="endereco" type="text" class="form-control"  value="{{ $cliente->endereco }}" name="endereco" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS"  pattern="[a-zA-Z\s]+$" required autofocus>
+                                        <input id="endereco" type="text" class="form-control"  value="{{ $cliente->endereco }}" name="endereco" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('endereco'))
                                             <span class="help-block">
-                                        <strong>{{ $cliente->endereco }}</strong>
-                                    </span>
+                                                <strong>{{ $cliente->endereco }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -100,35 +101,33 @@
                                     <label for="bairro" class="col-md-2 control-label">*Bairro:</label>
 
                                     <div class="col-md-8">
-                                        <input id="bairro" type="text" class="form-control" value="{{ $cliente->bairro }}" name="bairro" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" pattern="[a-zA-Z\s]+$" required autofocus>
+                                        <input id="bairro" type="text" class="form-control" value="{{ $cliente->bairro }}" name="bairro" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('bairro'))
                                             <span class="help-block">
-                                        <strong>{{ $cliente->bairro }}</strong>
-                                    </span>
+                                                <strong>{{ $cliente->bairro }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
 
                                 <div class="form-group{{ $errors->has('cidade_idCidade') ? ' has-error' : '' }}">
-                                    <label for="bairro" class="col-md-2 control-label">*Cidade:</label>
+                                    <label for="cidade_idCidade" class="col-md-2 control-label">*Cidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="text" class="form-control" value="{{ $cliente->cidade_idCidade }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" name="cidade_idCidade"  pattern="[a-zA-Z\s]+$" required autofocus>
-
-                                        @if ($errors->has('cidade_idCidade'))
-                                            <span class="help-block">
-                                        <strong>{{ $cliente->cidade_idCidade }}</strong>
-                                    </span>
-                                        @endif
+                                        @foreach($cidade as $c)
+                                            @if($c->idCidade == $cliente->cidade_idCidade )
+                                            <input id="cidade_idCidade" type="text" class="form-control" value="{{$c->nome }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculos/MAIÚSCULOS"  name="cidade_idCidade" required autofocus>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
 
                                 <div class="form-group{{ $errors->has('estado_uf') ? ' has-error' : '' }}">
-                                    <label for="bairro" class="col-md-2 control-label">*Estado:</label>
+                                    <label for="estado" class="col-md-2 control-label">*Estado:</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_uf" type="text" class="form-control" value="{{ $cliente->estado_uf }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS" pattern="[a-zA-Z\s]+$" name="estado_uf" required autofocus>
+                                        <input id="estado_uf" type="text" maxlength="2" class="form-control" value="{{ $cliente->estado_uf }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS"  name="estado_uf" required autofocus>
 
                                         @if ($errors->has('estado_uf'))
                                             <span class="help-block">

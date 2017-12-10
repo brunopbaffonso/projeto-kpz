@@ -17,7 +17,7 @@
 					<a href="<?php echo e($urlSimpleSearch); ?>" class="btn btn-default" title="<?php echo app('translator')->getFromJson('Simplegrid::grid.Simple Search'); ?>"><span class="glyphicon glyphicon-zoom-out"></span></a>
 					<?php if($totalRows>0): ?>
 						<span class="total-info pull-right">
-							<?php echo e(trans_choice('Página :current_page  de :total_pages. Total de :total_rows Registros.', $totalRows, [
+							<?php echo e(trans_choice('Simplegrid::grid.Page :current_page of :total_pages. Total of :total_rows row.', $totalRows, [
 								'current_page'=>$currentPage, 
 								'total_pages'=>$totalPages, 
 								'total_rows'=>$totalRows
@@ -36,7 +36,7 @@
 						<input type="hidden" name="<?php echo e($field); ?>" value="<?php echo e($valor); ?>">
 					<?php endif; ?>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-		      	<input type="text" name="search" class="form-control input-search" placeholder="<?php echo app('translator')->getFromJson('Digite aqui'); ?>" value="<?php echo e($searchedValue); ?>">
+		      	<input type="text" name="search" class="form-control input-search" placeholder="<?php echo app('translator')->getFromJson('Simplegrid::grid.Search by...'); ?>" value="<?php echo e($searchedValue); ?>">
 		        <button class="btn-search btn btn-default" type="submit" title="<?php echo app('translator')->getFromJson('Simplegrid::grid.Search'); ?>"><span class="glyphicon glyphicon-search"></span></button>		      	
 		      	<?php if(isset($searchedValue) && $searchedValue<>''): ?>				      		
 			       	<button class="btn-clear-search btn btn-default" type="button" title="<?php echo app('translator')->getFromJson('Simplegrid::grid.Clear search'); ?>"><span class="glyphicon glyphicon-remove"></span></button>
@@ -47,7 +47,7 @@
 		    </form>
 			<?php if($totalRows>0): ?>
 				<span class="total-info">
-					<?php echo e(trans_choice('Página :current_page de :total_pages. Total de :total_rows registros.', $totalRows, [
+					<?php echo e(trans_choice('Simplegrid::grid.Page :current_page of :total_pages. Total of :total_rows row.', $totalRows, [
 						'current_page'=>$currentPage, 
 						'total_pages'=>$totalPages, 
 						'total_rows'=>$totalRows
@@ -73,13 +73,13 @@
 		</div>
 		<div class="col-md-4">
 			<div class="showing-rows-info pull-right">
-				<span><?php echo app('translator')->getFromJson('Mostrar'); ?> </span>
+				<span><?php echo app('translator')->getFromJson('Simplegrid::grid.Showing'); ?> </span>
 				<select name="rows-per-page" data-url="<?php echo e($urlRowsPerPage); ?>">
 					<?php $__currentLoopData = $rowsPerPage; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nr): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<option value="<?php echo $nr; ?>" <?php echo $nr==$currentRowsPerPage ? 'selected' : ''; ?>><?php echo $nr; ?></option>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				</select>
-				<span><?php echo app('translator')->getFromJson('registros por página'); ?></span>
+				<span><?php echo app('translator')->getFromJson('Simplegrid::grid.rows per page.'); ?></span>
 			</div>
 		</div>
 	</div>	
@@ -160,7 +160,7 @@
 												<?php echo e(csrf_field()); ?>
 
 												<input type="hidden" name="_method" value="<?php echo $action['method']; ?>">
-												<button type="submit" title="<?php echo e($action['title']); ?>" class=" btn btn-xs action btn-default">
+												<button type="submit" title="<?php echo e($action['title']); ?>" class="btn btn-xs action btn-default">
 													<?php if(isset($action['icone'])): ?>
 														<span class="<?php echo e($action['icone']); ?>"></span>
 													<?php endif; ?>
@@ -192,12 +192,12 @@
 			<?php if($allowExport): ?>
 			<div class="input-group">				
 				<select name="export" class="form-control">
-					<option value=""><?php echo app('translator')->getFromJson('Selecione opção para exportar'); ?></option>
+					<option value=""><?php echo app('translator')->getFromJson('Simplegrid::grid.Select an option to export'); ?></option>
 					<option value="xls">XLS</option>
 					<option value="csv">CSV</option>
 				</select>
 				<a href="#" data-href="<?php echo e($urlExport); ?>" target="_blank" class="input-group-addon btn-export" title="<?php echo app('translator')->getFromJson('Simplegrid::grid.Export'); ?>" data-alert-msg="<?php echo app('translator')->getFromJson('Simplegrid::grid.Select a format for export!'); ?>">
-					<span class="glyphicon glyphicon-download"></span> <?php echo app('translator')->getFromJson('Exportar'); ?>
+					<span class="glyphicon glyphicon-download"></span> <?php echo app('translator')->getFromJson('Simplegrid::grid.Export'); ?>
 				</a>
 			</div>		
 			<?php endif; ?>

@@ -30,7 +30,7 @@
                                     <label for="nome" class="col-md-2 control-label">*Nome:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Kapazi LTDA" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $fornecedor->nome }}" placeholder="Kapazi LTDA" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
@@ -111,16 +111,14 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('cidade_idCidade') ? ' has-error' : '' }}">
-                                    <label for="bairro" class="col-md-2 control-label">*Cidade:</label>
+                                    <label for="cidade_idCidade" class="col-md-2 control-label">*Cidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="text" class="form-control" value="{{ $fornecedor->cidade_idCidade }}" name="cidade_idCidade" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
-
-                                        @if ($errors->has('cidade_idCidade'))
-                                            <span class="help-block">
-                                        <strong>{{ $fornecedor->cidade_idCidade }}</strong>
-                                    </span>
-                                        @endif
+                                        @foreach($cidade as $c)
+                                            @if($c->idCidade == $fornecedor->cidade_idCidade )
+                                            <input id="cidade_idCidade" type="text" class="form-control" value="{{$c->nome }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculos/MAIÚSCULOS"  name="cidade_idCidade" required autofocus>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
 

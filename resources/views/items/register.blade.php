@@ -44,20 +44,17 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-horizontal" for="quantidade" class="col-md-2 control-label">Código OS:</label>  {{ $OS }}
-                                <div class="form-horizontal">
-                                    {!!Form::open(['url' => 'items/', 'method' => 'post', 'enctype' => 'multipart/form-data'])!!}
-                                    <input id="os_idOS" type="hidden" class="form-control" name="os_idOS" value="{{ $OS }}">
 
                                     <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                         <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
 
                                         <div class="col-md-8">
-                                            <input id="quantidade" type="number" class="form-control" name="quantidade" value="{{ old('quantidade') }}" pattern="[0-9]+$" placeholder="Ex: 1(tapete)/10 (chinelos)" ata-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9" required autofocus>
+                                            <input id="quantidade" type="text" class="form-control" name="quantidade" value="{{ old('quantidade') }}" pattern="[0-9]+$" placeholder="Ex: 1(tapete)/10 (chinelos)" ata-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9" required autofocus>
 
                                             @if ($errors->has('quantidade'))
                                                 <span class="help-block">
-                                        <strong>{{ $errors->first('quantidade') }}</strong>
-                                    </span>
+                                                    <strong>{{ $errors->first('quantidade') }}</strong>
+                                                </span>
                                             @endif
                                         </div>
                                     </div>
@@ -66,7 +63,7 @@
                                         <label for="comprimento" class="col-md-2 control-label">Comprimento:</label>
 
                                         <div class="col-md-8">
-                                            <input id="comprimento" type="number" class="form-control" name="comprimento" value="{{ old('comprimento') }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
+                                            <input id="comprimento" type="text" class="form-control" name="comprimento" value="{{ old('comprimento') }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                             @if ($errors->has('comprimento'))
                                                 <span class="help-block">
@@ -80,7 +77,7 @@
                                         <label for="comprimento" class="col-md-2 control-label">Largura:</label>
 
                                         <div class="col-md-8">
-                                            <input id="largura" type="number" class="form-control" name="largura" value="{{ old('largura') }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
+                                            <input id="largura" type="text" class="form-control" name="largura" value="{{ old('largura') }}" placeholder="Ex: 0.60/0.90" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                             @if ($errors->has('largura'))
                                                 <span class="help-block">
@@ -90,25 +87,30 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('unidadeMedida') ? ' has-error' : '' }}">
-                                        <label for="unidadeMedida" class="col-md-2 control-label">Unidade de Medida</label>
-                                        <select name="unidadeMedida">
-                                            <option value="mm" class="form-control">mm (Milimetro)</option>
-                                            <option value="cm" class="form-control">cm (Centimetros)</option>
-                                            <option value="dm" class="form-control">dm (Decimetros)</option>
-                                            <option value="m" class="form-control">m (Metros)</option>
-                                            <option value="dam" class="form-control">dam (Decametros)</option>
-                                        </select>
+                                    <div class="form-group row">
+                                    <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
+                                    <div class="col-md-8" name="unidadeMedida">
+                                            <select name="unidadeMedida" class="form-control form-control-lg">
+                                                <option value="mm" class="dropdown-item">mm (Milimetro)</option>
+                                                <option value="cm" class="dropdown-item">cm (Centimetros)</option>
+                                                <option value="dm" class="dropdown-item">dm (Decimetros)</option>
+                                                <option value="m" class="dropdown-item">m (Metros)</option>
+                                                <option value="dam" class="dropdown-item">dam (Decametros)</option>
+                                            </select>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('borda') ? ' has-error' : '' }}">
-                                        <label for="borda" class="col-md-2 control-label">Borda</label>
-                                        <select name="borda">
-                                            <option value="0" class="form-control">Sem Borda</option>
-                                            <option value="1" class="form-control">Pintada</option>
-                                            <option value="2" class="form-control">Vulcanizada</option>
-                                            <option value="3" class="form-control">Rebaixada</option>
-                                        </select>
+
+                                    <div class="form-group row">
+                                    <label for="borda" class="col-md-2 control-label">*Borda:</label>
+                                    <div class="col-md-8" name="borda">
+                                            <select name="borda" class="form-control form-control-lg">
+                                                <option value="0" class="form-control">Sem Borda</option>
+                                                <option value="1" class="form-control">Pintada</option>
+                                                <option value="2" class="form-control">Vulcanizada</option>
+                                                <option value="3" class="form-control">Rebaixada</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="form-group{{ $errors->has('arte') ? ' has-error' : '' }}">
@@ -129,7 +131,7 @@
                                         <label for="precoUnit" class="col-md-2 control-label">Preço Unitário:</label>
 
                                         <div class="col-md-8">
-                                            <input id="precoUnit" type="number" class="form-control" name="precoUnit" value="{{ old('precoUnit') }}" placeholder="Ex: 10.00/300.50" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
+                                            <input id="precoUnit" type="text" class="form-control" name="precoUnit" value="{{ old('precoUnit') }}" placeholder="Ex: 10.00/300.50" data-toggle="tooltip" data-placement="top" title="Esse campo so aceita números de 0 a 9 separado por ponto" required autofocus>
 
                                             @if ($errors->has('precoUnit'))
                                                 <span class="help-block">

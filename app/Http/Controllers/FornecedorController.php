@@ -18,12 +18,12 @@ class FornecedorController extends Controller
         $Grid = new Grid(Fornecedor::query(), 'ClientesGrid');
 
         $Grid->fields([
-            'idFornecedor'=>'Código',
+            'idFornecedor'=>'#',
             'nome'=>'Descrição',
             'cnpj'=>'CNPJ',
-            'ie'=>'IE',
             'endereco'=>'Endereço',
             'cep'=>'CEP',
+            'cidade_idCidade'=>'Cidade',
             'fone'=>'Telefone',
             'celular'=>'Celular',
             'email'=>'E-mail',
@@ -33,10 +33,11 @@ class FornecedorController extends Controller
         ->processLine(function($row){
             $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
             $row['cnpj'] = substr($row['cnpj'], 0, 2) . '.' . substr($row['cnpj'], 2, 3) . '.' . substr($row['cnpj'], 5, 3) . '/' . substr($row['cnpj'], 8, 4) . '-' . substr($row['cnpj'], 12, 2);
-             $row['fone'] = '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'], 6);
+             $row['fone'] = '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'] , 6);
             $row['celular'] = '(' . substr($row['celular'], 0, 2) . ')' . substr($row['celular'], 2, 5) . '-' . substr($row['celular'], 7);
             $row['cep'] = substr($row['cep'], 0, 5) . '-' . substr($row['cep'], 5);
-                return $row;
+            return $row;
+
         })
 
 
@@ -47,9 +48,9 @@ class FornecedorController extends Controller
             'idFornecedor'=>['type'=>'integer','label'=>'Código'],
             'nome'=>['type'=>'text', 'label'=>'Descrição'],
             'cnpj'=>['type'=>'integer', 'label'=>'CNPJ'],
-            'ie'=>['type'=>'text', 'label'=>'IE'],
             'endereco'=>['type'=>'text', 'label'=>'Endereço'],
             'cep'=>['type'=>'text', 'label'=>'CEP'],
+            'cidade_idCidade'=>['type'=>'text', 'label'=>'cidade_nome'],
             'fone'=>['type'=>'text', 'label'=>'Telefone'],
             'email'=>['type'=>'text', 'label'=>'E-mail'],
             'celular'=>['type'=>'text', 'label'=>'Celular'],
@@ -79,7 +80,8 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        return view('fornecedores.register');
+        $cidades = Cidade::all();
+        return view('fornecedores.register')->with('cidade', $cidades);
     }
 
     /**
@@ -152,7 +154,8 @@ class FornecedorController extends Controller
     public function edit($id)
     {
         $fornecedor = Fornecedor::where('idFornecedor', '=', $id)->first();
-        return view('fornecedores.edit', compact('fornecedor'));
+        $cidade = Cidade::all();
+        return view('fornecedores.edit')->with('fornecedor', $fornecedor)->with('cidade', $cidade);
     }
 
     /**

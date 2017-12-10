@@ -4,7 +4,7 @@
             <h1 class="page-header">Usuários</h1>
             <ol class="breadcrumb">
                 <li><a href="<?php echo e(url('/')); ?>">Inicio</a></li>
-                <li class="active">Lista de Usuário</li>
+                <li class="active">Listar Usuários</li>
                 <li><a href="<?php echo e(url('usuarios/create')); ?>">Adicionar Usuário</a></li>
             </ol>
         </div>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="panel-body" align="left">
                     <a href="usuarios/create">
-                        <button type="button" class="btn btn-primary">Cadastrar Usuarios</button>
+                        <button type="button" class="btn btn-primary">Cadastrar Usuário</button>
                     </a>
                 </div>
             </div>

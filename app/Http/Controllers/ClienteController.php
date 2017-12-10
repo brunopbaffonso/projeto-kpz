@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation;
 
 class ClienteController extends Controller
 {
@@ -20,10 +21,9 @@ class ClienteController extends Controller
         $Grid = new Grid(Cliente::query(), 'ClientesGrid');
 
         $Grid->fields([
-            'idCliente'=>'Código',
+            'idCliente'=>'#',
             'nome'=>'Descrição',
             'cnpj'=>'CNPJ',
-            'cpf'=>'CPF',
             'ie'=>'IE',
             'endereco'=>'Endereço',
             'cep'=>'CEP',
@@ -33,7 +33,6 @@ class ClienteController extends Controller
         ])
 
             ->processLine(function($row){
-                $row['cpf'] = strlen($row['cpf']) == 11 ? ($row['cpf']) : ( "0".$row['cpf']);
                 $row['cnpj'] = substr($row['cnpj'], 0, 2) . '.' . substr($row['cnpj'], 2, 3) . '.' . substr($row['cnpj'], 5, 3) . '/' . substr($row['cnpj'], 8, 4) . '-' . substr($row['cnpj'], 12, 2);
                 $row['fone'] = '(' . substr($row['fone'], 0, 2) . ')' . substr($row['fone'], 2, 4) . '-' . substr($row['fone'], 6);
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
@@ -47,7 +46,6 @@ class ClienteController extends Controller
                 'idCliente'=>['type'=>'integer','label'=>'Código'],
                 'nome'=>['type'=>'text', 'label'=>'Descrição'],
                 'cnpj'=>['type'=>'text', 'label'=>'CNPJ'],
-                'cpf'=>['type'=>'text', 'label'=>'CPF'],
                 'ie'=>['type'=>'text', 'label'=>'IE'],
                 'endereco'=>['type'=>'text', 'label'=>'Endereço'],
                 'cep'=>['type'=>'text', 'label'=>'CEP'],
@@ -81,7 +79,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('clientes.register');
+        $cidades = Cidade::all();
+        return view('clientes.register')->with('cidade', $cidades);
     }
 
     /**
@@ -105,9 +104,10 @@ class ClienteController extends Controller
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
         $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome' => $request->cidade_idCidade,'estado_uf' => $request->estado_uf])->first()->idCidade;
+        
+        $request->validate($this->Cliente->rules);
 
-
-       $this->validate($request,[
+       /*$this->validate($request,[
             'nome'=> 'string|min:3|max:255',
             'endereco'=> 'required|min:3|max:255',
             'bairro'=> 'required|min:3|max:255',
@@ -128,7 +128,7 @@ class ClienteController extends Controller
             'telefone.max'=>'maximo de 12 caracteres',
             'celular.min'=>'Minimo de 11 caracteres',
             'celular.max'=>'maximo de 13 caracteres'
-        ]);
+        ]);*/
 
         $cliente-> save();
 
@@ -159,6 +159,7 @@ class ClienteController extends Controller
     {
         //dd($id)
         $retorno = Cliente::where('idCliente', '=', $id)->first();
+        $cidade = Cidade::all();
         if(count($retorno) == 0)
         {
             Session::flash('produto_nencontrado', 'Cliente não encontrado.');
@@ -167,7 +168,7 @@ class ClienteController extends Controller
 
 
 
-        return view('clientes.edit')->with('cliente', $retorno);
+        return view('clientes.edit')->with('cliente', $retorno)->with('cidade', $cidade);
 
         /* $cliente = Cliente::where('idCliente', '=', $id)->first();
          return view('clientes.edit', compact('cliente'));*/
@@ -195,8 +196,7 @@ class ClienteController extends Controller
         $cliente->celular = $request->celular;
         $cliente->email = $request->email;
         $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome' => $request->cidade_idCidade,'estado_uf' => $request->estado_uf])->first()->idCidade;
-        //$cliente->cidade_idCidade = DB::select('SELECT idCidade FROM cidade WHERE nome = ?  && estado_uf = ?', [$request->cidade_idCidade, $request->uf]);
-        //dd($cliente);
+
         $cliente-> save();
         return redirect()->route('clientes.index')->with('message', 'Cliente Editado Com Sucesso');
 

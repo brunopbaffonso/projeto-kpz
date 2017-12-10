@@ -95,8 +95,7 @@
                                     </div>
                                 </div>
 
-
-                                <div class="form-group row">
+                                 <div class="form-group row">
                                     <label for="cor_idCor" class="col-md-2 control-label">Cor:</label>
                                     <div class="col-md-8" name="cor_idCor">
                                         <select name="cor_idCor" class="form-control form-control-lg">

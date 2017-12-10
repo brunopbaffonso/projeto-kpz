@@ -13,7 +13,8 @@ class CidadeController extends Controller
      */
     public function index(Request $request)
     {
-        
+        $cidades = Cidade::with('estados')->get();
+        return response()->json($cidades);
     }
     /**
      * Show the form for creating a new resource.
@@ -40,10 +41,30 @@ class CidadeController extends Controller
      * @param  \App\Subproduto  $subproduto
      * @return \Illuminate\Http\Response
      */
-    public function show(Subproduto $subproduto)
+    public function show(Cidade $cidades)
     {
-        //
+         print_r('teste');
+         $cidades = Cidade::with('estados')->find($id);
+
+         if(!$cidades) {
+            return response()->json([
+            'message'   => 'Não há resultados',
+           ], 404);
+         }
+
+        return response()->json($municipios);
     }
+
+    public function get_cidades($id)
+{
+    $cidade = DB::table('cidade')
+      ->where('uf','=', $estados_uf)
+      ->orderBy('name','asc')
+      ->get();
+
+    return Response::json($cidade);
+}
+
     /**
      * Show the form for editing the specified resource.
      *

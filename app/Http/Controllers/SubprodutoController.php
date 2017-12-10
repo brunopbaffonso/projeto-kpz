@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Subproduto;
+use App\Models\Cor;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 
@@ -27,7 +28,7 @@ class SubprodutoController extends Controller
 
         ->processLine(function($row){
                 $row['created_at'] = date('d/m/Y', strtotime($row['created_at']));
-                $row['largura'] = number_format($row['comprimento'], 2, ',', '.');
+                $row['largura'] = number_format($row['largura'], 2, ',', '.');
                 $row['comprimento'] =  number_format( $row['comprimento'], 2, ',', '.');
                 return $row;
             })
@@ -69,7 +70,9 @@ class SubprodutoController extends Controller
      */
     public function create()
     {
-        return view('subprodutos.register');
+        $cors = Cor::All();
+
+        return view('subprodutos.register')->with('cor', $cors);
     }
     /**
      * Store a newly created resource in storage.
@@ -86,6 +89,7 @@ class SubprodutoController extends Controller
         $subproduto->largura = $request->largura;
         $subproduto->unidadeMedida = $request->unidadeMedida;
         $subproduto->cor_idCor = $request->cor_idCor;
+        //dd($subproduto);
         $subproduto-> save();
         return redirect()->route('subprodutos.index')->with('message', 'Subproduto Criado Com Sucesso');
     }
@@ -108,7 +112,8 @@ class SubprodutoController extends Controller
     public function edit($id)
     {
         $subproduto = Subproduto::where('idSubproduto', '=', $id)->first();
-        return view('subprodutos.edit', compact('subproduto'));
+        $cors = Cor::All();
+        return view('subprodutos.edit')->with('subproduto', $subproduto)->with('cor', $cors);
     }
     /**
      * Update the specified resource in storage.
@@ -125,7 +130,8 @@ class SubprodutoController extends Controller
         $subproduto->comprimento = $request->comprimento;
         $subproduto->largura = $request->largura;
         $subproduto->unidadeMedida = $request->unidadeMedida;
-        $subproduto->cor_idCor = $request->cor_idCor;
+        $subproduto->cor_idCor = $request->idCor;
+        //dd($subproduto);
         $subproduto-> save();
         return redirect()->route('subprodutos.index')->with('message', 'Subproduto Editado Com Sucesso');
     }
