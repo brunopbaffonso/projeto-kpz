@@ -23,9 +23,9 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal">
+                        
                                 {!!Form::open(['url' => 'modelos/', 'method' => 'post'])!!}
-
+                                
                                 <input id="ativo" type="hidden" class="form-control" name="ativo" value="1">
 
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">

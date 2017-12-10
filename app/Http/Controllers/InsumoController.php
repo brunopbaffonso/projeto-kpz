@@ -149,8 +149,6 @@ class InsumoController extends Controller
         $cor = Cor::All();
         $tipoMaterial = TipoMaterial::All();
         $tipoManta = TipoManta::All();
-        //return view('insumos.edit', compact('insumo'));
-        //return view('insumos.edit')->with('insumo', $insumo)->with('fornecedor', $fornecedor)->with('cor', $cor)->with('tipoMaterial', $material)->with('tipoManta', $manta);
         return view('insumos.edit', compact('insumo','fornecedor','cor','tipoMaterial','tipoManta'));
     }
     /**

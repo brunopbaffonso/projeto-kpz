@@ -106,9 +106,9 @@ class ClienteController extends Controller
         $cliente->email = $request->email;
         $cliente->cidade_idCidade = Cidade::select('idCidade')->where(['nome' => $request->cidade_idCidade,'estado_uf' => $request->estado_uf])->first()->idCidade;
         
-        $request->validate($this->Cliente->rules);
+       
 
-       /*$this->validate($request,[
+       $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
             'endereco'=> 'required|min:3|max:255',
             'bairro'=> 'required|min:3|max:255',
@@ -129,10 +129,14 @@ class ClienteController extends Controller
             'telefone.max'=>'maximo de 12 caracteres',
             'celular.min'=>'Minimo de 11 caracteres',
             'celular.max'=>'maximo de 13 caracteres'
-        ]);*/
+        ]);
 
         $cliente-> save();
 
+        if($request->submit == "0"){
+            session()->flash('mensagem', 'Item Criado Com Sucesso');
+            return view('clientes.index');
+        }
 
         return redirect()->route('clientes.index')->with('message', 'Cliente Criado Com Sucesso');
 

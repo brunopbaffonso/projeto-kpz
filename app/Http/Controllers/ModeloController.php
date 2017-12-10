@@ -73,6 +73,7 @@ class ModeloController extends Controller
         ]);
 
         $modelo-> save();
+
         return redirect()->route('modelos.index')->with('message', 'Modelo Criado Com Sucesso');
     }
     /**

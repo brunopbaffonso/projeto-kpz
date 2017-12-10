@@ -114,7 +114,12 @@ class ItemController extends Controller
         $item->os_idOS = $request->os_idOs;
        // dd($item);
         // dd($item);
+        $os = $item->os()->first();
+        $os->precoTotal += $request->precoUnit;
+        $os->save();
+
         $item-> save();
+
         $bordas = Borda::All();
         $modelos = Modelo::All();
 //            return response()->json($e);

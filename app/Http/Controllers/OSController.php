@@ -18,7 +18,6 @@ class OSController extends Controller
      */
     public function index(Request $request)    
     {
-
         $Grid = new Grid(OS::query(), 'OsGrid');
 
         $Grid->fields([
