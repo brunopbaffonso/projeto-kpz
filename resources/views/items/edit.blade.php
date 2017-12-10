@@ -27,6 +27,20 @@
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'items/'.$item->idItem, 'method' => 'put'])!!}
 
+                                <div class="form-group row">
+                                    <label for="idModelo" class="col-md-2 control-label">*Borda:</label>
+                                    <div class="col-md-8" name="idModelo">
+                                        <select name="idModelo" class="form-control form-control-lg">
+                                            @foreach($modelo as $b)
+                                                @if($m->idModelo == $item->modelo_idModelo )
+                                                    <option value="{{$m->idModelo}}" class="dropdown-item" selected>{{$m->nome}}</option>
+                                                @else
+                                                    <option value="{{$m->idModelo}}" class="dropdown-item">{{$m->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                     <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>

@@ -4,6 +4,7 @@ use App\Models\Cliente;
 use App\Models\Item;
 use App\Models\OS;
 use App\Models\Modelo;
+use App\Models\Borda;
 use Illuminate\Http\Request;
 use SebastianBergmann\Environment\OperatingSystem;
 use Rafwell\Simplegrid\Grid;
@@ -108,7 +109,10 @@ class OSController extends Controller
     }
 
     public function itemOSS($ordem) {
-        return view('items.register')->with(['OS' => $ordem]);
+        $modelos = Modelo::All();
+        $bordas = Borda::All();
+        
+        return view('items.register')->with('OS', $ordem)->with('modelos', $modelos)->with('bordas',$bordas);
     }
     /**
      * Display the specified resource.

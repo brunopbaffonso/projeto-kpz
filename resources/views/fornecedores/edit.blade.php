@@ -144,8 +144,8 @@
 
                                         @if ($errors->has('fone'))
                                             <span class="help-block">
-                                        <strong>{{ $fornecedor->fone }}</strong>
-                                    </span>
+                                                <strong>{{ $fornecedor->fone }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -156,11 +156,11 @@
                                     <div class="col-md-8">
                                         <input id="celular" type="text" class="form-control" name="celular" value="{{ $fornecedor->celular }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente números 0 a 9" required autofocus>
 
-                                        {{--@if ($errors->has('celular'))--}}
-                                        {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('celular') }}</strong>--}}
-                                        {{--</span>--}}
-                                        {{--@endif--}}
+                                        @if ($errors->has('celular'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('celular') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                 </div>
 

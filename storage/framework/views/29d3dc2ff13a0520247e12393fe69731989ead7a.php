@@ -25,7 +25,6 @@
                                 <?php echo Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'put']); ?>
 
 
-                                
 
                                 <div class="form-group row">
                                     <div class="col-md-8" name="cor_idCor">
@@ -50,7 +49,20 @@
                                     </div>
                                 </div>
                                 
-                        
+                                <div class="form-group row">
+                                    <label for="idCliente" class="col-md-2 control-label">*Cliente:</label>
+                                    <div class="col-md-8" name="idCliente">
+                                        <select name="idCliente" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $cliente; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($c->idCliente == $os->cliente_idCliente ): ?>
+                                                    <option value="<?php echo e($c->idCliente); ?>" class="dropdown-item" selected><?php echo e($c->nome); ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?php echo e($c->idCliente); ?>" class="dropdown-item"><?php echo e($c->nome); ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group<?php echo e($errors->has('contato') ? ' has-error' : ''); ?>">
                                     <label for="contato" class="col-md-2 control-label">Contato:</label>

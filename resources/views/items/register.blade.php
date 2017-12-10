@@ -43,7 +43,24 @@
                             </div>
                         </div>
                         <div class="panel-body">
+                            {!!Form::open(['url' => 'items/', 'method' => 'post', 'enctype' => 'multipart/form-data'])!!}
+                                
+                                    <input type="hidden" name="os_idOs" value="{{ $OS }}">
                             <div class="form-horizontal" for="quantidade" class="col-md-2 control-label">Código OS:</label>  {{ $OS }}
+
+
+                                    <div class="form-group row">
+                                        <label for="idModelo" class="col-md-2 control-label">Fornecedor:</label>
+                                        <div class="col-md-8" name="idModelo">
+                                            <select name="idModelo" class="form-control form-control-lg">
+                                                @foreach($modelos as $modelo)
+
+                                                    <option value="{{ $modelo->idModelo }}" class="dropdown-item">{{ $modelo->nome }}</option>
+
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group{{ $errors->has('quantidade') ? ' has-error' : '' }}">
                                         <label for="quantidade" class="col-md-2 control-label">Quantidade:</label>
@@ -102,9 +119,9 @@
 
 
                                     <div class="form-group row">
-                                    <label for="borda" class="col-md-2 control-label">*Borda:</label>
-                                    <div class="col-md-8" name="borda">
-                                            <select name="borda" class="form-control form-control-lg">
+                                    <label for="modelo_idBorda" class="col-md-2 control-label">*Borda:</label>
+                                    <div class="col-md-8">
+                                            <select name="idBorda" class="form-control form-control-lg">
                                                 <option value="0" class="form-control">Sem Borda</option>
                                                 <option value="1" class="form-control">Pintada</option>
                                                 <option value="2" class="form-control">Vulcanizada</option>

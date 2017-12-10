@@ -12,6 +12,28 @@
 
         <div id="page-inner">
 
+            <div id="error-div" class='alert-danger'>
+                <ul id="error-page">
+                </ul>
+            </div>
+
+        <?php if(Session::has('mensagem')): ?>
+            <!-- mostra este bloco se existe uma chave na sessão chamada mensagens-sucesso -->
+                <div class='alert alert-success'>
+                    <?php if(is_array(Session::get('mensagem'))): ?>
+                        <ul>
+                            <?php $__currentLoopData = Session::get('mensagem'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $msg): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($msg); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ul>
+                    <?php else: ?>
+                        <?php echo e(Session::get('mensagem')); ?>
+
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel panel-default">
@@ -21,7 +43,8 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="form-horizontal">
+                            <div class="form-horizontal">Código OC:</label>  <?php echo e($OC); ?>
+
                                 <?php echo Form::open(['url' => 'insumos/', 'method' => 'post']); ?>
 
 
@@ -108,10 +131,23 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="idCor" class="col-md-2 control-label">Cor:</label>
-                                    <div class="col-md-8" name="idCor">
-                                        <select name="idCor" class="form-control form-control-lg">
-                                             <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
+                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            <?php $__currentLoopData = $fornecedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fornecedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <option value=<?php echo e($fornecedor->idFornecedor); ?> class="dropdown-item"><?php echo e($fornecedor->nome); ?></option>
+
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="cor_idCor" class="col-md-2 control-label">Cor:</label>
+                                    <div class="col-md-8" name="cor_idCor">
+                                        <select name="cor_idCor" class="form-control form-control-lg">
+                                            <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
                                             <option value="K01" class="dropdown-item">Cinza</option>
                                             <option value="K02" class="dropdown-item">Grafite</option>
                                             <option value="K03" class="dropdown-item">Preto</option>
@@ -143,9 +179,9 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="idTipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
-                                    <div class="col-md-8" name="idTipoManta">
-                                        <select name="idTipoManta" class="form-control form-control-lg">
+                                    <label for="tipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="tipoManta">
+                                        <select name="tipoManta" class="form-control form-control-lg">
                                             <option value="1" class="dropdown-item">Alto Tráfego</option>
                                             <option value="2" class="dropdown-item">Gold</option>
                                             <option value="3" class="dropdown-item">Silver</option>
@@ -154,9 +190,9 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="idTipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
-                                    <div class="col-md-8" name="idTipoMaterial">
-                                        <select name="idTipoMaterial" class="form-control form-control-lg">
+                                    <label for="tipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="tipoMaterial">
+                                        <select name="tipoMaterial" class="form-control form-control-lg">
                                             <option value="1" class="dropdown-item">Fita PVC</option>
                                             <option value="2" class="dropdown-item">Laminados PVC</option>
                                             <option value="3" class="dropdown-item">CleanKap</option>
@@ -165,25 +201,16 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="idFornecedor" class="col-md-2 control-label">Fornecedor:</label>
-                                    <div class="col-md-8" name="idFornecedor">
-                                        <select name="idFornecedor" class="form-control form-control-lg">
-                                            <?php $__currentLoopData = $fornecedores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fornecedor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                                                <option value=<?php echo e($fornecedor->idFornecedor); ?> class="dropdown-item"><?php echo e($fornecedor->nome); ?></option>
-
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                    </div>
-                                </div>
-
                                 <br />
 
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-2">
-                                        <button type="submit" class="btn btn-primary">
-                                            Cadastrar!
+                                        <button type="submit" name="submit" value="0" class="btn btn-primary">
+                                            Cadastrar Novo Insumo
+                                        </button>
+
+                                        <button type="submit" name="submit" value="1" class="btn btn-success">
+                                            Cadastrar & Finalizar!
                                         </button>
                                     </div>
                                 </div>

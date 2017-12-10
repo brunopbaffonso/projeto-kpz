@@ -30,7 +30,7 @@
                                     <label for="nome" class="col-md-2 control-label">*Nome:</label>
 
                                     <div class="col-md-8">
-                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Kapazi LTDA" maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
+                                        <input id="nome" type="text" class="form-control" name="nome" value="{{ $cliente->nome }}" placeholder="Academia ABC/Padaria Sonho de mel " maxlength="255" pattern="[a-zA-Z\s]+$" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculo/MAIÚSCULOS" required autofocus>
 
                                         @if ($errors->has('nome'))
                                             <span class="help-block">
@@ -44,8 +44,7 @@
                                     <label for="cnpj" class="col-md-2 control-label">*CNPJ:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $cliente->cnpj }}" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" maxlength="14"
-                                         autofocus>
+                                        <input id="cnpj" type="text" class="form-control" name="cnpj" value="{{ $cliente->cnpj }}"  placeholder="00000000000000" maxlength="14" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" pattern="[0-9]+$" autofocus>
 
                                         @if ($errors->has('cnpj'))
                                             <span class="help-block">
@@ -127,13 +126,11 @@
                                     <label for="estado" class="col-md-2 control-label">*Estado:</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_uf" type="text" maxlength="2" class="form-control" value="{{ $cliente->estado_uf }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS"  name="estado_uf" required autofocus>
-
-                                        @if ($errors->has('estado_uf'))
-                                            <span class="help-block">
-                                        <strong>{{ $cliente->estado_uf }}</strong>
-                                    </span>
-                                        @endif
+                                        @foreach($cidade as $c)
+                                            @if($c->idCidade == $cliente->cidade_idCidade )
+                                            <input id="estado_uf" type="text" maxlength="2" class="form-control" value="{{$c->estado_uf }}" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS"  name="estado_uf" required autofocus>
+                                         @endif
+                                        @endforeach
                                     </div>
                                 </div>
 

@@ -158,11 +158,11 @@
                                     <div class="col-md-8">
                                         <input id="celular" type="text" class="form-control" name="celular" value="{{ old('celular') }}" placeholder="(00)900000000"  maxlength="13" pattern="[0-9]+$" data-toggle="tooltip" data-placement="top" title="Esse campo só aceita números de 0 a 9" required autofocus>
 
-                                        {{--@if ($errors->has('celular'))--}}
-                                        {{--<span class="help-block">--}}
-                                        {{--<strong>{{ $errors->first('celular') }}</strong>--}}
-                                        {{--</span>--}}
-                                        {{--@endif--}}
+                                    @if ($errors->has('celular'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('celular') }}</strong>
+                                        </span>
+                                    @endif
                                     </div>
                                 </div>
 

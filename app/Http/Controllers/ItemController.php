@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\OS;
 use App\Models\Modelo;
-use app\Models\Borda;
+use App\Models\Borda;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -82,8 +82,8 @@ class ItemController extends Controller
      */
     public function create($id)
     {
-        $bordas = Borda::all();
-        $modelos = Modelo::all();
+        $bordas = Borda::All();
+        $modelos = Modelo::All();
         return view('items.register')->with('id', $id)->with('borda', $bordas)->with('modelo', $modelos);
     }
     /**
@@ -94,6 +94,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $arte = $request->file('arte');
         $idItem = Item::count();
         $item = new Item();
@@ -110,14 +111,16 @@ class ItemController extends Controller
         }
         $item->precoUnit = $request->precoUnit;
 //        $item->os_idOS = OS::orderBy('idOS', 'desc')->first();
-        $item->os()->associate(OS::find($request->os_idOS));
-//        dd($item);
-
+        $item->os_idOS = $request->os_idOs;
+       // dd($item);
+        // dd($item);
         $item-> save();
+        $bordas = Borda::All();
+        $modelos = Modelo::All();
 //            return response()->json($e);
         if($request->submit == "0"){
             session()->flash('mensagem', 'Item Criado Com Sucesso');
-            return redirect('registra/item/'.$request->os_idOS);
+            return view('items.register')->with('OS', $request->os_idOs)->with('bordas', $bordas)->with('modelos', $modelos);;
         } else {
             return redirect('oss');
         }

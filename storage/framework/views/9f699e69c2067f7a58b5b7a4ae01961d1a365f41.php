@@ -114,13 +114,11 @@
                                     <label for="cidade_idCidade" class="col-md-2 control-label">*Cidade:</label>
 
                                     <div class="col-md-8">
-                                        <input id="cidade_idCidade" type="text" class="form-control" value="<?php echo e($cliente->cidade_idCidade); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculos/MAIÚSCULOS"  name="cidade_idCidade" required autofocus>
-
-                                        <?php if($errors->has('cidade_idCidade')): ?>
-                                            <span class="help-block">
-                                                <strong><?php echo e($cliente->cidade_idCidade); ?></strong>
-                                            </span>
-                                        <?php endif; ?>
+                                        <?php $__currentLoopData = $cidade; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($c->idCidade == $cliente->cidade_idCidade ): ?>
+                                            <input id="cidade_idCidade" type="text" class="form-control" value="<?php echo e($c->nome); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres minúsculos/MAIÚSCULOS"  name="cidade_idCidade" required autofocus>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
 
@@ -128,13 +126,11 @@
                                     <label for="estado" class="col-md-2 control-label">*Estado:</label>
 
                                     <div class="col-md-8">
-                                        <input id="estado_uf" type="text" maxlength="2" class="form-control" value="<?php echo e($cliente->estado_uf); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS"  name="estado_uf" required autofocus>
-
-                                        <?php if($errors->has('estado_uf')): ?>
-                                            <span class="help-block">
-                                        <strong><?php echo e($cliente->estado_uf); ?></strong>
-                                    </span>
-                                        <?php endif; ?>
+                                        <?php $__currentLoopData = $cidade; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($c->idCidade == $cliente->cidade_idCidade ): ?>
+                                            <input id="estado_uf" type="text" maxlength="2" class="form-control" value="<?php echo e($c->estado_uf); ?>" data-toggle="tooltip" data-placement="top" title="Esse campo aceita somente caracteres MAIÚSCULOS"  name="estado_uf" required autofocus>
+                                         <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
 

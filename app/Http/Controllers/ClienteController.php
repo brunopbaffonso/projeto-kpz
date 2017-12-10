@@ -79,6 +79,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
+        $clientes = Cliente::all();
         $cidades = Cidade::all();
         return view('clientes.register')->with('cidade', $cidades);
     }
@@ -158,9 +159,9 @@ class ClienteController extends Controller
     public function edit($id)
     {
         //dd($id)
-        $retorno = Cliente::where('idCliente', '=', $id)->first();
+        $cliente = Cliente::where('idCliente', '=', $id)->first();
         $cidade = Cidade::all();
-        if(count($retorno) == 0)
+        if(count($cliente) == 0)
         {
             Session::flash('produto_nencontrado', 'Cliente não encontrado.');
             return redirect('/clientes');
@@ -168,7 +169,7 @@ class ClienteController extends Controller
 
 
 
-        return view('clientes.edit')->with('cliente', $retorno)->with('cidade', $cidade);
+        return view('clientes.edit')->with('cliente', $cliente)->with('cidade', $cidade);
 
         /* $cliente = Cliente::where('idCliente', '=', $id)->first();
          return view('clientes.edit', compact('cliente'));*/
