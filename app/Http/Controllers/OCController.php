@@ -83,6 +83,7 @@ class OCController extends Controller
         $oc->idOC = $id + 1;
         $oc->tipo = $request->tipo;
         $oc->observacoes = $request->observacoes;
+        $oc->fornecedor_idFornecedor = $request->idFornecedor;
 //        $oc->created_at = $request->created_at;
 //        $oc->updated_at = $request->updated_at;
         $oc-> save();

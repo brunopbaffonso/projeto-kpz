@@ -40,6 +40,19 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row">
+                                    <label for="idFornecedor" class="col-md-2 control-label">*Fornecedor:</label>
+                                    <div class="col-md-8" name="idFornecedor">
+                                        <select name="idFornecedor" class="form-control form-control-lg">
+                                            @foreach($fornecedores as $fornecedor)
+
+                                                <option value={{ $fornecedor->idFornecedor }} class="dropdown-item">{{ $fornecedor->nome }}</option>
+
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group{{ $errors->has('observacoes') ? ' has-error' : '' }}">
                                     <label for="observacoes" class="col-md-2 control-label">Observações:</label>
 
