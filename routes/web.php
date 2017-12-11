@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function() {
 
-//Route::group(['middleware' => 'auth'], function() {
+    Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('items/create/{id}', 'ItemController@create');
     Route::get('relatorios', 'RelatorioController@index');
@@ -34,6 +34,8 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('subprodutos', 'SubprodutoController');
     Route::resource('usuarios', 'UsuarioController');
 
-    Route::get('registra/item/{os_id}', 'OSController@ItemOSS');
-    Route::get('registra/insumo/{oc_id}', 'OCController@InsumoOCS');
-//});
+    Route::get('registra/item/{os_id}', 'OSController@itemOSS');
+    Route::get('registra/insumo/{oc_id}', 'OCController@insumoOCS');
+
+    Route::get('logout', 'UsuarioController@Logout');
+});

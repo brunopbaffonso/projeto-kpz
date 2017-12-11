@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Rafwell\Simplegrid\Grid;
 
 class UsuarioController extends Controller
@@ -164,5 +165,13 @@ class UsuarioController extends Controller
         $usuario->ativo = 0;
         $usuario-> save();
         return redirect()->route('usuarios.index')->with('alert-success','Usuário Removido com Sucesso!');
+    }
+
+    public function Logout(){
+        Auth::logout();
+
+        session()->flash('message', 'Logout Bem Sucedido');
+
+        return redirect('/login');
     }
 }

@@ -75,7 +75,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($oc->insumo as $insumo)
+                                    @foreach($insumos as $insumo)
                                         <tr>
                                             <td>{{ $insumo->quantidade }}</td>
                                             <td>{{ $insumo->largura }}</td>

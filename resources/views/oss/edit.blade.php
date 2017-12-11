@@ -26,10 +26,9 @@
                             <div class="form-horizontal">
                                 {!!Form::open(['url' => 'oss/'.$os->idOS, 'method' => 'put'])!!}
 
-
                                 <div class="form-group row">
+                                    <label for="status" class="col-md-2 control-label">Status</label>
                                     <div class="col-md-8" name="cor_idCor">
-                                        <label for="status" class="col-md-2 control-label">Status</label>
                                         <select name="status" class="form-control form-control-lg">
                                             @if($os->status == 'Aberta')
                                                 <option value="Aberta" class="dropdown-item" selected>Aberta</option>
@@ -49,7 +48,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label for="idCliente" class="col-md-2 control-label">*Cliente:</label>
                                     <div class="col-md-8" name="idCliente">
@@ -115,7 +114,7 @@
                                     </div>
                                 </div>
 
- 
+
                                 {!! Form::close() !!}
                                 <table class="table table-bordered table-hover">
                                     <thead>
@@ -129,7 +128,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($os->item as $item)
+                                    @foreach($items as $item)
                                         <tr>
                                             <td>{{ $item->quantidade }}</td>
                                             <td>{{ $item->largura }}</td>
@@ -141,7 +140,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                         </div>
                     </div>

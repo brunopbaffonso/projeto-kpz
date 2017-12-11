@@ -132,8 +132,10 @@ class OSController extends Controller
     public function edit($id)
     {
         $os = OS::where('idOS', '=', $id)->with('item')->first();
+        $items = Item::where('os_idOS', $os->idOS)->get();
         $cliente = Cliente::All();
-        return view('oss.edit', compact('os', 'cliente'));
+        //return view('oss.edit', compact('os', 'cliente'));
+        return view('oss.edit')->with('os', $os)->with('items', $items)->with('cliente', $cliente)->with('items', $items);
     }
     /**
      * Update the specified resource in storage.

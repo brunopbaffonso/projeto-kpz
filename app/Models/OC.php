@@ -18,7 +18,7 @@ class OC extends Model
     }
 
     public function insumo(){
-        return  $this->hasMany(Insumo::class);
+        return  $this->hasMany(Insumo::class, 'oc_idOC');
 
     }
 }

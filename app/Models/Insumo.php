@@ -23,12 +23,12 @@ class Insumo extends Model
     }
 
     public function oc(){
-        return  $this->belongsTo(OC::class);
+        return  $this->belongsTo(OC::class, 'oc_idOC');
 
     }
 
     public function tipomanta(){
-        return  $this->belongsTo(TipoManta::class);
+        return  $this->belongsTo(TipoManta::class, 'tipoManta_idTipoManta');
 
     }
 
@@ -38,7 +38,7 @@ class Insumo extends Model
     }
 
     public function tipomaterial(){
-        return  $this->belongsTo(TipoMaterial::class);
+        return  $this->belongsTo(TipoMaterial::class, 'tipoMaterial_idTipoMaterial');
 
     }
 

@@ -120,7 +120,7 @@
                     <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                    <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -218,15 +218,6 @@
                         </li>
                         <li>
                             <a href="{{ url('usuarios/create') }}">Adicionar Usuario</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Relatórios<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ url('relatorios') }}">Relatórios</a>
                         </li>
                     </ul>
                 </li>

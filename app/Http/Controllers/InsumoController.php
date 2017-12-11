@@ -92,17 +92,22 @@ class InsumoController extends Controller
     public function store(Request $request)
     {
 
-        $insumo = new Insumo;
+        $idInsumo = Insumo::count();
+        $insumo = new Insumo();
+        $insumo->idInsumo = $idInsumo + 1;
         $insumo->nome = $request->nome;
         $insumo->quantidade = $request->quantidade;
         $insumo->comprimento = $request->comprimento;
         $insumo->largura = $request->largura;
         $insumo->unidadeMedida = $request->unidadeMedida;
         $insumo->precoUnit = $request->precoUnit;
-        $insumo->cor_idCor = $request->idCor;
+        $insumo->cor_idCor = $request->cor_idCor;
         $insumo->fornecedor_idFornecedor = $request->idFornecedor;
         $insumo->tipoManta_idTipoManta = $request->idTipoManta;
         $insumo->tipoMaterial_idTipoMaterial = $request->idTipoMaterial;
+        $insumo->oc_idOC = $request->oc_idOC;
+
+        //dd($insumo);
         
         $this->validate($request,[
             'nome'=> 'string|min:3|max:255',
@@ -124,7 +129,18 @@ class InsumoController extends Controller
         ]);
 
         $insumo-> save();
-        return redirect()->route('insumos.index')->with('message', 'Insumo Criado Com Sucesso');
+
+        $fornecedores = Fornecedor::All();
+        $cors = Cor::All();
+        $materials = TipoMaterial::All();
+        $mantas = TipoManta::All();
+
+        if($request->submit == "0"){
+            session()->flash('mensagem', 'Insumo Criado Com Sucesso');
+            return view('insumos.register')->with('OC', $request->oc_idOC)->with('fornecedores', $fornecedores)->with('cors', $cors)->with('materials', $materials)->with('mantas', $mantas);
+        } else {
+            return redirect()->route('ocs.index');
+        }
     }
     /**
      * Display the specified resource.

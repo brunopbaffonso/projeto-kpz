@@ -2,6 +2,10 @@
 namespace App\Http\Controllers;
 use App\Models\Fornecedor;
 use App\Models\OC;
+use App\Models\Cor;
+use App\Models\Insumo;
+use App\Models\TipoManta;
+use App\Models\TipoMaterial;
 use Illuminate\Http\Request;
 use Rafwell\Simplegrid\Grid;
 
@@ -88,7 +92,12 @@ class OCController extends Controller
     }
 
     public function insumoOCS($ordem) {
-        return view('insumos.register')->with(['OC' => $ordem]);
+        $fornecedores = Fornecedor::All();
+        $cors = Cor::All();
+        $materials = TipoMaterial::All();
+        $mantas = TipoManta::All();
+
+        return view('insumos.register')->with(['OC' => $ordem])->with(['fornecedores' => $fornecedores])->with(['cors' => $cors])->with(['materials' => $materials])->with(['mantas' => $mantas]);
     }
     /**
      * Display the specified resource.
@@ -108,8 +117,10 @@ class OCController extends Controller
      */
     public function edit($id)
     {
-        $oc = OC::where('idOC', '=', $id)->first();
-        return view('ocs.edit', compact('oc'));
+        $oc = OC::where('idOC', '=', $id)->with('insumo')->first();
+        $insumos = Insumo::where('oc_idOC', $oc->idOC)->get();
+
+        return view('ocs.edit')->with('oc', $oc)->with('insumos', $insumos);
     }
     /**
      * Update the specified resource in storage.

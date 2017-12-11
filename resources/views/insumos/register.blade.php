@@ -44,8 +44,10 @@
                             </div>
                         </div>
                         <div class="panel-body">
+                            {!!Form::open(['url' => 'insumos/', 'method' => 'post'])!!}
+
+                            <input type="hidden" name="oc_idOC" value="{{ $OC }}">
                             <div class="form-horizontal">Código OC:</label>  {{ $OC }}
-                                {!!Form::open(['url' => 'insumos/', 'method' => 'post'])!!}
 
                                 <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                     <label for="nome" class="col-md-2 control-label">*Descrição:</label>
@@ -104,8 +106,8 @@
                                 </div>
 
                                 <div class="form-group row">
-                                <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
-                                <div class="col-md-8" name="unidadeMedida">
+                                    <label for="unidadeMedida" class="col-md-2 control-label">*Unidade Medida:</label>
+                                    <div class="col-md-8" name="unidadeMedida">
                                         <select name="unidadeMedida" class="form-control form-control-lg">
                                             <option value="mm" class="dropdown-item">mm (Milimetro)</option>
                                             <option value="cm" class="dropdown-item">cm (Centimetros)</option>
@@ -146,56 +148,37 @@
                                     <label for="cor_idCor" class="col-md-2 control-label">Cor:</label>
                                     <div class="col-md-8" name="cor_idCor">
                                         <select name="cor_idCor" class="form-control form-control-lg">
-                                            <option value="K07" class="dropdown-item">NÃO INFORMADO</option>
-                                            <option value="K01" class="dropdown-item">Cinza</option>
-                                            <option value="K02" class="dropdown-item">Grafite</option>
-                                            <option value="K03" class="dropdown-item">Preto</option>
-                                            <option value="K04" class="dropdown-item">Marrom</option>
-                                            <option value="K05" class="dropdown-item">Bege</option>
-                                            <option value="K06" class="dropdown-item">Ouro</option>
-                                            <option value="K08" class="dropdown-item">Amarelo</option>
-                                            <option value="K09" class="dropdown-item">Laranja</option>
-                                            <option value="K10" class="dropdown-item">Vermelho</option>
-                                            <option value="K11" class="dropdown-item">Bordo</option>
-                                            <option value="K12" class="dropdown-item">Azul Marinho</option>
-                                            <option value="K13" class="dropdown-item">Azul Royal</option>
-                                            <option value="K14" class="dropdown-item">Salmão</option>
-                                            <option value="K15" class="dropdown-item">Verde Bandeira</option>
-                                            <option value="K16" class="dropdown-item">Verde Limão</option>
-                                            <option value="K17" class="dropdown-item">Prata</option>
-                                            <option value="K18" class="dropdown-item">Lilás</option>
-                                            <option value="K19" class="dropdown-item">Azul Marítimo</option>
-                                            <option value="K20" class="dropdown-item">Verde Floresta</option>
-                                            <option value="K21" class="dropdown-item">Pink</option>
-                                            <option value="K22" class="dropdown-item">Verde Água</option>
-                                            <option value="K23" class="dropdown-item">Verde Piscina</option>
-                                            <option value="K24" class="dropdown-item">Azul Bebê</option>
-                                            <option value="K25" class="dropdown-item">Rosa Bebê</option>
-                                            <option value="K26" class="dropdown-item">Roxo</option>
-                                            <option value="K27" class="dropdown-item">Púrpura</option>
+                                            @foreach($cors as $cor)
+
+                                                <option value="{{ $cor->idCor }}" class="dropdown-item">{{ $cor->nome }}</option>
+
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
-                                    <div class="col-md-8" name="tipoManta">
-                                        <select name="tipoManta" class="form-control form-control-lg">
-                                            <option value="1" class="dropdown-item">Alto Tráfego</option>
-                                            <option value="2" class="dropdown-item">Gold</option>
-                                            <option value="3" class="dropdown-item">Silver</option>
+                                    <label for="idTipoManta" class="col-md-2 control-label">*Tipo Manta:</label>
+                                    <div class="col-md-8" name="idTipoManta">
+                                        <select name="idTipoManta" class="form-control form-control-lg">
+                                            @foreach($mantas as $manta)
+
+                                                <option value="{{ $manta->idTipoManta }}" class="dropdown-item">{{ $manta->nome }}</option>
+
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="tipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
-                                    <div class="col-md-8" name="tipoMaterial">
-                                        <select name="tipoMaterial" class="form-control form-control-lg">
-                                            <option value="1" class="dropdown-item">Fita PVC</option>
-                                            <option value="2" class="dropdown-item">Laminados PVC</option>
-                                            <option value="3" class="dropdown-item">CleanKap</option>
-                                            <option value="4" class="dropdown-item">ADK</option>
+                                    <label for="idTipoMaterial" class="col-md-2 control-label">*Tipo Material:</label>
+                                    <div class="col-md-8" name="idTipoMaterial">
+                                        <select name="idTipoMaterial" class="form-control form-control-lg">
+                                            @foreach($materials as $material)
+
+                                                <option value="{{ $material->idTipoMaterial }}" class="dropdown-item">{{ $material->nome }}</option>
+
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
